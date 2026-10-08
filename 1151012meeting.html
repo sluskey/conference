@@ -190,11 +190,25 @@
         </div>
 
         <!-- 右側快速操作群 -->
-        <div class="flex items-center gap-2.5 no-print">
+        <div class="flex flex-wrap items-center gap-2.5 no-print">
+          <!-- 會議期別獨立切換鈕 (依日期最新在左側) -->
+          <div class="inline-flex items-center p-1 bg-slate-900/90 border border-slate-700 rounded-xl shadow-inner">
+            <!-- 左側：1151012-主管會報 (最新，當前頁面) -->
+            <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 cursor-default ring-1 ring-blue-400/50">
+              <span class="pulse-dot bg-emerald-400"></span>
+              <span>1151012-主管會報</span>
+              <span class="text-[10px] bg-blue-700 px-1.5 py-0.2 rounded font-semibold text-blue-100">最新</span>
+            </span>
+            <!-- 右側：9月行政會議 (點擊切換) -->
+            <a href="jinhe_library_9meeting.html" class="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5" title="切換至 9月行政會議">
+              <span>9月行政會議</span>
+            </a>
+          </div>
+
           <!-- 關鍵字全域過濾搜尋框 -->
           <div class="relative">
             <input type="text" id="globalSearch" placeholder="搜尋活動、處室、人員..." oninput="handleGlobalSearch()"
-              class="w-44 sm:w-56 bg-slate-800/80 border border-slate-600 rounded-lg pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
+              class="w-36 lg:w-48 bg-slate-800/80 border border-slate-600 rounded-lg pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all">
             <svg class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
           </div>
 
