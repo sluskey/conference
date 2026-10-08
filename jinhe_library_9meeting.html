@@ -19,6 +19,34 @@
     <!-- Top Banner Image -->
     <img src="library_reading_banner_1789355439906.jpg" class="w-full h-48 md:h-64 object-cover rounded-2xl shadow-md border border-[var(--border)]" alt="圖書館閱讀情境">
 
+    <!-- 歷次會議期別切換導覽列 (依日期最新在左側，並預留後續會議擴充空間) -->
+    <nav class="no-print bg-[var(--card)] border border-[var(--border)] rounded-2xl p-3.5 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
+          <span class="text-xs font-bold text-[var(--foreground)] tracking-wide">歷次會議專頁切換：</span>
+        </div>
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
+          <!-- 左側：1151012-主管會報 (最新，點擊切換) -->
+          <a href="1151012meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 1151012-主管會報">
+            <span>1151012-主管會報</span>
+            <span class="text-[10px] bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 px-1.5 py-0.2 rounded font-bold">最新</span>
+          </a>
+          <!-- 右側：9月行政會議 (當前會議，Active) -->
+          <a href="jinhe_library_9meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 ring-1 ring-blue-400/50" title="當前會議：9月行政會議">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+            <span>9月行政會議</span>
+            <span class="text-[10px] bg-blue-700 px-1.5 py-0.2 rounded font-semibold text-blue-100">當前</span>
+          </a>
+          <!-- 預留後續會議連結位置 (依序往左或向右擴充) -->
+          <div class="px-3.5 py-1.5 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-center gap-1.5 opacity-75 whitespace-nowrap bg-[var(--background)]/50" title="後續主管會報即將加入">
+            <span class="text-slate-400 font-bold">＋</span>
+            <span>預留後續會議位置</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
     <!-- Header Banner -->
     <header class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 md:p-8 shadow-sm relative overflow-hidden">
       <div class="absolute -right-6 -bottom-6 w-48 h-48 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 rounded-full blur-2xl pointer-events-none"></div>
@@ -40,27 +68,12 @@
             <span>更新基準：115年9月14日（同步 Padlet 最新異動）</span>
           </p>
         </div>
-        <!-- 會議期別獨立切換鈕 (依日期最新在左側) -->
-        <div class="flex flex-wrap items-center gap-2 self-start md:self-auto no-print">
-          <div class="inline-flex items-center p-1 bg-[var(--card)] border border-[var(--border)] rounded-xl shadow-xs">
-            <!-- 左側：1151012-主管會報 (最新，點擊切換) -->
-            <a href="1151012meeting.html" class="px-3 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 1151012-主管會報">
-              <span>1151012-主管會報</span>
-              <span class="text-[10px] bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 px-1.5 py-0.2 rounded font-bold">最新</span>
-            </a>
-            <!-- 右側：9月行政會議 (當前狀態) -->
-            <span class="px-3 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 cursor-default ring-1 ring-blue-400/50">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>
-              <span>9月行政會議</span>
-              <span class="text-[10px] bg-blue-700 px-1.5 py-0.2 rounded font-medium text-blue-100">當前</span>
-            </span>
-          </div>
-
-          <button onclick="window.print()" class="px-3.5 py-2 text-xs font-medium rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90 transition shadow-sm flex items-center gap-1.5">
+        <div class="flex items-center gap-2 self-start md:self-auto no-print">
+          <button onclick="window.print()" class="px-4 py-2 text-xs font-medium rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-90 transition shadow-sm flex items-center gap-1.5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
             列印備忘
           </button>
-          <a href="https://padlet.com/sluskey1/padlet-zsuv0c1dmxzaf2ao" target="_blank" class="px-3.5 py-2 text-xs font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm flex items-center gap-1.5">
+          <a href="https://padlet.com/sluskey1/padlet-zsuv0c1dmxzaf2ao" target="_blank" class="px-4 py-2 text-xs font-medium rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition shadow-sm flex items-center gap-1.5">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             開啟 Padlet
           </a>
