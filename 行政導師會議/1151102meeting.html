@@ -7,8 +7,61 @@
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @media print {
-      .no-print { display: none !important; }
-      .tab-pane { display: block !important; }
+      @page {
+        margin: 8mm 8mm 8mm 8mm;
+        size: A4 portrait;
+      }
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        background-color: #ffffff !important;
+        color: #0f172a !important;
+      }
+      /* 保留所有按鈕與跨期導覽列，在 PDF 中完整展現 */
+      nav.no-print {
+        display: block !important;
+        margin-bottom: 0.6rem !important;
+      }
+      div.no-print {
+        display: flex !important;
+      }
+      #themeToggle {
+        display: none !important;
+      }
+      /* 頂部橫幅 */
+      .top-banner-img {
+        height: 125px !important;
+        object-fit: cover !important;
+      }
+      .amber-notice-box {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 0.75rem !important;
+      }
+      #kpiCardsContainer {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 0.75rem !important;
+      }
+      .tab-btn-toolbar {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+        margin-bottom: 1rem !important;
+      }
+      .tab-pane {
+        display: block !important;
+        margin-bottom: 1.5rem !important;
+      }
+      /* 個別照片卡片、獨立區塊卡片與時間軸項目防斷裂 */
+      .avoid-break, .card-hover, section > div > div, .relative.pl-6, tr {
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+      }
+      /* Tab 2 (時間軸)、Tab 3 (處室報告) 與專案獨立報告各自獨立起頁 */
+      #tab-timeline, #tab-sections, .project-standalone-page {
+        break-before: page !important;
+        page-break-before: always !important;
+      }
     }
     /* Lightbox Modal */
     .lightbox {
@@ -114,7 +167,7 @@
     </header>
 
     <!-- Important Notice & Administrative Checklist (11月重點配合與提示事項速覽) -->
-    <div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl p-5 shadow-sm space-y-3">
+    <div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl p-3.5 shadow-sm space-y-2 amber-notice-box">
       <div class="flex items-center gap-2">
         <span class="p-1 rounded-md bg-amber-500 text-white text-xs font-bold shrink-0">11月會報</span>
         <h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm md:text-base">📢 【行政與導師會議重點配合事項速覽】</h3>
@@ -178,7 +231,7 @@
     </div>
 
     <!-- Interactive Navigation Tabs (成果剪影按鈕置於最左側，支援按鈕自由拖曳任意調整位置) -->
-    <div class="no-print flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[var(--border)] pb-2">
+    <div class="no-print flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[var(--border)] pb-2 tab-btn-toolbar">
       <div id="tabsContainer" class="flex flex-wrap items-center gap-2">
         <!-- 按鈕 1 (最左側，預設 Active)：成果剪影與校園形象牆 -->
         <button draggable="true" onclick="switchTab('tab-gallery')" id="btn-tab-gallery" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm transition flex items-center gap-1.5 select-none" title="按住可拖曳調整順序">
@@ -793,7 +846,7 @@
       </section>
 
       <!-- ★ 獨立工作報告：北醫公衛合作案 ✕ AI 示範中心開放多功能展示區建置計畫 -->
-      <section class="bg-[var(--card)] border-2 border-indigo-500/30 rounded-2xl p-6 shadow-sm space-y-5">
+      <section class="project-standalone-page bg-[var(--card)] border-2 border-indigo-500/30 rounded-2xl p-6 shadow-sm space-y-5">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
           <div class="flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
