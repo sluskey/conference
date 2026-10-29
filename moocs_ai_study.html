@@ -6,16 +6,23 @@
   <title>教育部磨課師 (MOOCs) AI 增能研習專區 - 新北市立錦和高中</title>
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --bg-main: #f8fafc;
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #ec4899;
+      --accent-gold: #f59e0b;
+      --accent-emerald: #10b981;
+      --accent-cyan: #06b6d4;
+      --bg-page: #f8fafc;
       --card-bg: #ffffff;
       --text-main: #0f172a;
       --text-muted: #64748b;
       --border-color: #e2e8f0;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
       --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.04);
-      --radius: 16px;
+      --shadow-lg: 0 20px 30px -10px rgba(79, 70, 229, 0.18);
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
     }
 
     * {
@@ -26,14 +33,15 @@
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background-color: var(--bg-main);
+      background: linear-gradient(180deg, #f0f4ff 0%, #faf5ff 25%, #fdf2f8 60%, #f8fafc 100%);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 24px 16px;
+      padding: 24px 16px 48px;
+      min-height: 100vh;
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1220px;
       margin: 0 auto;
     }
 
@@ -42,7 +50,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
       flex-wrap: wrap;
       gap: 12px;
     }
@@ -50,208 +58,355 @@
     .nav-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
+      gap: 8px;
+      padding: 9px 18px;
       border-radius: 9999px;
       font-size: 13.5px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       background: #ffffff;
       color: #334155;
       border: 1px solid var(--border-color);
-      box-shadow: var(--shadow-sm);
-      transition: all 0.15s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
     .nav-btn:hover {
       background: #eff6ff;
-      color: #1d4ed8;
-      border-color: #bfdbfe;
+      color: #2563eb;
+      border-color: #93c5fd;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
     }
 
-    /* Hero Section */
+    .nav-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12.5px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #fef08a, #fed7aa);
+      color: #9a3412;
+      border: 1px solid #fde047;
+      box-shadow: 0 2px 6px rgba(251, 146, 60, 0.15);
+    }
+
+    /* Hero Section - 活力星空極光霓虹漸層 */
     .hero {
       text-align: center;
-      padding: 38px 24px;
-      background: linear-gradient(135deg, #eff6ff 0%, #e0e7ff 100%);
-      border-radius: var(--radius);
-      margin-bottom: 32px;
-      border: 1px solid #dbeafe;
+      padding: 44px 28px 40px;
+      background: radial-gradient(circle at 10% 20%, rgba(236, 72, 153, 0.35) 0%, transparent 45%),
+                  radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.35) 0%, transparent 45%),
+                  radial-gradient(circle at 50% 50%, rgba(139, 92, 246, 0.3) 0%, transparent 55%),
+                  linear-gradient(135deg, #0f172a 0%, #1e1b4b 35%, #312e81 70%, #1e293b 100%);
+      border-radius: var(--radius-lg);
+      margin-bottom: 34px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 20px 40px -15px rgba(30, 27, 75, 0.4);
     }
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 160px;
-      height: 160px;
-      background: rgba(37, 99, 235, 0.08);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-
-    .hero-badge {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1e40af;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 6px 16px;
+    .hero-badge-wrap {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(90deg, #ec4899, #f59e0b);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 6px 18px;
       border-radius: 9999px;
-      margin-bottom: 14px;
-      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+      box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
+      animation: float-badge 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float-badge {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-3px); }
     }
 
     .hero h1 {
-      font-size: clamp(24px, 3.8vw, 34px);
-      font-weight: 800;
-      color: #1e293b;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
+      font-size: clamp(26px, 4.2vw, 38px);
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffffff 15%, #fef08a 55%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+      line-height: 1.35;
     }
 
     .hero p {
-      font-size: 15.5px;
-      color: #475569;
-      max-width: 820px;
-      margin: 0 auto;
-      line-height: 1.7;
+      font-size: 16px;
+      color: #e2e8f0;
+      max-width: 840px;
+      margin: 0 auto 26px;
+      line-height: 1.75;
+      font-weight: 500;
     }
 
-    /* Workflow Steps */
+    .hero p b {
+      color: #fef08a;
+      text-shadow: 0 0 10px rgba(254, 240, 138, 0.4);
+    }
+
+    /* Hero Stats Bar - 4 個閃亮膠囊勳章 */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 13.5px;
+      font-weight: 700;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: all 0.2s ease;
+    }
+
+    .stat-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255,255,255,0.2);
+    }
+
+    /* Workflow Steps - 繽紛多彩三部曲 */
     .steps-container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 36px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+      margin-bottom: 40px;
     }
 
     .step-box {
       background: #ffffff;
-      padding: 22px 20px;
-      border-radius: 14px;
-      border: 1px solid var(--border-color);
+      padding: 24px 22px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
       box-shadow: var(--shadow-sm);
       display: flex;
       align-items: flex-start;
-      gap: 14px;
+      gap: 16px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+    }
+
+    .step-box.step-orange {
+      border-color: #fed7aa;
+      background: linear-gradient(180deg, #fffaf5 0%, #ffffff 100%);
+    }
+    .step-box.step-orange::before {
+      background: linear-gradient(90deg, #f97316, #fb923c);
+    }
+    .step-box.step-orange .step-num {
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
+    }
+
+    .step-box.step-purple {
+      border-color: #ddd6fe;
+      background: linear-gradient(180deg, #faf5ff 0%, #ffffff 100%);
+    }
+    .step-box.step-purple::before {
+      background: linear-gradient(90deg, #8b5cf6, #6366f1);
+    }
+    .step-box.step-purple .step-num {
+      background: linear-gradient(135deg, #8b5cf6, #6366f1);
+      box-shadow: 0 4px 12px rgba(139, 92, 246, 0.35);
+    }
+
+    .step-box.step-emerald {
+      border-color: #bbf7d0;
+      background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);
+    }
+    .step-box.step-emerald::before {
+      background: linear-gradient(90deg, #10b981, #14b8a6);
+    }
+    .step-box.step-emerald .step-num {
+      background: linear-gradient(135deg, #10b981, #059669);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+    }
+
+    .step-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 28px -6px rgba(0, 0, 0, 0.08);
     }
 
     .step-num {
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #2563eb;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
       color: #ffffff;
-      font-weight: 800;
-      font-size: 16px;
+      font-weight: 900;
+      font-size: 17px;
       flex-shrink: 0;
-      box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
     }
 
     .step-content h4 {
-      font-size: 16px;
-      font-weight: 700;
+      font-size: 16.5px;
+      font-weight: 800;
       color: #1e293b;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .step-content p {
       font-size: 13.5px;
-      color: var(--text-muted);
-      line-height: 1.55;
+      color: #475569;
+      line-height: 1.6;
     }
 
-    /* Filter Tabs Bar */
+    /* Filter Tabs Bar - 糖果膠囊切換列 */
     .filter-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 22px;
+      gap: 16px;
+      margin-bottom: 26px;
     }
 
     .section-title {
-      font-size: 22px;
-      font-weight: 800;
-      color: #1e293b;
+      font-size: 23px;
+      font-weight: 900;
+      color: #0f172a;
       display: flex;
       align-items: center;
       gap: 10px;
+      letter-spacing: -0.01em;
     }
 
     .section-title::before {
       content: "";
-      width: 4px;
-      height: 22px;
-      background: #2563eb;
-      border-radius: 2px;
+      width: 6px;
+      height: 24px;
+      background: linear-gradient(180deg, #ec4899, #6366f1);
+      border-radius: 4px;
       display: inline-block;
     }
 
     .tabs {
       display: inline-flex;
-      background: #f1f5f9;
-      padding: 4px;
-      border-radius: 12px;
-      gap: 4px;
+      background: #ffffff;
+      padding: 6px;
+      border-radius: 16px;
+      gap: 6px;
       flex-wrap: wrap;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
     }
 
     .tab-btn {
       border: none;
       background: transparent;
-      padding: 8px 16px;
+      padding: 9px 18px;
       font-size: 13.5px;
-      font-weight: 700;
+      font-weight: 800;
       color: #64748b;
-      border-radius: 8px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.15s ease;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tab-btn:hover {
+      color: #1e293b;
+      background: #f1f5f9;
     }
 
     .tab-btn.active {
-      background: #ffffff;
-      color: #1d4ed8;
-      box-shadow: var(--shadow-sm);
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+      transform: scale(1.02);
     }
 
     /* Course Cards Grid */
     .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 28px;
+      margin-bottom: 50px;
     }
 
     .course-card {
       background: var(--card-bg);
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      border: 1px solid #e2e8f0;
       overflow: hidden;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
+
+    /* 卡片頂部彩色主題漸層飾條 */
+    .course-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      z-index: 5;
+      background: var(--card-gradient, linear-gradient(90deg, #4f46e5, #ec4899));
     }
 
     .course-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow-md);
-      border-color: #cbd5e1;
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.12), 0 0 0 1px #cbd5e1;
     }
+
+    /* 各卡片專屬色彩變數 */
+    .card-theme-draw { --card-gradient: linear-gradient(90deg, #ec4899, #8b5cf6); }
+    .card-theme-basic { --card-gradient: linear-gradient(90deg, #3b82f6, #06b6d4); }
+    .card-theme-strategy { --card-gradient: linear-gradient(90deg, #f59e0b, #ef4444); }
+    .card-theme-3min { --card-gradient: linear-gradient(90deg, #10b981, #84cc16); }
+    .card-theme-friend { --card-gradient: linear-gradient(90deg, #f97316, #ec4899); }
+    .card-theme-practice { --card-gradient: linear-gradient(90deg, #6366f1, #3b82f6); }
+    .card-theme-teaching { --card-gradient: linear-gradient(90deg, #059669, #10b981); }
+    .card-theme-innovation { --card-gradient: linear-gradient(90deg, #f43f5e, #fb7185); }
+    .card-theme-edu { --card-gradient: linear-gradient(90deg, #0284c7, #6366f1); }
+    .card-theme-thinking { --card-gradient: linear-gradient(90deg, #8b5cf6, #d946ef); }
 
     .card-img-wrap {
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 224px;
       background-color: #0f172a;
       overflow: hidden;
       cursor: pointer;
@@ -263,56 +418,77 @@
       object-fit: cover;
       object-position: top center;
       display: block;
-      transition: transform 0.3s ease;
+      transition: transform 0.4s ease;
     }
 
     .course-card:hover .card-img-wrap img {
-      transform: scale(1.04);
+      transform: scale(1.06);
     }
 
     .zoom-hint {
       position: absolute;
       inset: 0;
-      background: rgba(15, 23, 42, 0.4);
+      background: rgba(15, 23, 42, 0.5);
       opacity: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
+      gap: 8px;
       color: #ffffff;
-      font-size: 13px;
-      font-weight: 600;
-      backdrop-filter: blur(2px);
+      font-size: 13.5px;
+      font-weight: 700;
+      backdrop-filter: blur(3px);
       transition: opacity 0.2s ease;
+      z-index: 3;
     }
 
     .card-img-wrap:hover .zoom-hint {
       opacity: 1;
     }
 
+    /* 醒目標籤 (Pill Badges) */
     .type-pill {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: 14px;
+      right: 14px;
       font-size: 12px;
       font-weight: 800;
-      padding: 4px 12px;
+      padding: 5px 13px;
       border-radius: 9999px;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       color: #1e40af;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-      backdrop-filter: blur(4px);
-      z-index: 2;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+      backdrop-filter: blur(6px);
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
-    .type-pill.highlight {
-      background: #fef08a;
+    .type-pill.highlight-gold {
+      background: linear-gradient(135deg, #fef08a, #fde047);
       color: #854d0e;
-      border: 1px solid #fde047;
+      border: 1px solid #facc15;
+      box-shadow: 0 4px 12px rgba(234, 179, 8, 0.35);
+    }
+
+    .type-pill.highlight-red {
+      background: linear-gradient(135deg, #fee2e2, #fecaca);
+      color: #991b1b;
+      border: 1px solid #f87171;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+
+    .type-pill.highlight-emerald {
+      background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+      color: #065f46;
+      border: 1px solid #4ade80;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
     }
 
     .card-body {
-      padding: 20px;
+      padding: 22px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -327,121 +503,175 @@
     }
 
     .tag-hour {
-      background: #eff6ff;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
       color: #1d4ed8;
       font-size: 12px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid #dbeafe;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #bfdbfe;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
     }
 
     .tag-school {
-      font-size: 12.5px;
-      color: var(--text-muted);
-      font-weight: 600;
+      font-size: 13px;
+      color: #475569;
+      font-weight: 700;
       display: inline-flex;
       align-items: center;
       gap: 4px;
     }
 
     .rating-badge {
-      font-size: 12px;
-      color: #eab308;
-      font-weight: 700;
+      font-size: 12.5px;
+      color: #d97706;
+      font-weight: 800;
       margin-left: auto;
+      background: #fef3c7;
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid #fde68a;
     }
 
     .card-title {
-      font-size: 18.5px;
-      font-weight: 800;
+      font-size: 19px;
+      font-weight: 900;
       color: #0f172a;
       margin-bottom: 8px;
       line-height: 1.4;
+      transition: color 0.15s ease;
+    }
+
+    .course-card:hover .card-title {
+      color: #4f46e5;
     }
 
     .card-desc {
       font-size: 13.5px;
       color: #475569;
-      line-height: 1.6;
-      margin-bottom: 16px;
+      line-height: 1.65;
+      margin-bottom: 18px;
       flex-grow: 1;
     }
 
+    /* 繽紛標籤群 (Color Topic Tags) */
     .topic-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .topic-tag {
       font-size: 11.5px;
-      color: #475569;
-      background: #f1f5f9;
-      padding: 2px 7px;
-      border-radius: 5px;
-      font-weight: 500;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      display: inline-block;
+      transition: transform 0.15s ease;
     }
 
+    .topic-tag:hover {
+      transform: translateY(-1px);
+    }
+
+    .tag-blue { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .tag-purple { background: #faf5ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .tag-pink { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+    .tag-emerald { background: #f0fdf4; color: #047857; border: 1px solid #bbf7d0; }
+    .tag-amber { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
+    .tag-cyan { background: #ecfeff; color: #0e7490; border: 1px solid #a5f3fc; }
+    .tag-slate { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+
     .card-actions {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
       margin-top: auto;
     }
 
+    /* 超吸睛炫彩按鈕 - 讓人想點入學習！ */
     .btn-enroll {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       width: 100%;
-      background: var(--primary);
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #db2777 100%);
+      background-size: 200% auto;
       color: #ffffff;
       text-decoration: none;
-      font-size: 14.5px;
-      font-weight: 700;
-      padding: 11px 16px;
-      border-radius: 10px;
-      transition: background-color 0.15s ease, transform 0.15s ease;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 12px 18px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 0.02em;
     }
 
     .btn-enroll:hover {
-      background-color: var(--primary-hover);
-      transform: translateY(-1px);
+      background-position: right center;
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 8px 24px -4px rgba(219, 39, 119, 0.5);
     }
 
-    /* Form Section */
+    .btn-enroll .btn-arrow {
+      transition: transform 0.2s ease;
+    }
+
+    .btn-enroll:hover .btn-arrow {
+      transform: translateX(4px);
+    }
+
+    /* Form Section - 慶典感完課回報專區 */
     .form-section {
-      background: #ffffff;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-color);
-      padding: 36px 24px;
-      box-shadow: var(--shadow-sm);
+      background: radial-gradient(circle at 10% 10%, rgba(16, 185, 129, 0.15) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 90%, rgba(59, 130, 246, 0.15) 0%, transparent 40%),
+                  linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #eff6ff 100%);
+      border-radius: var(--radius-lg);
+      border: 2px dashed #86efac;
+      padding: 40px 28px;
+      box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.15);
       text-align: center;
-      margin-bottom: 36px;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .form-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #dcfce7;
+      color: #15803d;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+      border: 1px solid #86efac;
     }
 
     .form-section h2 {
-      font-size: 24px;
-      font-weight: 800;
-      color: #1e293b;
-      margin-bottom: 10px;
+      font-size: 26px;
+      font-weight: 900;
+      color: #065f46;
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
 
     .form-section p {
-      font-size: 15px;
-      color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 24px;
-      line-height: 1.7;
+      font-size: 15.5px;
+      color: #334155;
+      max-width: 740px;
+      margin: 0 auto 26px;
+      line-height: 1.75;
+      font-weight: 500;
     }
 
     .form-actions {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 18px;
       flex-wrap: wrap;
     }
 
@@ -449,20 +679,21 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: #059669;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
       color: #ffffff;
-      padding: 13px 26px;
-      border-radius: 10px;
-      font-size: 15.5px;
-      font-weight: 700;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 800;
       text-decoration: none;
-      transition: background-color 0.15s ease, transform 0.15s ease;
-      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.25);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+      transition: all 0.25s ease;
     }
 
     .btn-report:hover {
-      background-color: #047857;
-      transform: translateY(-1px);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(16, 185, 129, 0.45);
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
     }
 
     .btn-moocs-portal {
@@ -471,81 +702,105 @@
       gap: 8px;
       background: #ffffff;
       color: #1e40af;
-      border: 1px solid #bfdbfe;
-      padding: 13px 24px;
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
+      border: 2px solid #bfdbfe;
+      padding: 14px 26px;
+      border-radius: 12px;
+      font-size: 15.5px;
+      font-weight: 800;
       text-decoration: none;
-      transition: background-color 0.15s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+      transition: all 0.2s ease;
     }
 
     .btn-moocs-portal:hover {
       background: #eff6ff;
+      border-color: #60a5fa;
+      transform: translateY(-2px);
     }
 
     .form-note {
-      margin-top: 20px;
-      font-size: 13px;
-      color: #64748b;
-      display: flex;
+      margin-top: 22px;
+      font-size: 13.5px;
+      color: #065f46;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
-      flex-wrap: wrap;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      border: 1px solid #bbf7d0;
     }
 
-    /* FAQ Section */
+    /* FAQ Section - 4 色繽紛卡片 */
     .faq-section {
-      background: #f1f5f9;
-      border-radius: var(--radius);
-      padding: 28px 24px;
-      margin-bottom: 40px;
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-color);
+      padding: 34px 28px;
+      margin-bottom: 44px;
+      box-shadow: var(--shadow-sm);
     }
 
     .faq-title {
-      font-size: 18px;
-      font-weight: 800;
+      font-size: 21px;
+      font-weight: 900;
       color: #1e293b;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
 
     .faq-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
     }
 
     .faq-card {
-      background: #ffffff;
-      padding: 16px 18px;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
+      padding: 20px;
+      border-radius: 14px;
+      border: 1.5px solid transparent;
+      transition: transform 0.2s ease;
     }
 
+    .faq-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .faq-card.faq-blue { background: #f0f7ff; border-color: #bfdbfe; }
+    .faq-card.faq-green { background: #f0fdf4; border-color: #bbf7d0; }
+    .faq-card.faq-amber { background: #fffbeb; border-color: #fde68a; }
+    .faq-card.faq-purple { background: #faf5ff; border-color: #e9d5ff; }
+
     .faq-card h5 {
-      font-size: 14.5px;
-      font-weight: 700;
-      color: #1e293b;
-      margin-bottom: 6px;
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .faq-card p {
-      font-size: 13px;
-      color: #64748b;
-      line-height: 1.6;
+      font-size: 13.5px;
+      color: #475569;
+      line-height: 1.65;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      font-size: 13px;
-      color: #94a3b8;
-      padding: 20px 0;
-      border-top: 1px solid var(--border-color);
+      font-size: 13.5px;
+      color: #64748b;
+      padding: 24px 0 10px;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    footer b {
+      color: #334155;
     }
 
     /* Lightbox Modal */
@@ -553,8 +808,8 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(6px);
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
@@ -567,13 +822,12 @@
 
     .lightbox-content {
       position: relative;
-      max-width: 540px;
+      max-width: 520px;
       width: 100%;
       background: #0f172a;
-      border-radius: 16px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.2);
     }
 
     .lightbox-img {
@@ -596,35 +850,36 @@
     .lightbox-info h4 {
       color: #f8fafc;
       font-size: 15px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .lightbox-close {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 32px;
-      height: 32px;
+      top: 14px;
+      right: 14px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
-      background: rgba(15, 23, 42, 0.8);
+      background: rgba(15, 23, 42, 0.85);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      font-size: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 10;
-      transition: background 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .lightbox-close:hover {
       background: #ef4444;
+      transform: scale(1.1);
     }
 
     @media (max-width: 640px) {
       body {
-        padding: 14px 10px;
+        padding: 14px 10px 32px;
       }
       .course-grid {
         grid-template-columns: 1fr;
@@ -641,6 +896,9 @@
         text-align: center;
         padding: 8px 10px;
       }
+      .hero-stats {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -652,325 +910,369 @@
       <a href="1151012meeting.html" class="nav-btn" title="返回 1151012 主管會報資訊網">
         <span>← 返回 1151012 主管會報</span>
       </a>
-      <div style="display:flex; gap:8px;">
+      <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+        <span class="nav-tag">✨ 錦和高中 ‧ AI 智慧增能學習圈</span>
         <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="nav-btn" style="background:#eff6ff; color:#1d4ed8; border-color:#bfdbfe;">
-          <span>🌐 教育部磨課師 (edu磨課師+) 平臺</span>
+          <span>🌐 教育部磨課師 (edu磨課師+) 平臺 &rarr;</span>
         </a>
       </div>
     </div>
 
-    <!-- Hero Banner -->
+    <!-- Hero Banner - 絢麗星空極光霓虹主題 -->
     <header class="hero">
-      <span class="hero-badge">數位增能 ‧ 跨域教學</span>
+      <div class="hero-badge-wrap">
+        <span>🚀 數位增能 ‧ 跨域智慧教學 ‧ 即刻啟航</span>
+      </div>
       <h1>教育部磨課師 (MOOCs) AI 增能研習專區</h1>
-      <p>提供本校教師優質 AI 線上研習管道，完成課程測驗並下載學習證明，即可填表回傳核發研習時數（每門課認證 6 小時）。</p>
+      <p>
+        提供本校教師優質 AI 線上研習通道！完成線上影音與評量及格後下載學習證明，填表回傳即可認證核發 <b>每門課 6 小時數位增能研習時數</b>。
+      </p>
+
+      <!-- 4 大亮點指標勳章 -->
+      <div class="hero-stats">
+        <span class="stat-pill">⭐ 全平臺嚴選 10 門優質 AI</span>
+        <span class="stat-pill">🏆 教育部 114 標竿認證課程</span>
+        <span class="stat-pill">📌 115 年度政策推薦必修</span>
+        <span class="stat-pill">🏅 校內認列 6 小時全教網時數</span>
+      </div>
     </header>
 
-    <!-- 3-Step Guide -->
+    <!-- 3-Step Guide - 繽紛多彩三部曲 -->
     <section class="steps-container">
-      <div class="step-box">
+      <div class="step-box step-orange">
         <span class="step-num">1</span>
         <div class="step-content">
-          <h4>自主選課學習</h4>
-          <p>挑選下方有興趣的 AI 課程，點選「立即前往修課」登入教育部磨課師平臺。</p>
+          <h4>🚀 自主選課探索</h4>
+          <p>挑選下方有興趣的 AI 課程，點選「立即前往修課 &rarr;」使用教育雲端帳號（OpenID）登入教育部磨課師平臺。</p>
         </div>
       </div>
-      <div class="step-box">
+      <div class="step-box step-purple">
         <span class="step-num">2</span>
         <div class="step-content">
-          <h4>下載學習證明</h4>
-          <p>完成影音閱讀與評量及格後，於平臺個人學習中心下載完課證明（圖檔或 PDF）。</p>
+          <h4>🎓 取得通過證明</h4>
+          <p>完成線上影音進度閱覽並通過課後評量及格，於平臺「個人學習中心」下載完課證明電子檔（PDF 或圖檔）。</p>
         </div>
       </div>
-      <div class="step-box">
+      <div class="step-box step-emerald">
         <span class="step-num">3</span>
         <div class="step-content">
-          <h4>填表核發時數</h4>
-          <p>填寫下方回報表單並上傳證明，後台將自動累計對帳並核發研習時數。</p>
+          <h4>🏅 填表核發時數</h4>
+          <p>點選下方表單按鈕填寫回報並上傳完課證明，圖書館將定期統一審核並登錄至全國教師在職進修網！</p>
         </div>
       </div>
     </section>
 
-    <!-- Courses Grid & Filter Tabs -->
+    <!-- Filter Tabs Bar - 糖果膠囊切換 -->
     <section>
       <div class="filter-bar">
-        <h2 class="section-title" id="sectionHeading">精選磨課師 AI 課程清單（5門精選 / 全 10 門）</h2>
+        <h2 class="section-title" id="sectionHeading">精選磨課師 AI 課程清單（6門精選 / 全 10 門）</h2>
         <div class="tabs" role="tablist">
-          <button class="tab-btn active" onclick="filterCourses('featured', this)">🌟 精選 5 門必修推薦</button>
-          <button class="tab-btn" onclick="filterCourses('all', this)">全部課程 (10門)</button>
+          <button class="tab-btn active" onclick="filterCourses('featured', this)">🌟 精選 6 門必修推薦</button>
+          <button class="tab-btn" onclick="filterCourses('all', this)">🌈 全部課程 (10門)</button>
           <button class="tab-btn" onclick="filterCourses('benchmark', this)">🏆 標竿與必修</button>
           <button class="tab-btn" onclick="filterCourses('hands-on', this)">🛠️ 實作與工具</button>
         </div>
       </div>
 
+      <!-- Course Cards Grid -->
       <div class="course-grid" id="courseGrid">
         
         <!-- Course 1 -->
-        <article class="course-card" data-category="featured hands-on">
+        <article class="course-card card-theme-draw" data-category="featured hands-on">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course1_genai_draw.png', '生成式AI工具與AI繪圖 - 東海大學')">
-            <img src="images/moocs/course1_genai_draw.png" onerror="this.src='course1_genai_draw.png'" alt="生成式AI工具與AI繪圖" />
+            <img src="images/moocs/course1_genai_draw.png" onerror="this.src='1.生成式AI工具與AI繪圖.png'" alt="生成式AI工具與AI繪圖" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
             <span class="type-pill">自學式 ‧ 圖文實作</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">12 小時 (校內認列 6 小時)</span>
+              <span class="tag-hour">⏱️ 12 小時 (認列 6 小時)</span>
               <span class="tag-school">🏛️ 東海大學</span>
               <span class="rating-badge">★ 4.0 (22 評)</span>
             </div>
             <h3 class="card-title">生成式AI工具與AI繪圖</h3>
             <p class="card-desc">東海大學楊朝棟老師團隊親授！從生成式 AI 基礎概念與 Prompt Engineering（提示工程）切入，實作文字內容生成與熱門 AI 繪圖工具，引導精準提問、人機協作與教學素材視覺化。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#生成式AI</span>
-              <span class="topic-tag">#AI繪圖</span>
-              <span class="topic-tag">#圖像生成</span>
-              <span class="topic-tag">#提示工程</span>
+              <span class="topic-tag tag-purple">#生成式AI</span>
+              <span class="topic-tag tag-pink">#AI繪圖</span>
+              <span class="topic-tag tag-cyan">#圖像生成</span>
+              <span class="topic-tag tag-blue">#提示工程</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 2 -->
-        <article class="course-card" data-category="featured">
+        <article class="course-card card-theme-basic" data-category="featured">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course2_genai_basic.png', '生成式AI - 淡江大學')">
-            <img src="images/moocs/course2_genai_basic.png" onerror="this.src='course2_genai_basic.png'" alt="生成式AI" />
+            <img src="images/moocs/course2_genai_basic.png" onerror="this.src='2.生成式AI.png'" alt="生成式AI" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
             <span class="type-pill">自學式 ‧ 滿分推薦</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">6 小時認證</span>
+              <span class="tag-hour">⏱️ 6 小時認證</span>
               <span class="tag-school">🏛️ 淡江大學</span>
               <span class="rating-badge">★ 5.0 (21 評)</span>
             </div>
             <h3 class="card-title">生成式AI</h3>
             <p class="card-desc">淡江大學專業團隊打造，系統化解析生成式 AI 演進脈絡、大型語言模型架構核心與日常教學實務，著重核心機制剖析與建立正確教育 AI 素養。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#人工智慧</span>
-              <span class="topic-tag">#生成式AI</span>
-              <span class="topic-tag">#資訊工程</span>
-              <span class="topic-tag">#大型語言模型</span>
+              <span class="topic-tag tag-blue">#人工智慧</span>
+              <span class="topic-tag tag-cyan">#生成式AI</span>
+              <span class="topic-tag tag-purple">#大型語言模型</span>
+              <span class="topic-tag tag-slate">#資訊工程</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 3 -->
-        <article class="course-card" data-category="featured benchmark">
+        <article class="course-card card-theme-strategy" data-category="featured benchmark">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course3_genai_strategy.png', '生成式AI增能攻略 - 國立臺中科技大學')">
-            <img src="images/moocs/course3_genai_strategy.png" onerror="this.src='course3_genai_strategy.png'" alt="生成式AI增能攻略" />
+            <img src="images/moocs/course3_genai_strategy.png" onerror="this.src='3.生成式AI增能攻略.png'" alt="生成式AI增能攻略" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill highlight">🏆 114標竿課程</span>
+            <span class="type-pill highlight-gold">🏆 114標竿課程</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">4 小時 (校內認列 6 小時)</span>
+              <span class="tag-hour">⏱️ 4 小時 (認列 6 小時)</span>
               <span class="tag-school">🏛️ 國立臺中科技大學</span>
               <span class="rating-badge">★ 5.0 (47 評)</span>
             </div>
             <h3 class="card-title">生成式AI增能攻略</h3>
             <p class="card-desc">榮獲教育部「114標竿課程」肯定！全方位涵蓋創意內容生成、LLaMA 微調實戰、打造虛擬教學助教與開源工具技巧，兼具前瞻理論與課堂實戰。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#114標竿課程</span>
-              <span class="topic-tag">#創意內容生成</span>
-              <span class="topic-tag">#大語言模型</span>
-              <span class="topic-tag">#虛擬助教</span>
+              <span class="topic-tag tag-amber">#114標竿課程</span>
+              <span class="topic-tag tag-pink">#創意內容生成</span>
+              <span class="topic-tag tag-blue">#大語言模型</span>
+              <span class="topic-tag tag-emerald">#虛擬助教</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 4 -->
-        <article class="course-card" data-category="hands-on">
+        <article class="course-card card-theme-3min" data-category="hands-on">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course4_moocs_3min.png', '磨課師三分鐘系列課程-AI篇 - 國立宜蘭大學')">
-            <img src="images/moocs/course4_moocs_3min.png" onerror="this.src='course4_moocs_3min.png'" alt="磨課師三分鐘系列課程-AI篇" />
+            <img src="images/moocs/course4_moocs_3min.png" onerror="this.src='4.磨課師三分鐘系列課程-AI篇.png'" alt="磨課師三分鐘系列課程-AI篇" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
             <span class="type-pill">自學式 ‧ 微學習</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">1 小時微認證</span>
+              <span class="tag-hour">⏱️ 1 小時微認證</span>
               <span class="tag-school">🏛️ 國立宜蘭大學</span>
               <span class="rating-badge">★ 5.0 (4 評)</span>
             </div>
             <h3 class="card-title">磨課師三分鐘系列課程-AI篇</h3>
             <p class="card-desc">以 3 分鐘微學習（Micro-learning）高精準單元設計，引導教師快速掌握 AI 工具融入教學影片製作、文案設計與課堂素材腳本，隨選隨學無負擔。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#微學習</span>
-              <span class="topic-tag">#教學腳本</span>
-              <span class="topic-tag">#生成式AI</span>
-              <span class="topic-tag">#社會科學教育</span>
+              <span class="topic-tag tag-emerald">#微學習</span>
+              <span class="topic-tag tag-purple">#教學腳本</span>
+              <span class="topic-tag tag-cyan">#生成式AI</span>
+              <span class="topic-tag tag-blue">#社會科學教育</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 5 -->
-        <article class="course-card" data-category="featured benchmark">
+        <article class="course-card card-theme-friend" data-category="featured benchmark">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course5_ai_friend.png', '和AI做朋友：從0開始學AI - 教育部AI人才培育計畫')">
-            <img src="images/moocs/course5_ai_friend.png" onerror="this.src='course5_ai_friend.png'" alt="和AI做朋友：從0開始學AI" />
+            <img src="images/moocs/course5_ai_friend.png" onerror="this.src='5.和AI做朋友：從0開始學AI.png'" alt="和AI做朋友：從0開始學AI" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill highlight">🔥 旗艦必修 ‧ 324+好評</span>
+            <span class="type-pill highlight-red">🔥 旗艦必修 ‧ 324+好評</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">6 小時認證</span>
-              <span class="tag-school">🏛️ 教育部中小學AI推廣計畫</span>
+              <span class="tag-hour">⏱️ 6 小時認證</span>
+              <span class="tag-school">🏛️ 教育部推廣計畫</span>
               <span class="rating-badge">★ 5.0 (324 評)</span>
             </div>
             <h3 class="card-title">和AI做朋友：從0開始學AI</h3>
             <p class="card-desc">教育部中小學人工智慧官方旗艦教材！由淺入深解析演算法邏輯、生活中的 AI 體驗到倫理思維，是各級學校教師與學生認識 AI 的最經典必修啟蒙課。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#教育部旗艦</span>
-              <span class="topic-tag">#中小學AI</span>
-              <span class="topic-tag">#人工智慧啟蒙</span>
-              <span class="topic-tag">#倫理思維</span>
+              <span class="topic-tag tag-amber">#教育部旗艦</span>
+              <span class="topic-tag tag-pink">#中小學AI</span>
+              <span class="topic-tag tag-cyan">#人工智慧啟蒙</span>
+              <span class="topic-tag tag-purple">#倫理思維</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 6 -->
-        <article class="course-card" data-category="hands-on">
+        <article class="course-card card-theme-practice" data-category="hands-on">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course6_ai_practice.png', 'AI智慧技術實踐 - 淡江大學')">
-            <img src="images/moocs/course6_ai_practice.png" onerror="this.src='course6_ai_practice.png'" alt="AI智慧技術實踐" />
+            <img src="images/moocs/course6_ai_practice.png" onerror="this.src='6.AI智慧技術實踐.png'" alt="AI智慧技術實踐" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill">自學式 ‧ 程式與雲端</span>
+            <span class="type-pill">自學式 ‧ 程式雲端</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">6 小時認證</span>
+              <span class="tag-hour">⏱️ 6 小時認證</span>
               <span class="tag-school">🏛️ 淡江大學資工系</span>
               <span class="rating-badge">★ 5.0 (23 評)</span>
             </div>
             <h3 class="card-title">AI智慧技術實踐</h3>
             <p class="card-desc">結合 Google Colab 雲端計算與 GitHub 開源專案實作，手把手帶領學員實踐深度學習模型訓練與呼叫，培養動手解決教學與專案問題的實踐力。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#GoogleColab</span>
-              <span class="topic-tag">#GitHub</span>
-              <span class="topic-tag">#深度學習</span>
-              <span class="topic-tag">#實作技術</span>
+              <span class="topic-tag tag-blue">#GoogleColab</span>
+              <span class="topic-tag tag-slate">#GitHub</span>
+              <span class="topic-tag tag-purple">#深度學習</span>
+              <span class="topic-tag tag-emerald">#實作技術</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 7 -->
-        <article class="course-card" data-category="featured benchmark">
+        <article class="course-card card-theme-teaching" data-category="featured benchmark">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course7_ai_teaching.png', 'AI素養與智慧教學實務(115必修) - 臺灣華語教育資源中心')">
-            <img src="images/moocs/course7_ai_teaching.png" onerror="this.src='course7_ai_teaching.png'" alt="AI素養與智慧教學實務(115必修)" />
+            <img src="images/moocs/course7_ai_teaching.png" onerror="this.src='7.AI素養與智慧教學實務(115必修).png'" alt="AI素養與智慧教學實務(115必修)" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill highlight">⭐ 115年度推薦必修</span>
+            <span class="type-pill highlight-emerald">⭐ 115年度推薦必修</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">1 小時精華 (跨領域教學)</span>
-              <span class="tag-school">🏛️ 臺灣華語教育資源中心</span>
+              <span class="tag-hour">⏱️ 1 小時精華</span>
+              <span class="tag-school">🏛️ 臺灣華語教育中心</span>
               <span class="rating-badge">★ 5.0 (73 評)</span>
             </div>
             <h3 class="card-title">AI素養與智慧教學實務(115必修)</h3>
             <p class="card-desc">教育部115年度推薦必修增能主題！專為第一線教育現場打造，探討智慧教學倫理、人機協作備課與多元評量設計，引導將 AI 化為提升課堂互動的智慧助手。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#115必修</span>
-              <span class="topic-tag">#智慧教育</span>
-              <span class="topic-tag">#跨領域教學</span>
-              <span class="topic-tag">#教學倫理</span>
+              <span class="topic-tag tag-emerald">#115必修</span>
+              <span class="topic-tag tag-blue">#智慧教育</span>
+              <span class="topic-tag tag-purple">#跨領域教學</span>
+              <span class="topic-tag tag-amber">#教學倫理</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 8 -->
-        <article class="course-card" data-category="hands-on">
+        <article class="course-card card-theme-innovation" data-category="hands-on">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course8_ai_innovation.png', 'AI創新與應用 - 李燕秋名師')">
-            <img src="images/moocs/course8_ai_innovation.png" onerror="this.src='course8_ai_innovation.png'" alt="AI創新與應用" />
+            <img src="images/moocs/course8_ai_innovation.png" onerror="this.src='8.AI創新與應用.png'" alt="AI創新與應用" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill">自學式 ‧ 286+滿分好評</span>
+            <span class="type-pill highlight-gold">🔥 286+滿分好評</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">1 小時實用微課程</span>
-              <span class="tag-school">🏛️ 臺灣華語 ‧ 李燕秋老師</span>
+              <span class="tag-hour">⏱️ 1 小時實用微課</span>
+              <span class="tag-school">🏛️ 李燕秋名師親授</span>
               <span class="rating-badge">★ 5.0 (286 評)</span>
             </div>
             <h3 class="card-title">AI創新與應用</h3>
             <p class="card-desc">微軟教育 MVP 李燕秋名師親授！手把手示範多元生成式 AI 工具融入課堂簡報製作、多媒體影音與跨領域互動教學，口碑極佳，易學好上手。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#名師親授</span>
-              <span class="topic-tag">#簡報生成</span>
-              <span class="topic-tag">#影音創作</span>
-              <span class="topic-tag">#創新應用</span>
+              <span class="topic-tag tag-pink">#名師親授</span>
+              <span class="topic-tag tag-cyan">#簡報生成</span>
+              <span class="topic-tag tag-purple">#影音創作</span>
+              <span class="topic-tag tag-amber">#創新應用</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 9 -->
-        <article class="course-card" data-category="hands-on">
+        <article class="course-card card-theme-edu" data-category="hands-on">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course9_genai_edu.png', '生成式AI在教育上的應用 - 亞洲大學')">
-            <img src="images/moocs/course9_genai_edu.png" onerror="this.src='course9_genai_edu.png'" alt="生成式AI在教育上的應用" />
+            <img src="images/moocs/course9_genai_edu.png" onerror="this.src='9.生成式AI在教育上的應用課程.png'" alt="生成式AI在教育上的應用" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill">教學式 ‧ 大數據微學程</span>
+            <span class="type-pill">教學式 ‧ 大數據</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">6 小時認證</span>
-              <span class="tag-school">🏛️ 亞洲大學 資訊電機學院</span>
+              <span class="tag-hour">⏱️ 6 小時認證</span>
+              <span class="tag-school">🏛️ 亞洲大學 資電學院</span>
               <span class="rating-badge">★ 5.0 (15 評)</span>
             </div>
             <h3 class="card-title">生成式AI在教育上的應用</h3>
             <p class="card-desc">亞洲大學教育大數據微學程設計，結合理論研究與教育數據分析，探索生成式 AI 在個別化學習診斷與適性教學輔助的前瞻應用。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#資料分析</span>
-              <span class="topic-tag">#教育大數據</span>
-              <span class="topic-tag">#適性學習</span>
-              <span class="topic-tag">#電子工程</span>
+              <span class="topic-tag tag-blue">#資料分析</span>
+              <span class="topic-tag tag-cyan">#教育大數據</span>
+              <span class="topic-tag tag-emerald">#適性學習</span>
+              <span class="topic-tag tag-slate">#電子工程</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
 
         <!-- Course 10 -->
-        <article class="course-card" data-category="featured benchmark">
+        <article class="course-card card-theme-thinking" data-category="featured benchmark">
           <div class="card-img-wrap" onclick="openLightbox('images/moocs/course10_ai_thinking.png', 'AI素養與思維 (AI思維與素養) - 淡江大學')">
-            <img src="images/moocs/course10_ai_thinking.png" onerror="this.src='course10_ai_thinking.png'" alt="AI素養與思維" />
+            <img src="images/moocs/course10_ai_thinking.png" onerror="this.src='10.AI素養與思維.png'" alt="AI素養與思維" />
             <div class="zoom-hint">🔍 點擊查看海報大圖</div>
-            <span class="type-pill highlight">🏆 114標竿課程</span>
+            <span class="type-pill highlight-gold">🏆 114標竿課程</span>
           </div>
           <div class="card-body">
             <div class="meta-tags">
-              <span class="tag-hour">6 小時認證</span>
-              <span class="tag-school">🏛️ 淡江大學 ‧ 張志勇特聘教授</span>
+              <span class="tag-hour">⏱️ 6 小時認證</span>
+              <span class="tag-school">🏛️ 淡大 ‧ 張志勇特聘教授</span>
               <span class="rating-badge">★ 4.0 (95 評)</span>
             </div>
             <h3 class="card-title">AI思維與素養</h3>
             <p class="card-desc">榮獲教育部「114標竿課程」！淡江大學張志勇特聘教授親授，全面涵蓋教育大數據、人工智慧原理、資料採礦、機器學習與自然語言處理，扎根核心技術思考。</p>
             <div class="topic-tags">
-              <span class="topic-tag">#114標竿課程</span>
-              <span class="topic-tag">#機器學習</span>
-              <span class="topic-tag">#資料採礦</span>
-              <span class="topic-tag">#自然語言</span>
+              <span class="topic-tag tag-amber">#114標竿課程</span>
+              <span class="topic-tag tag-purple">#機器學習</span>
+              <span class="topic-tag tag-cyan">#資料採礦</span>
+              <span class="topic-tag tag-blue">#自然語言</span>
             </div>
             <div class="card-actions">
-              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">立即前往修課 &rarr;</a>
+              <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-enroll">
+                <span>立即前往修課</span>
+                <span class="btn-arrow">&rarr;</span>
+              </a>
             </div>
           </div>
         </article>
@@ -978,13 +1280,19 @@
       </div>
     </section>
 
-    <!-- Form Section -->
+    <!-- Form Section - 慶典感完課回報專區 -->
     <section class="form-section">
+      <div class="form-badge">
+        <span>🎉 完課時數回報 ‧ 成果累計認證通道</span>
+      </div>
       <h2>研習時數認證與完課證明回報</h2>
-      <p>完成上述磨課師課程並於教育部平臺通過測驗下載完課證明後，請點選下方按鈕填寫回報表單並上傳完課證明（圖檔或 PDF），校內將統一彙整並認證研習時數（每門課認證 6 小時）。</p>
+      <p>
+        完成上述磨課師課程並於教育部平臺通過測驗下載完課證明後，請點選下方按鈕填寫回報表單並上傳完課證明（圖檔或 PDF），校內將統一彙整並認證研習時數（每門課認證 6 小時）。
+      </p>
       <div class="form-actions">
         <a href="https://docs.google.com/forms/d/1jfoFUcGIqmm1Ik19ul4J3gc95uOQXFNCG1J3A8em0Hg/viewform" target="_blank" rel="noopener" class="btn-report">
           <span>📋 填寫研習時數回報表單</span>
+          <span>&rarr;</span>
         </a>
         <a href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" class="btn-moocs-portal">
           <span>🌐 前往教育部磨課師平臺登入</span>
@@ -995,26 +1303,26 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ Section - 4 色繽紛卡片 -->
     <section class="faq-section">
       <div class="faq-title">
         <span>❓ 教師研習常見問題與修課指引</span>
       </div>
       <div class="faq-grid">
-        <div class="faq-card">
-          <h5>Q1. 如何登入教育部磨課師平臺？</h5>
-          <p>請使用「教育雲端帳號 (OpenID)」登入 <a href="https://moocs.moe.edu.tw" target="_blank" style="color:#2563eb; text-decoration:underline;">moocs.moe.edu.tw</a>，即可同步教師身分與學習歷程記錄。</p>
+        <div class="faq-card faq-blue">
+          <h5>🔑 Q1. 如何登入教育部磨課師平臺？</h5>
+          <p>請使用「教育雲端帳號 (OpenID)」登入 <a href="https://moocs.moe.edu.tw" target="_blank" style="color:#2563eb; font-weight:700; text-decoration:underline;">moocs.moe.edu.tw</a>，即可同步教師身分與學習歷程記錄。</p>
         </div>
-        <div class="faq-card">
-          <h5>Q2. 研習時數如何計算與採認？</h5>
+        <div class="faq-card faq-green">
+          <h5>⏱️ Q2. 研習時數如何計算與採認？</h5>
           <p>凡完成各課程影音閱覽進度達標並通過線上評量及格者，於平臺下載證明並填表回報，學校圖書館將依教育部規範每門課核發 6 小時數位增能研習時數。</p>
         </div>
-        <div class="faq-card">
-          <h5>Q3. 何時可以在全國教師在職進修網看到時數？</h5>
-          <p>填表上傳證明後，圖書館將於每週五彙整審核名單，統一批次登錄至全教網，登錄後約 2~3 個工作天即可於全教網個人歷程查得。</p>
+        <div class="faq-card faq-amber">
+          <h5>📅 Q3. 何時可以在全教網查得時數？</h5>
+          <p>填表上傳證明後，圖書館將於每週五彙整審核名單，統一批次登錄至全國教師在職進修網，登錄後約 2~3 個工作天即可於全教網個人歷程查得。</p>
         </div>
-        <div class="faq-card">
-          <h5>Q4. 初學者建議優先選修哪一門？</h5>
+        <div class="faq-card faq-purple">
+          <h5>💡 Q4. 初學者建議優先選修哪一門？</h5>
           <p>建議首選「和AI做朋友：從0開始學AI」奠定觀念，搭配教育部 114 標竿課程「生成式AI增能攻略」或「生成式AI工具與AI繪圖」進行實務演練！</p>
         </div>
       </div>
@@ -1022,20 +1330,20 @@
 
     <!-- Footer -->
     <footer>
-      <p>新北市立錦和高中圖書館 ‧ 數位教學與教師增能推展專區</p>
-      <p style="margin-top:4px;">諮詢專線：圖書館分機 600 / 610 ‧ 系統支援：moocs.moe.edu.tw</p>
+      <p><b>新北市立錦和高中圖書館</b> ‧ 數位教學與教師增能推展專區</p>
+      <p style="margin-top:6px; font-size:12.5px;">諮詢專線：圖書館分機 600 / 610 ‧ 系統支援：moocs.moe.edu.tw</p>
     </footer>
 
   </div>
 
-  <!-- Lightbox Modal -->
+  <!-- Lightbox Modal - 尊榮高質感黑金燈箱 -->
   <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox(event)">
     <div class="lightbox-content" onclick="event.stopPropagation()">
       <button class="lightbox-close" onclick="closeLightbox(event)">&times;</button>
       <img id="lightboxImage" class="lightbox-img" src="" alt="課程海報放大" />
       <div class="lightbox-info">
         <h4 id="lightboxTitle">課程海報</h4>
-        <a id="lightboxLink" href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" style="color:#60a5fa; font-size:13px; font-weight:700; text-decoration:none;">前往平臺修課 &rarr;</a>
+        <a id="lightboxLink" href="https://moocs.moe.edu.tw" target="_blank" rel="noopener" style="color:#60a5fa; font-size:13.5px; font-weight:800; text-decoration:none;">前往平臺修課 &rarr;</a>
       </div>
     </div>
   </div>
@@ -1080,7 +1388,7 @@
       });
 
       if (category === 'featured') {
-        heading.textContent = '精選磨課師 AI 課程清單（5門推薦）';
+        heading.textContent = '精選磨課師 AI 課程清單（6門精選推薦）';
       } else if (category === 'all') {
         heading.textContent = '全部磨課師 AI 課程清單（共 10 門）';
       } else if (category === 'benchmark') {

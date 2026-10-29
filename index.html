@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>新北市立錦和高中圖書館 115學年度10月份主管會報</title>
+  <title>新北市立錦和高中圖書館 115學年度11月份行政會與導師會議</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     @media print {
@@ -15,13 +15,21 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(15, 23, 42, 0.92);
       backdrop-filter: blur(8px);
       z-index: 1000;
       align-items: center;
       justify-content: center;
     }
     .lightbox.active { display: flex; }
+    
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+    }
   </style>
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen p-4 md:p-8">
@@ -39,18 +47,22 @@
           <span class="text-xs font-bold text-[var(--foreground)] tracking-wide">歷次會議專頁切換：</span>
         </div>
         <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
-          <!-- 左側：1151012-主管會報 (最新，當前頁面為 Active) -->
-          <a href="1151012meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 ring-1 ring-blue-400/50" title="當前會議：1151012-主管會報">
+          <!-- 最左側：11月行政會議 (最新，當前頁面 Active) -->
+          <a href="jinhe_library_11meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 ring-1 ring-blue-400/50" title="當前會議：115學年度 11月份行政會議">
             <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
-            <span>1151012-主管會報</span>
+            <span>11月行政會議</span>
             <span class="text-[10px] bg-blue-700 px-1.5 py-0.2 rounded font-semibold text-blue-100">最新</span>
+          </a>
+          <!-- 中間：1151012-主管會報 (點擊切換) -->
+          <a href="1151012meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 1151012-主管會報">
+            <span>1151012-主管會報</span>
           </a>
           <!-- 右側：9月行政會議 (點擊切換) -->
           <a href="jinhe_library_9meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 9月行政會議">
             <span>9月行政會議</span>
           </a>
           <!-- 預留後續會議連結位置 (依序往左或向右擴充) -->
-          <div class="px-3.5 py-1.5 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-center gap-1.5 opacity-75 whitespace-nowrap bg-[var(--background)]/50" title="後續主管會報即將加入">
+          <div class="px-3.5 py-1.5 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-center gap-1.5 opacity-75 whitespace-nowrap bg-[var(--background)]/50" title="後續主管會報/行政會議即將加入">
             <span class="text-slate-400 font-bold">＋</span>
             <span>預留後續會議位置</span>
           </div>
@@ -66,17 +78,17 @@
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 text-xs font-semibold mb-2">
             <span>🏛️ 新北市立錦和高級中學</span>
             <span>•</span>
-            <span>圖書館重點工作報告</span>
+            <span>圖書館處室業務報告</span>
             <span>•</span>
-            <span>1151012 主管會報</span>
+            <span>115-1 行政會 ✕ 導師會議</span>
           </div>
           <h1 class="text-2xl md:text-3xl font-bold tracking-tight text-[var(--foreground)]">
-            115學年度 10月份主管會報-圖書館
+            115學年度 11月份行政會與導師會議-圖書館
           </h1>
           <p class="text-sm text-[var(--muted-foreground)] mt-1.5 flex items-center gap-2">
-            <span>報告單位：圖書館處室（吳孟仁主任）</span>
+            <span>報告單位：圖書館處室（吳孟仁主任、讀服組、採編組、資訊組）</span>
             <span>•</span>
-            <span>會議日期：115年10月12日（星期一）</span>
+            <span>基準時間：115年11月時程管制版</span>
           </p>
         </div>
         <div class="flex items-center gap-2 self-start md:self-auto no-print">
@@ -92,195 +104,87 @@
       </div>
     </header>
 
-    <!-- Important Notice & Administrative Checklist (主管會報重點配合事項速覽) -->
+    <!-- Important Notice & Administrative Checklist (11月重點配合與提示事項速覽) -->
     <div class="bg-amber-500/10 border-l-4 border-amber-500 rounded-r-xl p-5 shadow-sm space-y-3">
       <div class="flex items-center gap-2">
-        <span class="p-1 rounded-md bg-amber-500 text-white text-xs font-bold shrink-0">主管會報</span>
-        <h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm md:text-base">📢 【主管會報重點配合與裁示事項速覽】</h3>
+        <span class="p-1 rounded-md bg-amber-500 text-white text-xs font-bold shrink-0">11月會報</span>
+        <h3 class="font-bold text-amber-900 dark:text-amber-200 text-sm md:text-base">📢 【行政與導師會議重點配合事項速覽】</h3>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs text-amber-900 dark:text-amber-200">
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20">
-          <strong>1. 🇯🇵 11/03 日本姊妹校簽約：</strong> 10:00-12:00 圖書館 4F 多元探索教室，大阪府立門真浪速高校來校簽署 MOU，請行政團隊、總務處迎賓與資訊組視訊支援。
+          <strong>1. 🇯🇵 11/03 日本姊妹校簽約：</strong> 13:00-17:00 日本大阪府立門真浪速綜合高校來校簽署 MOU，拓展國際合作與學生全球視野。
         </div>
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20">
-          <strong>2. 💻 11/16 B3 數位教學指引研習：</strong> 09:00-12:00 圖書館 iMac 教室，全校行政 <strong>29 位同仁參訓</strong>，請教務處協助課務公假排代。
+          <strong>2. 💻 11/16 行政 B3 研習排代：</strong> 09:00-12:00 圓通 3F 行動教室，全校行政 <strong>29 位同仁參訓</strong>（海山國小資訊組長主講），已上簽請公假排代。
         </div>
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20">
-          <strong>3. ✈️ 10/23 國際教育旅行說明會：</strong> 116年5月出訪日本關西（招募32名學生），說明會於 <strong>10/23(五) 12:20-13:00</strong> 圖書館 3F 舉行。
+          <strong>3. 📚 11/02-11/06 圖書館主題書展：</strong> 全面開放各班級線上預約入館參觀；四樓藏書區整理移櫃修繕進行至 11 月底，自習請利用 3 樓。
         </div>
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20">
-          <strong>4. 📝 全國閱讀心得寫作比賽：</strong> 高一預計 28 篇，已上傳 21 篇；系統比對 4 篇有文字重疊疑慮，已即時通報學生與指導老師限期修正。
+          <strong>4. 🖧 電腦講義磁碟機連線排除：</strong> 若無國高中教學講義，請至 <code>C:\啟動-捷徑\點兩下連線網路磁碟機.bat</code> 執行或重開機。
         </div>
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20 md:col-span-2">
-          <strong>5. 🎓 12/05 前導自主學習成果發表：</strong> 台南長榮大學，302 邱尚東同學進行智慧化課程 <strong>12 分鐘動態分享</strong>；<strong>參加老師待確認</strong>，提請長官與會報協調陪同教師。
+          <strong>5. 🏛️ AI示範中心 5 面形象牆 ✕ 北醫公衛空氣品質檢測：</strong> 1 樓川堂右側「錦和高中 致未來」校史重大里程碑展現；北醫公衛合作案將於下學期初由高中學生協助架設感測設備進行辦公室空品檢測與成果發表。
         </div>
       </div>
     </div>
 
     <!-- Quick Stats Cards (4 核心數據指標卡) -->
     <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl">
+      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
         <div class="text-xs text-[var(--muted-foreground)]">重大國際簽約</div>
         <div class="text-lg font-bold text-blue-600 dark:text-blue-400 mt-1">11/03 (二)</div>
-        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">日本門真浪速高校 MOU (10:00-12:00)</div>
+        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">日本門真浪速高校 MOU (13:00-17:00)</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl">
-        <div class="text-xs text-[var(--muted-foreground)]">教育旅行說明會</div>
-        <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-1">10/23 12:20</div>
-        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">赴日關西 32 名學生 (圖書館3F)</div>
+      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
+        <div class="text-xs text-[var(--muted-foreground)]">全校主題書展</div>
+        <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-1">11/02~06</div>
+        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">圖書館書展 開放班級線上預約</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl">
+      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
         <div class="text-xs text-[var(--muted-foreground)]">全校行政B3研習</div>
         <div class="text-lg font-bold text-purple-600 dark:text-purple-400 mt-1">11/16 (一)</div>
-        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">29 位主管同仁參訓 (教務處排代)</div>
+        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">29 位主管同仁參訓 (圓通3F行動教室)</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl">
-        <div class="text-xs text-[var(--muted-foreground)]">重大行事時程</div>
-        <div class="text-lg font-bold text-rose-600 dark:text-rose-400 mt-1">24 場次</div>
-        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">10~12月 (研習9、觀課5、展演10)</div>
+      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
+        <div class="text-xs text-[var(--muted-foreground)]">重大管制日程</div>
+        <div class="text-lg font-bold text-rose-600 dark:text-rose-400 mt-1">10 場次</div>
+        <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">11月研習、觀課、世貿展出</div>
       </div>
     </div>
 
     <!-- Interactive Navigation Tabs -->
     <div class="no-print flex flex-wrap gap-2 border-b border-[var(--border)] pb-2">
-      <button onclick="switchTab('tab-timeline')" id="btn-tab-timeline" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm transition">
-        📅 10～12月時程管制表 (24場)
-      </button>
-      <button onclick="switchTab('tab-japan')" id="btn-tab-japan" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
-        🇯🇵 日本姊妹校簽約專案企劃
-      </button>
-      <button onclick="switchTab('tab-sections')" id="btn-tab-sections" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition">
-        📌 讀服／採編業務報告 (含B3名冊)
+      <button onclick="switchTab('tab-timeline')" id="btn-tab-timeline" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm transition flex items-center gap-1.5">
+        📅 11月重大行事與時程管制 (10場)
       </button>
       <button onclick="switchTab('tab-gallery')" id="btn-tab-gallery" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
-        🖼️ 研習成果剪影與宣傳海報
+        🖼️ 成果剪影與校園形象牆 (7照)
+      </button>
+      <button onclick="switchTab('tab-sections')" id="btn-tab-sections" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
+        📌 讀服／採編／資訊組業務報告
+      </button>
+      <button onclick="switchTab('tab-ai-center')" id="btn-tab-ai-center" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
+        🏛️ AI 示範中心形象牆專案
       </button>
     </div>
 
-    <!-- ==================== TAB 1: 10～12月時程管制表 ==================== -->
+    <!-- ==================== TAB 1: 11月重大行事與時程管制 ==================== -->
     <div id="tab-timeline" class="tab-pane space-y-4">
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
         <div class="flex items-center justify-between border-b border-[var(--border)] pb-3 mb-4">
           <h2 class="text-lg font-bold flex items-center gap-2 text-[var(--foreground)]">
             <span class="w-2.5 h-2.5 rounded-full bg-blue-500 inline-block"></span>
-            10月～12月 重大活動與研習時程管制表（全期 24 場次）
+            11月份 圖書館重要活動與研習時程管制表（全期 10 場次）
           </h2>
           <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold">
-            ✓ 跨檔案校訂定案
+            ✓ 11月校訂定案
           </span>
         </div>
 
         <div class="relative border-l-2 border-blue-500/30 ml-4 space-y-6 py-2">
 
-          <!-- 10/14 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">10/14 (三) 13:30 - 16:30</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">科技研習</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 科技中心</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國小科議】Matrix 實作入門—循跡感測與夾爪機構控制</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">國小科技教育議題研習</div>
-          </div>
-
-          <!-- 10/19 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">10/19 (一) 15:00 - 16:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 text-[10px] font-bold">公開觀課</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 班級教室</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">AI 導入教學示範公開觀課</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：陳曄 老師（暫定）</div>
-          </div>
-
-          <!-- 10/22 A -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">10/22 (四) 13:00 - 16:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">數位增能</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 圖書館</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">智慧學習典範學校軟體分享會 -- B3 研習</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">典範學校智慧學習推動經驗分享</div>
-          </div>
-
-          <!-- 10/22 B -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">10/22 (四) 13:30 - 15:30</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">法規研習</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 會議室</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">AI 時代下教師備課與學生創作之智財權實務</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">數位前導計畫補助 • 生成式 AI 與著作權規範</div>
-          </div>
-
-          <!-- 10/23 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">10/23 (五) 12:20 - 13:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">國際教育</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 圖書館 3F 閱覽區</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">新北市立錦和高中國際教育旅行 行程說明會</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">116年5月赴日關西（京都大阪）• 招募高中部學生共 32 名</div>
-          </div>
-
-          <!-- 10/24 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">10/24 (六) 09:30 - 17:30</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">生科研習</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 科技中心</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國中生科】生活科技競賽培訓研習</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">全日生活科技實作與選手培訓</div>
-          </div>
-
-          <!-- 10/28 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">10/28 (三) 08:00 - 12:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">AI研習</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 圖書館 3F</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">AIBook 專題研習</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">講師：葉孟秀 老師</div>
-          </div>
-
-          <!-- 10/31 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">10/31 (六) 09:00 - 18:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-[10px] font-bold">場地借用</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 圖書館</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">慧治基金會借用場地</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">08:00 主任測試 • 總務處蔡進福、警衛賴榮煌支援</div>
-          </div>
-
-          <!-- 11/02 A -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">11/02 (一) 13:00 - 17:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">校外頒獎</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 安康高中</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">雙語生活化成果觀摩暨績優學校頒獎典禮</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">吳孟仁主任、黃柏瑞組長出席</div>
-          </div>
-
-          <!-- 11/02~06 -->
+          <!-- 11/02 ~ 11/06 -->
           <div class="relative pl-6">
             <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-rose-500 border-2 border-[var(--card)]"></span>
             <div class="flex items-center gap-2">
@@ -289,37 +193,50 @@
               <span class="text-xs text-[var(--muted-foreground)]">• 圖書館</span>
             </div>
             <div class="text-sm font-bold text-[var(--foreground)] mt-1">圖書館全校主題書展</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">全校師生閱讀推展活動</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">開放全校各班級線上網路預約報名，歡迎師生入館參觀借閱。</div>
           </div>
 
-          <!-- ★ 11/03 焦點專案 -->
+          <!-- ★ 11/03 焦點專案：日本簽約 -->
           <div class="relative pl-6 p-4 rounded-xl bg-blue-500/10 border border-blue-500/30">
             <span class="absolute -left-[9px] top-4 w-4 h-4 rounded-full bg-blue-600 border-2 border-[var(--card)]"></span>
             <div class="flex items-center justify-between">
               <div class="flex items-center gap-2">
-                <span class="text-xs font-bold text-blue-600 dark:text-blue-400">11/03 (二) 10:00 - 12:00</span>
+                <span class="text-xs font-bold text-blue-600 dark:text-blue-400">11/03 (二) 13:00 - 17:00</span>
                 <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-[10px] font-bold">重大專案</span>
               </div>
-              <button onclick="switchTab('tab-japan')" class="text-xs text-blue-600 dark:text-blue-400 font-bold hover:underline no-print">查看完整企劃 ↗</button>
+              <span class="text-xs text-blue-600 dark:text-blue-400 font-semibold">締結姊妹校</span>
             </div>
             <div class="text-base font-black text-[var(--foreground)] mt-1.5 flex items-center gap-1.5">
-              <span>🇯🇵</span>
-              <span>日本大阪府立門真浪速高校 締結姊妹校簽約儀式 (MOU)</span>
+              <span>🇯🇵 🤝 🇹🇼</span>
+              <span>日本大阪府立門真浪速綜合高校 來校簽署姊妹校 MOU 協定</span>
             </div>
             <div class="text-xs text-[var(--muted-foreground)] mt-1">
-              地點：圖書館 4F 多元探索教室（備:圓通樓4F大會議室）• 瓜生彩子校長訪校 • FRC 專案發表
+              建立兩校深度教育交流夥伴關係，拓展師生國際化視野與跨國專案學習。
             </div>
           </div>
 
-          <!-- 11/04 -->
+          <!-- 11/04 A (觀課) -->
           <div class="relative pl-6">
             <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-2 border-[var(--card)]"></span>
             <div class="flex items-center gap-2">
               <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">11/04 (三) 08:00 - 09:00</span>
               <span class="px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 text-[10px] font-bold">公開觀課</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 班級教室</span>
             </div>
             <div class="text-sm font-bold text-[var(--foreground)] mt-1">AI 導入教學示範公開觀課</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：吳昕妍 老師（暫定）</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：<strong>吳昕妍 老師</strong>（智慧數位工具融入跨學科課堂實踐）</div>
+          </div>
+
+          <!-- 11/04 B (國小科議) -->
+          <div class="relative pl-6">
+            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">11/04 (三) 13:30 - 16:30</span>
+              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">國小科議</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 科技中心</span>
+            </div>
+            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國小科議】Lego 機器人之初階入門研習</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">國小科技教育議題研習 • 樂高機器人程式邏輯與機構組裝實作</div>
           </div>
 
           <!-- 11/10 -->
@@ -328,337 +245,178 @@
             <div class="flex items-center gap-2">
               <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">11/10 (二) 13:30 - 16:30</span>
               <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">生科研習</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 科技中心教室</span>
             </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國中生科】Matrix 控制實務—10 路循跡與智慧夾爪實作</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">科技中心教室</div>
+            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國中生科】Matrix 機器人控制實務研習</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">循跡感測、電機驅動與智慧控制技術整合實務</div>
           </div>
 
-          <!-- 11/13~14 -->
+          <!-- 11/13 -->
           <div class="relative pl-6">
             <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--card)]"></span>
             <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">11/13 (五) ～ 11/14 (六)</span>
+              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">11/13 (五) 08:00 - 12:00</span>
               <span class="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">世貿展覽</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 台北世貿中心</span>
             </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">典範學校科技教育展 設攤參展</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">台北世貿中心 • 代表本校設攤展出科技教育成果</div>
+            <div class="text-sm font-bold text-[var(--foreground)] mt-1">典範學校科技教育展（首日開幕展覽）</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">展示本校智慧學習典範學校軟體應用與科技前導推動成果</div>
           </div>
 
-          <!-- ★ 11/16 重點行政研習 -->
+          <!-- 11/14 A (世貿擺攤) -->
+          <div class="relative pl-6">
+            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--card)]"></span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">11/14 (六) 09:00 - 14:00</span>
+              <span class="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">世貿展覽</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 台北世貿中心</span>
+            </div>
+            <div class="text-sm font-bold text-[var(--foreground)] mt-1">典範學校科技教育展 設攤展出</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">現場互動展示智慧校園方案、AI科技教材及跨域創作體驗</div>
+          </div>
+
+          <!-- 11/14 B (生科競賽研習) -->
+          <div class="relative pl-6">
+            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">11/14 (六) 09:00 - 17:00</span>
+              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">競賽培訓</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 科技中心</span>
+            </div>
+            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國中生科】生活科技競賽全日培訓研習</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">強化選手競賽結構設計、機構連動與精準工藝訓練</div>
+          </div>
+
+          <!-- ★ 11/16 重點行政研習：B3 數位教學指引培力 -->
           <div class="relative pl-6 p-4 rounded-xl bg-purple-500/10 border border-purple-500/30">
             <span class="absolute -left-[9px] top-4 w-4 h-4 rounded-full bg-purple-600 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-bold text-purple-600 dark:text-purple-400">11/16 (一) 09:00 - 12:00</span>
-              <span class="px-2 py-0.5 rounded bg-purple-600 text-white text-[10px] font-bold">全校行政 29 人</span>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold text-purple-600 dark:text-purple-400">11/16 (一) 09:00 - 12:00</span>
+                <span class="px-2 py-0.5 rounded bg-purple-600 text-white text-[10px] font-bold">全校行政 29 人</span>
+              </div>
+              <span class="text-xs font-bold text-rose-600 dark:text-rose-400">⚠️ 請公假排代</span>
             </div>
             <div class="text-base font-black text-[var(--foreground)] mt-1.5">
               「B3 數位教學指引培力工作坊」全校行政研習
             </div>
-            <div class="text-xs text-rose-600 dark:text-rose-400 font-bold mt-1">
-              ⚠️ 請教務處協助：全校行政同仁 29 位參訓課務公假排代（圖書館 iMac 教室，崇林國中組長主講）
+            <div class="text-xs text-[var(--muted-foreground)] mt-1 space-y-0.5">
+              <div>• <strong>研習地點：</strong>圓通 3F 行動教室（已上簽）</div>
+              <div>• <strong>主講講師：</strong>海山國小資訊組長（正式發文借調）</div>
+              <div>• <strong>參訓同仁：</strong>校長、秘書室(2人)、教務處(7人)、學務處(6人)、總務處(1人)、輔導處(5人)、圖書館(5人)、進修部(1人)、協行教師(2人) 共 29 位主管與行政幹部。</div>
             </div>
           </div>
 
-          <!-- 11/25 A -->
+          <!-- 11/25 -->
           <div class="relative pl-6">
             <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-2 border-[var(--card)]"></span>
             <div class="flex items-center gap-2">
               <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">11/25 (三) 08:00 - 12:00</span>
               <span class="px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 text-[10px] font-bold">公開觀課</span>
+              <span class="text-xs text-[var(--muted-foreground)]">• 專科教室</span>
             </div>
             <div class="text-sm font-bold text-[var(--foreground)] mt-1">AIBook 公開觀課</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：葉正宏 老師</div>
-          </div>
-
-          <!-- 11/25 B -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-emerald-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-emerald-600 dark:text-emerald-400">11/25 (三) 09:40 - 17:30</span>
-              <span class="px-1.5 py-0.2 rounded bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-[10px] font-bold">國際研討</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">2026 NPDL 國際研討會</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">台南市飯店 • 代表 2 名出席</div>
-          </div>
-
-          <!-- 12/04 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">12/04 (五) 08:00 - 16:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 text-[10px] font-bold">公開觀課</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">自主學習節公開觀課（暫定）</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">學生自主學習成果展演與公開觀摩</div>
-          </div>
-
-          <!-- ★ 12/05 前導自主發表 -->
-          <div class="relative pl-6 p-4 rounded-xl bg-amber-500/10 border border-amber-500/30">
-            <span class="absolute -left-[9px] top-4 w-4 h-4 rounded-full bg-amber-600 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-bold text-amber-600 dark:text-amber-400">12/05 (六) 全日活動</span>
-              <span class="px-2 py-0.5 rounded bg-amber-600 text-white text-[10px] font-bold">自主學習發表</span>
-              <span class="text-xs text-[var(--muted-foreground)]">• 台南長榮大學</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1.5">
-              台南長榮大學高優前導自主學習成果發表
-            </div>
-            <div class="mt-1 text-xs text-[var(--muted-foreground)] space-y-0.5">
-              <div>• <strong>學生 1 位：</strong>302 班 邱尚東同學</div>
-              <div>• <strong>發表任務：</strong>智慧化課程分享，提出一門智慧化課程，進行 <strong>12 分鐘動態分享</strong>。</div>
-              <div>• <strong>隨行師長：</strong><span class="text-amber-700 dark:text-amber-400 font-bold">參加老師待確認</span>（提請會報現場協調陪同師長）</div>
-            </div>
-          </div>
-
-          <!-- 12/11 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-purple-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-purple-600 dark:text-purple-400">12/11 (五) 10:00 - 11:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 text-[10px] font-bold">公開觀課</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">AI 導入教學示範公開觀課</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：章世宣 老師（暫定）</div>
-          </div>
-
-          <!-- 12/13 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">12/13 (日) 全日活動</span>
-              <span class="px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-[10px] font-bold">場地借用</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">扶輪社活動借用場地</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">地點：圖書館、演藝廳</div>
-          </div>
-
-          <!-- 12/19 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-amber-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-amber-600 dark:text-amber-400">12/19 (六) 全日活動</span>
-              <span class="px-1.5 py-0.2 rounded bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 text-[10px] font-bold">校園活動</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">獅子會捐車活動</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">地點：學校中庭廣場</div>
-          </div>
-
-          <!-- 12/23 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">12/23 (三) 13:30 - 16:30</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">科技研習</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">【國小科議】NFC 感應式唱片機</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">科技中心教室</div>
-          </div>
-
-          <!-- 12/26 -->
-          <div class="relative pl-6">
-            <span class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-blue-500 border-2 border-[var(--card)]"></span>
-            <div class="flex items-center gap-2">
-              <span class="text-xs font-semibold text-blue-600 dark:text-blue-400">12/26 (六) 08:00 - 12:00</span>
-              <span class="px-1.5 py-0.2 rounded bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-[10px] font-bold">共備研習</span>
-            </div>
-            <div class="text-sm font-bold text-[var(--foreground)] mt-1">AIBook 共備研習</div>
-            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">指導教師：張耀元 老師（暫定）</div>
+            <div class="text-xs text-[var(--muted-foreground)] mt-0.5">授課教師：<strong>葉正宏 老師</strong>（AIBook 智慧教學環境與數位閱讀互動觀課）</div>
           </div>
 
         </div>
       </div>
     </div>
 
-    <!-- ==================== TAB 2: 日本姊妹校簽約專案企劃 ==================== -->
-    <div id="tab-japan" class="tab-pane hidden space-y-4">
-      
-      <!-- 專案概況 -->
-      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-4 gap-2">
+    <!-- ==================== TAB 2: 研習成果剪影與校園形象牆 ==================== -->
+    <div id="tab-gallery" class="tab-pane hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
           <div>
-            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-rose-50 dark:bg-rose-950/40 text-rose-600 dark:text-rose-400 text-xs font-bold mb-1">
-              <span>🇯🇵 🤝 🇹🇼</span>
-              <span>重大國際交流</span>
-            </div>
-            <h2 class="text-xl font-bold text-[var(--foreground)]">
-              新北市立錦和高級中學 ✕ 日本大阪府立門真浪速高校 姊妹校簽約儀式
+            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <span>🖼️ 圖書館近期重大研習成果照片 ✕ 校園形象牆建置進度</span>
             </h2>
-            <p class="text-xs text-[var(--muted-foreground)] font-mono mt-0.5">
-              Sister School Agreement Signing Ceremony Between New Taipei Municipal Jinhe High School & Osaka Prefectural Kadoma Namihaya High School
-            </p>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">完整收錄 7 張高解析度照片，點擊任一圖片即可啟動全螢幕燈箱檢視細節</p>
           </div>
-          <div class="text-right sm:text-right">
-            <span class="text-xs font-bold text-blue-600 dark:text-blue-400 block">2026年11月3日（二）</span>
-            <span class="text-xs text-[var(--muted-foreground)] block">10:00 - 12:00（圖書館4F多元探索教室）</span>
-          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
+            共 7 幅精選成果
+          </span>
         </div>
 
-        <!-- 雙方出席名冊 -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
-            <div class="font-bold text-blue-600 dark:text-blue-400 mb-1">🇹🇼 錦和高中代表團</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              • 校長：張純寧 校長<br>
-              • 秘書：陳萩紋 秘書<br>
-              • 主任：林文偉、李俊宏、袁熒助、朱祐緯、吳孟仁<br>
-              • 教師：黃柏瑞（司儀）、林欽鴻、王至恩<br>
-              • 學生：FRC 機器人團隊代表
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- 照片 1: B3 數位指引教學研習 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image1.png', 'B3數位指引教學研習：全體同仁於科技教室手持「AI實作」、「適性學習」、「科技教育就是讚」手牌合影')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image1.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="B3數位指引教學研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">行政增能</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">B3 數位教學指引培力研習</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">iMac 教室 • 全校教師手持 AI 實作與科技教育標語溫馨大合影</div>
+          </div>
+
+          <!-- 照片 2: 國中晨讀閱讀推廣 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image2.png', '國中晨讀閱讀推廣：班級晨讀時間學生專注沉浸於好讀圖書與國中閱讀護照閱讀')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image2.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="國中晨讀閱讀推廣">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-emerald-600/90 text-white text-[10px] font-bold rounded">閱推推動</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">國中晨讀閱讀推廣活動</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">班級教室 • 晨讀時光沉浸閱讀，落實全學年閱讀護照深化素養</div>
+          </div>
+
+          <!-- 照片 3: 高中數學AI研習 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image3.png', '高中數學AI研習：高中數學科教師齊聚大會議室實施 TEAM NT AI 數理增能研討')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image3.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="高中數學AI研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-purple-600/90 text-white text-[10px] font-bold rounded">學科AI融入</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">高中數學 AI 增能研習</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">圖書館會議室 • 筆電實機研討 TEAM NT 數理 AI 輔助命題與學習</div>
+          </div>
+
+          <!-- 照片 4: AI-book研習- AR2VR實踐優質教育 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image4.png', 'AI-book研習 - AR2VR 實踐優質教育：2026 跨域盃決賽評分標準與 VR/AR 互動式數位教案分享')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image4.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="AI-book研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-indigo-600/90 text-white text-[10px] font-bold rounded">跨域科技</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">AI-book 研習 — AR2VR 實踐優質教育</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">大螢幕解析 2026 跨域盃評分規準，推廣 VR/AR 沉浸式情境教學</div>
+          </div>
+
+          <!-- 照片 5: 聯合報閱讀講座 (跨欄) -->
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover sm:col-span-2" onclick="openLightbox('images/11meeting/image5.png', '聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」：演藝廳全校七八年級共 24 個班級全場座無虛席大合影')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image5.png" class="w-full h-56 md:h-64 object-cover group-hover:scale-102 transition duration-300" alt="聯合報閱讀講座大合影">
+              <span class="absolute bottom-2 left-2 px-2.5 py-0.5 bg-rose-600/90 text-white text-[10px] font-bold rounded">七八年級 24 班級盛大參與</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+              <div class="font-bold text-sm text-[var(--foreground)]">聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」盛大講座</div>
+              <span class="text-xs text-blue-600 dark:text-blue-400 font-bold">10/02 圓滿成功 • 迴響熱烈</span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              演藝廳全場爆滿！七八年級共 24 個班級師生共同參與，手持「錦堡閱讀護照」、「數位學習力UP」、「以科技向未來學習」等標語合影，成效顯著。
             </p>
           </div>
 
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
-            <div class="font-bold text-rose-600 dark:text-rose-400 mb-1">🇯🇵 門真浪速高校代表團</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              • 校長：<strong>瓜生彩子 校長</strong>（Ayako Uriu，現場出席）<br>
-              • 教師代表：<strong>王老師</strong>（現場出席）<br>
-              • 教師代表：<strong>野部老師</strong>（現場出席）
-            </p>
+          <!-- 照片 6: 5 面形象牆模擬圖 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：校園 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界大型燈箱牆面）')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image6.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="校園5面形象牆模擬圖">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">AI示範中心建置</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">校園 5 面形象牆 3D 效果模擬圖</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">走廊大型燈箱視覺設計 • 科技教育、體育、國際教育與校園核心精神</div>
           </div>
 
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)]">
-            <div class="font-bold text-purple-600 dark:text-purple-400 mb-1">🎓 臺師大 特邀貴賓</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              • 國立臺灣師範大學<br>
-              科技應用與人力資源發展學系：<br>
-              <strong>丁玉良 教授</strong>（現場出席指導）
-            </p>
+          <!-- 照片 7: 1 樓川堂右側現場照片與設計樣式 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image7.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="川堂形象牆設計說明">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-amber-600/90 text-white text-[10px] font-bold rounded">川堂右側現勘與樣式</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">1 樓川堂「錦和高中 致未來」形象牆規劃</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">川堂右側現場現勘照片 ✕ 79年～115年校史七大卓越里程碑牆面設計</div>
           </div>
-        </div>
-      </section>
 
-      <!-- 12 步詳細時程表 -->
-      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
-        <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
-          <span>⏱️ 當日活動 12 步驟詳細流程表（10:00 - 12:00）</span>
-        </h3>
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs border-collapse">
-            <thead>
-              <tr class="bg-[var(--secondary)] text-[var(--foreground)] font-bold border-b border-[var(--border)]">
-                <th class="py-2.5 px-3 w-12 text-center">序號</th>
-                <th class="py-2.5 px-3 w-28">時間</th>
-                <th class="py-2.5 px-4">流程核心內容</th>
-                <th class="py-2.5 px-4 w-40">負責人員／單位</th>
-                <th class="py-2.5 px-4 w-60">作業說明與備註</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]">
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-[var(--muted-foreground)]">-</td>
-                <td class="py-2 px-3 text-[var(--muted-foreground)]">09:40-10:00</td>
-                <td class="py-2 px-4">場地與設備測試</td>
-                <td class="py-2 px-4">資訊組 / 設備老師</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">簡報投影、音響麥克風測試</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">01</td>
-                <td class="py-2 px-3 font-semibold">10:00-10:05</td>
-                <td class="py-2 px-4">貴賓蒞臨與引導就座</td>
-                <td class="py-2 px-4">錦和行政團隊</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">校門口迎賓並引導至圖書館 4F</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">02</td>
-                <td class="py-2 px-3 font-semibold">10:05-10:10</td>
-                <td class="py-2 px-4">司儀開場與介紹貴賓</td>
-                <td class="py-2 px-4">司儀（黃柏瑞組長）</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">介紹錦和代表、日方代表與丁教授</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">03</td>
-                <td class="py-2 px-3 font-semibold">10:10-10:20</td>
-                <td class="py-2 px-4">雙方校長致詞</td>
-                <td class="py-2 px-4">張純寧校長、瓜生彩子校長</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">每位約 5 分鐘，含口譯/簡報字幕</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">04</td>
-                <td class="py-2 px-3 font-semibold">10:20-10:25</td>
-                <td class="py-2 px-4">臺師大貴賓致詞</td>
-                <td class="py-2 px-4">丁玉良 教授</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">致詞勉勵（約 5 分鐘）</td>
-              </tr>
-              <tr class="bg-blue-500/10 font-bold">
-                <td class="py-2.5 px-3 text-center text-blue-600">★ 05</td>
-                <td class="py-2.5 px-3 text-blue-600">10:25-10:35</td>
-                <td class="py-2.5 px-4 text-blue-600">正式簽署姊妹校協議 (MOU)</td>
-                <td class="py-2.5 px-4 text-blue-600">雙方校長</td>
-                <td class="py-2.5 px-4 text-blue-600">英文本一式兩份、精美簽約筆就位</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">06</td>
-                <td class="py-2 px-3 font-semibold">10:35-10:40</td>
-                <td class="py-2 px-4">展示已簽署協議合影</td>
-                <td class="py-2 px-4">雙方校長</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">面向媒體攝影手持合約正面合影</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">07</td>
-                <td class="py-2 px-3 font-semibold">10:40-10:45</td>
-                <td class="py-2 px-4">雙方交換紀念品</td>
-                <td class="py-2 px-4">雙方校長與代表</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">工作人員托盤協助遞送禮品</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">08</td>
-                <td class="py-2 px-3 font-semibold">10:45-10:55</td>
-                <td class="py-2 px-4">全體貴賓大合影</td>
-                <td class="py-2 px-4">全體出席人員</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">依官方建議合影順序迅速排列</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">09</td>
-                <td class="py-2 px-3 font-semibold">10:55-11:20</td>
-                <td class="py-2 px-4">特色專案展示：FRC 機器人發表</td>
-                <td class="py-2 px-4">FRC 學生、林欽鴻/王至恩</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">科技中心見學、機器人動態演示 (25分)</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">10</td>
-                <td class="py-2 px-3 font-semibold">11:20-11:35</td>
-                <td class="py-2 px-4">座談與後續合作研討</td>
-                <td class="py-2 px-4">校長、教師群、丁教授</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">台日跨國教育合作可行性研討 (15分)</td>
-              </tr>
-              <tr>
-                <td class="py-2 px-3 text-center font-bold text-blue-600">11</td>
-                <td class="py-2 px-3 font-semibold">11:35-11:50</td>
-                <td class="py-2 px-4">校園特色導覽與禮成歡送</td>
-                <td class="py-2 px-4">工作團隊、錦客行旅學生</td>
-                <td class="py-2 px-4 text-[var(--muted-foreground)]">簡短特色空間導覽後歡送離校 (15分)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-
-      <!-- 合影順序 ✕ 任務分工 -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-2">
-          <h4 class="font-bold text-sm text-[var(--foreground)] mb-2">📸 官方合影建議順序</h4>
-          <p class="text-[var(--muted-foreground)] leading-relaxed">
-            1. <strong>簽約代表：</strong>錦和校長與門真浪速校長手持協議書合影。<br>
-            2. <strong>重要貴賓：</strong>雙方校長與臺師大丁玉良教授合影。<br>
-            3. <strong>師長代表：</strong>錦和行政團隊與門真浪速教師群合影。<br>
-            4. <strong>專案學生：</strong>雙方代表與 FRC 機器人學生團隊合影。<br>
-            5. <strong>大團體合照：</strong>全體出席貴賓、師長及學生大合影。
-          </p>
-        </div>
-
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm space-y-2">
-          <h4 class="font-bold text-sm text-[var(--foreground)] mb-2">💼 工作人員職責分工</h4>
-          <p class="text-[var(--muted-foreground)] leading-relaxed">
-            • <strong>總聯絡：</strong>圖書館主任、柏瑞、至恩<br>
-            • <strong>司儀口譯：</strong>黃柏瑞組長 / 日方協同口譯<br>
-            • <strong>迎賓引導：</strong>錦和行政團隊<br>
-            • <strong>簽約文件：</strong>圖書館團隊（英文本兩份用印備妥）<br>
-            • <strong>視訊音響：</strong>資訊組（09:40 測試完成）<br>
-            • <strong>攝影錄影：</strong>圖書館助理<br>
-            • <strong>禮品備品：</strong>秘書室、總務處、圖書館團隊
-          </p>
         </div>
       </div>
-
     </div>
 
     <!-- ==================== TAB 3: 處室業務報告總覽 ==================== -->
@@ -670,50 +428,55 @@
           <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold">📖</div>
           <div>
             <h2 class="text-base font-bold text-[var(--foreground)]">讀者服務組 重點業務工作報告</h2>
-            <p class="text-xs text-[var(--muted-foreground)]">國際教育旅行、場地租借、錦客行旅、閱讀寫作競賽與校外成果發表</p>
+            <p class="text-xs text-[var(--muted-foreground)]">閱讀心得比賽、自主學習、e-Peer平台、日本姊妹校簽約、國際教育旅行與錦客行旅</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
           
           <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-blue-600 dark:text-blue-400">✈️ 國際教育旅行（日本關西）</div>
-            <p class="text-[var(--muted-foreground)]">
-              出訪日期：116年05月24日(一)～05月29日(六)（6天5夜）｜ 招募高中部 32 名<br>
-              <strong>說明會：10月23日(五) 12:20-13:00</strong> 於圖書館三樓閱覽區舉行。
+            <div class="font-bold text-sm text-blue-600 dark:text-blue-400">📝 全國高中閱讀心得暨小論文寫作比賽</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • 比賽辦法已於幹部訓練時發放，學生於校內初審 10/01 17:00 截止前繳交。<br>
+              • <strong>抄襲比對與輔導：</strong>校內於 10/02 至 10/05 進行抄襲比對，於 10/06 通知有重疊疑慮同學退回修正以降低違規風險。未於規定時間內經過校內審查違規者須自行負責。
             </p>
           </div>
 
           <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-amber-600 dark:text-amber-400">🏛️ 慧治基金會借用場地</div>
-            <p class="text-[var(--muted-foreground)]">
-              時間：115年10月31日 09:00~18:00（08:00 主任測試）<br>
-              總務處蔡進福先生、警衛賴榮煌先生支援，領據當日帶回，活動後約兩週撥款。
+            <div class="font-bold text-sm text-indigo-600 dark:text-indigo-400">🎓 自主學習業務推動</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • 相關資料與庶務工作已建置完成。<br>
+              • <strong>小組會議：</strong>第一次小組會議於 09/04 順利辦理完畢，感謝高中部老師共同協助業務推展。
             </p>
           </div>
 
           <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">🎒 115 錦客行旅招募</div>
-            <p class="text-[var(--muted-foreground)]">
-              於第一次段考後啟動交流：<br>
-              1. 美國西湖高中活動交流 (8人) ｜ 2. 日本門真浪速高校機械手臂/FRC。
+            <div class="font-bold text-sm text-purple-600 dark:text-purple-400">💻 e-Peer 自主學習數位平台 ✕ 金質歷程獎</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • 感謝教師申請使用自主學習數位平台，09/18 與慧治基金會順利辦理實體教學研習。<br>
+              • <strong>全國巡迴展：</strong>申請獲准慧治基金會全國自主學習<strong>【第六屆金質歷程獎－校園巡迴展】</strong>，於 10/19～10/30 在圖書館隆重展出。
             </p>
           </div>
 
           <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-rose-600 dark:text-rose-400">📝 全國閱讀心得寫作比賽</div>
-            <p class="text-[var(--muted-foreground)]">
-              高一預計 28 篇，已上傳 21 篇。<br>
-              系統抄襲比對發現 <strong>4 篇有文字重疊疑慮</strong>，已即時通報學生指導老師修正。
+            <div class="font-bold text-sm text-rose-600 dark:text-rose-400">🇯🇵 國際姊妹校簽訂儀式</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • <strong>115年11月03日 (二)：</strong>與日本大阪府立門真浪速高校簽訂姊妹校協定 (MOU)，深化兩校科技、文化交流與拓展學生國際視野。
             </p>
           </div>
 
-          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1 md:col-span-2">
-            <div class="font-bold text-sm text-purple-600 dark:text-purple-400">🎓 NPDL 與前導自主學習成果發表</div>
-            <div class="space-y-1 text-[var(--muted-foreground)] mt-1">
-              <div>• <strong>11/25 NPDL 研討會：</strong>台南市飯店，出席人員 2 名。</div>
-              <div>• <strong>12/05 長榮大學前導自主成果發表：</strong>302 邱尚東同學（1位）發表智慧化課程，進行 <strong>12 分鐘動態分享</strong>。<strong>參加老師待確認</strong>，提請主管會報確認陪同師長名冊。</div>
-            </div>
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">✈️ 116年 日本國際教育旅行</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • 116年日本關西教育旅行已緊鑼密鼓著手規劃中，即將啟動招募與報名說明會。
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-amber-600 dark:text-amber-400">🎒 錦客行旅 接待大使招募</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • 於 10 月第四週正式展開招募，培訓學生涉外英語口語表達能力、國際禮儀與接待技巧。
+            </p>
           </div>
 
         </div>
@@ -725,138 +488,166 @@
           <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold">📚</div>
           <div>
             <h2 class="text-base font-bold text-[var(--foreground)]">採訪編目組 重點業務工作報告</h2>
-            <p class="text-xs text-[var(--muted-foreground)]">四樓藏書區整理移櫃排程 ✕ 11/16 行政 B3 培力工作坊 29 人參訓名冊</p>
+            <p class="text-xs text-[var(--muted-foreground)]">聯合報講座回顧、國七SR閱讀施測、四樓整理移櫃、全校書展與行政B3培力研習</p>
           </div>
         </div>
 
-        <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs text-[var(--muted-foreground)]">
-          <strong>📦 四樓藏書區整理進度：</strong> 報廢書籍已裝箱完畢，待標籤完成後由 FRC 學生志工協助移櫃，預計於 <strong>11 月底前完成</strong>。
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-blue-600 dark:text-blue-400">📰 10/02 聯合報閱讀講座成效</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              講題「讀報筆記力，讓你閱讀更有效率」，共有七八年級共 24 個班級、數百名師生參與，現場提問踴躍，反應極佳。
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">📊 10/19-10/23 國七 SR 閱讀施測</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              感謝思樺老師全力協助，本學期共有 12 個班級順利完成國七 SR (Star Reading) 閱讀能力檢測計畫。
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-amber-600 dark:text-amber-400">📦 圖書館四樓藏書區封館整理</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              四樓目前正進行空間整理與書籍裝箱移櫃，<strong>預計修繕至 11 月底前</strong>，期間暫停入館借閱，請至三樓使用自習空間。
+            </p>
+          </div>
+
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-rose-600 dark:text-rose-400">📚 11/02-11/06 圖書館主題書展</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              全校性主題書展全面啟動，開放班級線上預約報名，歡迎師生把握時間預約入館參觀。
+            </p>
+          </div>
+
+          <!-- B3 培力研習 29 人專區 -->
+          <div class="p-4 bg-[var(--background)] rounded-xl border border-purple-500/30 space-y-2 md:col-span-2">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-sm text-purple-600 dark:text-purple-400">
+                💻 11/16「B3 數位教學指引培力工作坊」行政研習（已上簽）
+              </div>
+              <span class="px-2 py-0.5 rounded bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300 font-bold">全校行政主管共 29 人</span>
+            </div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • <strong>時間與地點：</strong>115年11月16日（一）09:00 - 12:00 於 <strong>圓通 3F 行動教室</strong> 舉行。<br>
+              • <strong>專業講師：</strong>邀請海山國小資訊組長蒞校主講（公文已正式發文給海山國小借調）。<br>
+              • <strong>參訓名單（29人）：</strong>校長、秘書室 2人、教務處 7人、學務處 6人、總務處 1人、輔導處 5人、圖書館 5人、進修部 1人、協行教師 2人。<br>
+              • <strong>提請配合：</strong>請教務處與各處室協助參訓同仁公假排代作業。
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 資訊組 -->
+      <section class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex items-center gap-3 border-b border-[var(--border)] pb-3">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">🖥️</div>
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)]">資訊組 重點業務工作報告</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">教學講義網路磁碟機連線、北醫公衛空氣品質檢測、AI示範中心建置與校園形象牆</p>
+          </div>
         </div>
 
-        <!-- B3 研習 29 人名冊 -->
-        <div class="space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-            <h3 class="text-sm font-bold text-[var(--foreground)]">
-              💻「B3 數位教學指引培力工作坊」全校行政研習（29 人參訓名冊）
-            </h3>
-            <span class="text-xs text-rose-600 dark:text-rose-400 font-bold">⚠️ 需教務處排代</span>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+          
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">🖧 教學講義磁碟機連線障礙排除</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              若電腦出現沒有國高中教學講義之情況，請執行：<br>
+              <code>檔案總管 → C槽 → 啟動-捷徑 → 點兩下連線網路磁碟機.bat</code> 即可自動掛載；或直接重新開機。
+            </p>
           </div>
 
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-xs border-collapse">
-              <thead>
-                <tr class="bg-[var(--secondary)] text-[var(--foreground)] font-bold border-b border-[var(--border)]">
-                  <th class="py-2 px-3 w-32">處室單位</th>
-                  <th class="py-2 px-3 w-20 text-center">人數</th>
-                  <th class="py-2 px-3">參訓主管與行政同仁名單</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-[var(--border)] text-[var(--foreground)]">
-                <tr>
-                  <td class="py-2 px-3 font-semibold">校長、秘書室</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">2 人</td>
-                  <td class="py-2 px-3">張純寧 校長、陳萩紋 秘書</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">教務處</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">7 人</td>
-                  <td class="py-2 px-3">林文偉、高子雅、孟慶華、黃菁慈、韓岱昀、黃晨欣、陳婉如</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">學務處</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">6 人</td>
-                  <td class="py-2 px-3">李俊宏、張庭瑜、林俊良、陳鴻杰、張世昇、熊一心</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">總務處</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">1 人</td>
-                  <td class="py-2 px-3">袁熒助 主任</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">輔導處</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">5 人</td>
-                  <td class="py-2 px-3">朱祐緯、張伯丞、盧文欽、吳子涵、許自蕙</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">圖書館</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">5 人</td>
-                  <td class="py-2 px-3">吳孟仁、張力中、黃柏瑞、曾佳怡、林欽鴻</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">進修部</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">1 人</td>
-                  <td class="py-2 px-3">黃明媛</td>
-                </tr>
-                <tr>
-                  <td class="py-2 px-3 font-semibold">協助行政教師</td>
-                  <td class="py-2 px-3 text-center font-bold text-blue-600">2 人</td>
-                  <td class="py-2 px-3">張世宣、徐慧君</td>
-                </tr>
-              </tbody>
-            </table>
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
+            <div class="font-bold text-sm text-blue-600 dark:text-blue-400">🔬 北醫公衛合作案：大型辦公室空氣品質檢測</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              • <strong>檢測對象：</strong>行政辦公室、導師大型辦公室室內空氣品質。<br>
+              • <strong>實施時程：</strong>預計下學期開學期間。<br>
+              • <strong>學生培育：</strong>由高中學生協助機器設備架設，收集實測數據後進實驗室觀察，待成果報告產出後一同參與公開發表。
+            </p>
           </div>
+
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1 md:col-span-2">
+            <div class="font-bold text-sm text-purple-600 dark:text-purple-400">🏢 AI 示範中心開放多功能展示區建置計畫</div>
+            <p class="text-[var(--muted-foreground)] leading-relaxed">
+              校園 5 面形象牆、演藝廳外部長廊與玻璃屋空間重構整理，結合 AI 示範中心前瞻展示與 1 樓川堂「致未來」校史里程碑展示。
+            </p>
+          </div>
+
         </div>
       </section>
 
     </div>
 
-    <!-- ==================== TAB 4: 研習成果剪影與宣傳海報 ==================== -->
-    <div id="tab-gallery" class="tab-pane hidden space-y-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
-        <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
-          <span>🖼️ 圖書館近期重大研習成果照片 ✕ 國際教育旅行宣傳海報</span>
-        </h2>
-        <p class="text-xs text-[var(--muted-foreground)]">點擊圖片即可開啟大圖檢視</p>
+    <!-- ==================== TAB 4: AI 示範中心形象牆專案 ==================== -->
+    <div id="tab-ai-center" class="tab-pane hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <span>🏛️ AI 示範中心開放多功能展示區建置計畫 ✕ 校園形象牆設計</span>
+            </h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">重構校園文化長廊，展現科技教育、體育、國際教育與卓越發展歷程</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold shrink-0">
+            空間美學 ✕ 科技意象
+          </span>
+        </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group" onclick="openLightbox('images/image1.png', '圖書館 藝文賞析：閱讀在錦堡 與世界共好（閱讀護照與大合影）')">
-            <img src="images/image1.png" class="w-full h-44 object-cover rounded-lg group-hover:opacity-90 transition" alt="藝文賞析">
-            <div class="font-bold text-xs text-[var(--foreground)]">圖書館 藝文賞析：閱讀在錦堡 與世界共好</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">全校演藝廳 • 閱讀護照與數位學習力推廣</div>
+        <!-- 5面形象牆概念展示 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-3">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
+              <span>🖼️</span>
+              <span>走廊 5 面形象牆總體概念</span>
+            </h3>
+            <img src="images/11meeting/image6.png" class="w-full h-44 object-cover rounded-lg border border-[var(--border)] cursor-pointer hover:opacity-90 transition" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：走廊 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界）')" alt="5面形象牆">
+            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 list-disc pl-4">
+              <li><strong>科技教育牆：</strong>FRC機器人、AI教學、智慧學習典範學校成果</li>
+              <li><strong>體育卓越牆：</strong>排球、柔道、田徑等全中運各項榮耀紀錄</li>
+              <li><strong>國際教育牆：</strong>日本姊妹校簽約、美國西湖高中交流、海外教育旅行</li>
+              <li><strong>精彩無界主題燈箱：</strong>彰顯錦和學子跨域探索與多元適性發展</li>
+            </ul>
           </div>
 
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group" onclick="openLightbox('images/image2.png', '國中數學 AI 改題系統研習：TEAM NT AI 數理增能方案')">
-            <img src="images/image2.png" class="w-full h-44 object-cover rounded-lg group-hover:opacity-90 transition" alt="數學AI改題研習">
-            <div class="font-bold text-xs text-[var(--foreground)]">國中數學 AI 改題系統研習</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">TEAM NT AI 數理增能方案 • 電腦教室實機操作</div>
-          </div>
-
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group" onclick="openLightbox('images/image3.png', '國中英文 Antigravity 代理人研習：iMac 電腦教室素養命題實作')">
-            <img src="images/image3.png" class="w-full h-44 object-cover rounded-lg group-hover:opacity-90 transition" alt="英文Antigravity研習">
-            <div class="font-bold text-xs text-[var(--foreground)]">國中英文 Antigravity 代理人研習</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">iMac 電腦教室 • 英語素養題組與聽力腳本生成</div>
-          </div>
-
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group" onclick="openLightbox('images/image4.png', '國中理化 Antigravity 代理人研習：自然科學探究與素養命題實務')">
-            <img src="images/image4.png" class="w-full h-44 object-cover rounded-lg group-hover:opacity-90 transition" alt="理化Antigravity研習">
-            <div class="font-bold text-xs text-[var(--foreground)]">國中理化 Antigravity 代理人研習</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">科技電腦教室 • 自然科探究命題與向量繪圖</div>
-          </div>
-
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group sm:col-span-2" onclick="openLightbox('images/image5.png', '新北市立錦和高中國際教育旅行 行程說明會海報（116年5月赴日關西，招募32名學生）')">
-            <div class="flex flex-col sm:flex-row gap-4 items-center">
-              <img src="images/image5.png" class="w-full sm:w-48 h-56 object-cover rounded-lg group-hover:opacity-90 transition shrink-0" alt="教育旅行海報">
-              <div class="space-y-1.5">
-                <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 font-bold">116/05/24 ～ 05/29 赴日關西</span>
-                <div class="font-bold text-sm text-[var(--foreground)]">新北市立錦和高中國際教育旅行 行程說明會海報</div>
-                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
-                  • 旅行地點：日本關西地區（京都、大阪）<br>
-                  • 招募對象：高中部學生共 32 名<br>
-                  • 說明會時間：<strong>10月23日 (五) 12:20 - 13:00</strong> 於圖書館三樓閱覽區舉行。<br>
-                  • 點擊圖片可檢視高解析度完整海報內容與 QR Code。
-                </p>
+          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-3">
+            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
+              <span>🏢</span>
+              <span>1 樓川堂右側「錦和高中 致未來」展牆</span>
+            </h3>
+            <img src="images/11meeting/image7.png" class="w-full h-44 object-cover rounded-lg border border-[var(--border)] cursor-pointer hover:opacity-90 transition" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')" alt="川堂形象牆現場說明">
+            <div class="text-xs text-[var(--muted-foreground)] space-y-1">
+              <div class="font-semibold text-[var(--foreground)]">校史七大卓越里程碑軸線：</div>
+              <div class="grid grid-cols-2 gap-1.5 text-[11px] pt-1">
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>79年：</strong>創校起步</div>
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>87年：</strong>改制完全中學</div>
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>103年：</strong>數位創新推動</div>
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>112年：</strong>科技旗艦中心</div>
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>113年：</strong>生科競賽培訓</div>
+                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>114年：</strong>教育部卓越獎項</div>
+                <div class="p-1.5 bg-blue-50 dark:bg-blue-950/40 rounded border border-blue-500/30 text-blue-600 dark:text-blue-400 col-span-2 font-bold"><strong>115年：</strong>AI 示範中心與領航方案</div>
               </div>
             </div>
           </div>
-
         </div>
+
+        <!-- 空間重構項目 -->
+        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs text-[var(--muted-foreground)] space-y-2">
+          <div class="font-bold text-sm text-[var(--foreground)]">🛠️ 後續空間美化與建置推展：</div>
+          <p class="leading-relaxed">
+            除形象牆外，圖書館與資訊組持續進行<strong>演藝廳外部長廊</strong>與<strong>玻璃屋空間整理</strong>，打造融合休閒閱讀、科技體驗與成果展示的開放式交流空間，營造具科技感與人文底蘊的優質學習環境。
+          </p>
+        </div>
+
       </div>
     </div>
 
     <!-- Footer Summary -->
     <footer class="text-center py-4 border-t border-[var(--border)] text-xs text-[var(--muted-foreground)]">
-      新北市立錦和高中圖書館處室 • 115學年度業務報告暨主管會報整合系統
+      新北市立錦和高中圖書館處室 • 115學年度 11月份行政會與導師會議專頁
     </footer>
 
   </div>
@@ -874,7 +665,7 @@
   </div>
 
   <script>
-    // Tab 分頁切換 (100% 參照 jinhe_library_9meeting.html 架構)
+    // Tab 分頁切換 (100% 參照標準圖形框架)
     function switchTab(tabId) {
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => {
