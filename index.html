@@ -30,6 +30,15 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
     }
+
+    /* 拖曳按鈕視覺反饋 */
+    .tab-btn[draggable="true"] {
+      cursor: grab;
+      user-select: none;
+    }
+    .tab-btn[draggable="true"]:active {
+      cursor: grabbing;
+    }
   </style>
 </head>
 <body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen p-4 md:p-8">
@@ -124,53 +133,173 @@
           <strong>4. 🖧 電腦講義磁碟機連線排除：</strong> 若無國高中教學講義，請至 <code>C:\啟動-捷徑\點兩下連線網路磁碟機.bat</code> 執行或重開機。
         </div>
         <div class="p-2.5 bg-[var(--card)] rounded-lg border border-amber-500/20 md:col-span-2">
-          <strong>5. 🏛️ AI示範中心 5 面形象牆 ✕ 北醫公衛空氣品質檢測：</strong> 1 樓川堂右側「錦和高中 致未來」校史重大里程碑展現；北醫公衛合作案將於下學期初由高中學生協助架設感測設備進行辦公室空品檢測與成果發表。
+          <strong>5. 🔬 專案獨立報告：</strong> 北醫公衛空氣品質檢測案下學期初由高中學生協助架設感測設備並共同發表；AI示範中心 5 面形象牆與 1 樓川堂「致未來」校史里程碑展示區全面啟動。
         </div>
       </div>
     </div>
 
-    <!-- Quick Stats Cards (4 核心數據指標卡) -->
-    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
-        <div class="text-xs text-[var(--muted-foreground)]">重大國際簽約</div>
+    <!-- Quick Stats Cards (4 核心數據指標卡，支援拖曳更換順序) -->
+    <div id="kpiCardsContainer" class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div draggable="true" class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover cursor-grab active:cursor-grabbing select-none" title="可按住拖曳調整位置">
+        <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>重大國際簽約</span>
+          <span class="text-[10px] text-slate-400">⋮⋮</span>
+        </div>
         <div class="text-lg font-bold text-blue-600 dark:text-blue-400 mt-1">11/03 (二)</div>
         <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">日本門真浪速高校 MOU (13:00-17:00)</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
-        <div class="text-xs text-[var(--muted-foreground)]">全校主題書展</div>
+      <div draggable="true" class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover cursor-grab active:cursor-grabbing select-none" title="可按住拖曳調整位置">
+        <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>全校主題書展</span>
+          <span class="text-[10px] text-slate-400">⋮⋮</span>
+        </div>
         <div class="text-lg font-bold text-emerald-600 dark:text-emerald-400 mt-1">11/02~06</div>
         <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">圖書館書展 開放班級線上預約</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
-        <div class="text-xs text-[var(--muted-foreground)]">全校行政B3研習</div>
+      <div draggable="true" class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover cursor-grab active:cursor-grabbing select-none" title="可按住拖曳調整位置">
+        <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>全校行政B3研習</span>
+          <span class="text-[10px] text-slate-400">⋮⋮</span>
+        </div>
         <div class="text-lg font-bold text-purple-600 dark:text-purple-400 mt-1">11/16 (一)</div>
         <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">29 位主管同仁參訓 (圓通3F行動教室)</div>
       </div>
-      <div class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover">
-        <div class="text-xs text-[var(--muted-foreground)]">重大管制日程</div>
+      <div draggable="true" class="p-4 bg-[var(--card)] border border-[var(--border)] rounded-xl card-hover cursor-grab active:cursor-grabbing select-none" title="可按住拖曳調整位置">
+        <div class="flex items-center justify-between text-xs text-[var(--muted-foreground)]">
+          <span>重大管制日程</span>
+          <span class="text-[10px] text-slate-400">⋮⋮</span>
+        </div>
         <div class="text-lg font-bold text-rose-600 dark:text-rose-400 mt-1">10 場次</div>
         <div class="text-[11px] text-[var(--muted-foreground)] mt-0.5">11月研習、觀課、世貿展出</div>
       </div>
     </div>
 
-    <!-- Interactive Navigation Tabs -->
-    <div class="no-print flex flex-wrap gap-2 border-b border-[var(--border)] pb-2">
-      <button onclick="switchTab('tab-timeline')" id="btn-tab-timeline" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm transition flex items-center gap-1.5">
-        📅 11月重大行事與時程管制 (10場)
-      </button>
-      <button onclick="switchTab('tab-gallery')" id="btn-tab-gallery" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
-        🖼️ 成果剪影與校園形象牆 (7照)
-      </button>
-      <button onclick="switchTab('tab-sections')" id="btn-tab-sections" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
-        📌 讀服／採編／資訊組業務報告
-      </button>
-      <button onclick="switchTab('tab-ai-center')" id="btn-tab-ai-center" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5">
-        🏛️ AI 示範中心形象牆專案
-      </button>
+    <!-- Interactive Navigation Tabs (成果剪影按鈕置於最左側，支援按鈕自由拖曳任意調整位置) -->
+    <div class="no-print flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-[var(--border)] pb-2">
+      <div id="tabsContainer" class="flex flex-wrap items-center gap-2">
+        <!-- 按鈕 1 (最左側，預設 Active)：成果剪影與校園形象牆 -->
+        <button draggable="true" onclick="switchTab('tab-gallery')" id="btn-tab-gallery" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-blue-600 text-white shadow-sm transition flex items-center gap-1.5 select-none" title="按住可拖曳調整順序">
+          <span class="text-xs opacity-60">⋮⋮</span>
+          <span>🖼️ 成果剪影與校園形象牆 (7照)</span>
+        </button>
+
+        <!-- 按鈕 2：11月重大行事與時程管制 -->
+        <button draggable="true" onclick="switchTab('tab-timeline')" id="btn-tab-timeline" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5 select-none" title="按住可拖曳調整順序">
+          <span class="text-xs opacity-60">⋮⋮</span>
+          <span>📅 11月重大行事與時程管制 (10場)</span>
+        </button>
+
+        <!-- 按鈕 3：處室業務報告總覽 (含專案工作報告) -->
+        <button draggable="true" onclick="switchTab('tab-sections')" id="btn-tab-sections" class="tab-btn px-4 py-2 text-xs md:text-sm font-semibold rounded-lg bg-[var(--secondary)] text-[var(--secondary-foreground)] hover:opacity-80 transition flex items-center gap-1.5 select-none" title="按住可拖曳調整順序">
+          <span class="text-xs opacity-60">⋮⋮</span>
+          <span>📌 處室業務報告總覽 (含專案報告)</span>
+        </button>
+      </div>
+
+      <span class="text-[11px] text-[var(--muted-foreground)] flex items-center gap-1 shrink-0">
+        <svg class="w-3.5 h-3.5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+        <span>✋ 按鈕可按住拖曳任意調整位置</span>
+      </span>
     </div>
 
-    <!-- ==================== TAB 1: 11月重大行事與時程管制 ==================== -->
-    <div id="tab-timeline" class="tab-pane space-y-4">
+    <!-- ==================== TAB 1 (最左側，預設開啟): 研習成果剪影與校園形象牆 ==================== -->
+    <div id="tab-gallery" class="tab-pane space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              <span>🖼️ 圖書館近期重大研習成果照片 ✕ 校園形象牆建置進度</span>
+            </h2>
+            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">完整收錄 7 張高解析度照片，點擊任一圖片即可啟動全螢幕燈箱檢視細節</p>
+          </div>
+          <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
+            共 7 幅精選成果
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <!-- 照片 1: B3 數位指引教學研習 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image1.png', 'B3數位指引教學研習：全體同仁於科技教室手持「AI實作」、「適性學習」、「科技教育就是讚」手牌合影')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image1.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="B3數位指引教學研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">行政增能</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">B3 數位教學指引培力研習</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">iMac 教室 • 全校教師手持 AI 實作與科技教育標語溫馨大合影</div>
+          </div>
+
+          <!-- 照片 2: 國中晨讀閱讀推廣 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image2.png', '國中晨讀閱讀推廣：班級晨讀時間學生專注沉浸於好讀圖書與國中閱讀護照閱讀')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image2.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="國中晨讀閱讀推廣">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-emerald-600/90 text-white text-[10px] font-bold rounded">閱推推動</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">國中晨讀閱讀推廣活動</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">班級教室 • 晨讀時光沉浸閱讀，落實全學年閱讀護照深化素養</div>
+          </div>
+
+          <!-- 照片 3: 高中數學AI研習 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image3.png', '高中數學AI研習：高中數學科教師齊聚大會議室實施 TEAM NT AI 數理增能研討')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image3.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="高中數學AI研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-purple-600/90 text-white text-[10px] font-bold rounded">學科AI融入</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">高中數學 AI 增能研習</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">圖書館會議室 • 筆電實機研討 TEAM NT 數理 AI 輔助命題與學習</div>
+          </div>
+
+          <!-- 照片 4: AI-book研習- AR2VR實踐優質教育 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image4.png', 'AI-book研習 - AR2VR 實踐優質教育：2026 跨域盃決賽評分標準與 VR/AR 互動式數位教案分享')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image4.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="AI-book研習">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-indigo-600/90 text-white text-[10px] font-bold rounded">跨域科技</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">AI-book 研習 — AR2VR 實踐優質教育</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">大螢幕解析 2026 跨域盃評分規準，推廣 VR/AR 沉浸式情境教學</div>
+          </div>
+
+          <!-- 照片 5: 聯合報閱讀講座 (跨欄) -->
+          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover sm:col-span-2" onclick="openLightbox('images/11meeting/image5.png', '聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」：演藝廳全校七八年級共 24 個班級全場座無虛席大合影')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image5.png" class="w-full h-56 md:h-64 object-cover group-hover:scale-102 transition duration-300" alt="聯合報閱讀講座大合影">
+              <span class="absolute bottom-2 left-2 px-2.5 py-0.5 bg-rose-600/90 text-white text-[10px] font-bold rounded">七八年級 24 班級盛大參與</span>
+            </div>
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
+              <div class="font-bold text-sm text-[var(--foreground)]">聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」盛大講座</div>
+              <span class="text-xs text-blue-600 dark:text-blue-400 font-bold">10/02 圓滿成功 • 迴響熱烈</span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+              演藝廳全場爆滿！七八年級共 24 個班級師生共同參與，手持「錦堡閱讀護照」、「數位學習力UP」、「以科技向未來學習」等標語合影，成效顯著。
+            </p>
+          </div>
+
+          <!-- 照片 6: 5 面形象牆模擬圖 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：校園 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界大型燈箱牆面）')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image6.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="校園5面形象牆模擬圖">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">AI示範中心建置</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">校園 5 面形象牆 3D 效果模擬圖</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">走廊大型燈箱視覺設計 • 科技教育、體育、國際教育與校園核心精神</div>
+          </div>
+
+          <!-- 照片 7: 1 樓川堂右側現場照片與設計樣式 -->
+          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')">
+            <div class="relative overflow-hidden rounded-lg">
+              <img src="images/11meeting/image7.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="川堂形象牆設計說明">
+              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-amber-600/90 text-white text-[10px] font-bold rounded">川堂右側現勘與樣式</span>
+            </div>
+            <div class="font-bold text-xs text-[var(--foreground)]">1 樓川堂「錦和高中 致未來」形象牆規劃</div>
+            <div class="text-[11px] text-[var(--muted-foreground)]">川堂右側現場現勘照片 ✕ 79年～115年校史七大卓越里程碑牆面設計</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: 11月重大行事與時程管制 ==================== -->
+    <div id="tab-timeline" class="tab-pane hidden space-y-4">
       <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm">
         <div class="flex items-center justify-between border-b border-[var(--border)] pb-3 mb-4">
           <h2 class="text-lg font-bold flex items-center gap-2 text-[var(--foreground)]">
@@ -323,103 +452,7 @@
       </div>
     </div>
 
-    <!-- ==================== TAB 2: 研習成果剪影與校園形象牆 ==================== -->
-    <div id="tab-gallery" class="tab-pane hidden space-y-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-4">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
-          <div>
-            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
-              <span>🖼️ 圖書館近期重大研習成果照片 ✕ 校園形象牆建置進度</span>
-            </h2>
-            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">完整收錄 7 張高解析度照片，點擊任一圖片即可啟動全螢幕燈箱檢視細節</p>
-          </div>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 font-semibold shrink-0">
-            共 7 幅精選成果
-          </span>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          
-          <!-- 照片 1: B3 數位指引教學研習 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image1.png', 'B3數位指引教學研習：全體同仁於科技教室手持「AI實作」、「適性學習」、「科技教育就是讚」手牌合影')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image1.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="B3數位指引教學研習">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">行政增能</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">B3 數位教學指引培力研習</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">iMac 教室 • 全校教師手持 AI 實作與科技教育標語溫馨大合影</div>
-          </div>
-
-          <!-- 照片 2: 國中晨讀閱讀推廣 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image2.png', '國中晨讀閱讀推廣：班級晨讀時間學生專注沉浸於好讀圖書與國中閱讀護照閱讀')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image2.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="國中晨讀閱讀推廣">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-emerald-600/90 text-white text-[10px] font-bold rounded">閱推推動</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">國中晨讀閱讀推廣活動</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">班級教室 • 晨讀時光沉浸閱讀，落實全學年閱讀護照深化素養</div>
-          </div>
-
-          <!-- 照片 3: 高中數學AI研習 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image3.png', '高中數學AI研習：高中數學科教師齊聚大會議室實施 TEAM NT AI 數理增能研討')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image3.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="高中數學AI研習">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-purple-600/90 text-white text-[10px] font-bold rounded">學科AI融入</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">高中數學 AI 增能研習</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">圖書館會議室 • 筆電實機研討 TEAM NT 數理 AI 輔助命題與學習</div>
-          </div>
-
-          <!-- 照片 4: AI-book研習- AR2VR實踐優質教育 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image4.png', 'AI-book研習 - AR2VR 實踐優質教育：2026 跨域盃決賽評分標準與 VR/AR 互動式數位教案分享')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image4.png" class="w-full h-48 object-cover group-hover:scale-105 transition duration-300" alt="AI-book研習">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-indigo-600/90 text-white text-[10px] font-bold rounded">跨域科技</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">AI-book 研習 — AR2VR 實踐優質教育</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">大螢幕解析 2026 跨域盃評分規準，推廣 VR/AR 沉浸式情境教學</div>
-          </div>
-
-          <!-- 照片 5: 聯合報閱讀講座 (跨欄) -->
-          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover sm:col-span-2" onclick="openLightbox('images/11meeting/image5.png', '聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」：演藝廳全校七八年級共 24 個班級全場座無虛席大合影')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image5.png" class="w-full h-56 md:h-64 object-cover group-hover:scale-102 transition duration-300" alt="聯合報閱讀講座大合影">
-              <span class="absolute bottom-2 left-2 px-2.5 py-0.5 bg-rose-600/90 text-white text-[10px] font-bold rounded">七八年級 24 班級盛大參與</span>
-            </div>
-            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-              <div class="font-bold text-sm text-[var(--foreground)]">聯合報閱讀講座「讀報筆記力，讓你閱讀更有效率」盛大講座</div>
-              <span class="text-xs text-blue-600 dark:text-blue-400 font-bold">10/02 圓滿成功 • 迴響熱烈</span>
-            </div>
-            <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
-              演藝廳全場爆滿！七八年級共 24 個班級師生共同參與，手持「錦堡閱讀護照」、「數位學習力UP」、「以科技向未來學習」等標語合影，成效顯著。
-            </p>
-          </div>
-
-          <!-- 照片 6: 5 面形象牆模擬圖 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：校園 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界大型燈箱牆面）')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image6.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="校園5面形象牆模擬圖">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-blue-600/90 text-white text-[10px] font-bold rounded">AI示範中心建置</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">校園 5 面形象牆 3D 效果模擬圖</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">走廊大型燈箱視覺設計 • 科技教育、體育、國際教育與校園核心精神</div>
-          </div>
-
-          <!-- 照片 7: 1 樓川堂右側現場照片與設計樣式 -->
-          <div class="p-3 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')">
-            <div class="relative overflow-hidden rounded-lg">
-              <img src="images/11meeting/image7.png" class="w-full h-44 object-cover group-hover:scale-105 transition duration-300" alt="川堂形象牆設計說明">
-              <span class="absolute bottom-2 left-2 px-2 py-0.5 bg-amber-600/90 text-white text-[10px] font-bold rounded">川堂右側現勘與樣式</span>
-            </div>
-            <div class="font-bold text-xs text-[var(--foreground)]">1 樓川堂「錦和高中 致未來」形象牆規劃</div>
-            <div class="text-[11px] text-[var(--muted-foreground)]">川堂右側現場現勘照片 ✕ 79年～115年校史七大卓越里程碑牆面設計</div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <!-- ==================== TAB 3: 處室業務報告總覽 ==================== -->
+    <!-- ==================== TAB 3: 處室業務報告總覽 (含獨立專案工作報告) ==================== -->
     <div id="tab-sections" class="tab-pane hidden space-y-6">
       
       <!-- 讀者服務組 -->
@@ -547,102 +580,98 @@
           <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold">🖥️</div>
           <div>
             <h2 class="text-base font-bold text-[var(--foreground)]">資訊組 重點業務工作報告</h2>
-            <p class="text-xs text-[var(--muted-foreground)]">教學講義網路磁碟機連線、北醫公衛空氣品質檢測、AI示範中心建置與校園形象牆</p>
+            <p class="text-xs text-[var(--muted-foreground)]">教學講義網路磁碟機連線排除與校園資訊設備維護支援</p>
           </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
-          
-          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400">🖧 教學講義磁碟機連線障礙排除</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              若電腦出現沒有國高中教學講義之情況，請執行：<br>
-              <code>檔案總管 → C槽 → 啟動-捷徑 → 點兩下連線網路磁碟機.bat</code> 即可自動掛載；或直接重新開機。
-            </p>
+        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2 text-xs">
+          <div class="font-bold text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5">
+            <span>🖧</span>
+            <span>教學講義磁碟機連線障礙排除步驟</span>
           </div>
-
-          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1">
-            <div class="font-bold text-sm text-blue-600 dark:text-blue-400">🔬 北醫公衛合作案：大型辦公室空氣品質檢測</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              • <strong>檢測對象：</strong>行政辦公室、導師大型辦公室室內空氣品質。<br>
-              • <strong>實施時程：</strong>預計下學期開學期間。<br>
-              • <strong>學生培育：</strong>由高中學生協助機器設備架設，收集實測數據後進實驗室觀察，待成果報告產出後一同參與公開發表。
-            </p>
-          </div>
-
-          <div class="p-3.5 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-1 md:col-span-2">
-            <div class="font-bold text-sm text-purple-600 dark:text-purple-400">🏢 AI 示範中心開放多功能展示區建置計畫</div>
-            <p class="text-[var(--muted-foreground)] leading-relaxed">
-              校園 5 面形象牆、演藝廳外部長廊與玻璃屋空間重構整理，結合 AI 示範中心前瞻展示與 1 樓川堂「致未來」校史里程碑展示。
-            </p>
-          </div>
-
+          <p class="text-[var(--muted-foreground)] leading-relaxed">
+            若教師電腦出現沒有國高中教學講義磁碟機之情況，請依以下簡易步驟排除：<br>
+            <span class="inline-block mt-1.5 p-2 bg-[var(--card)] rounded-lg border border-[var(--border)] font-mono text-slate-700 dark:text-slate-300">
+              執行檔案總管 ➔ C槽 ➔ 啟動-捷徑 ➔ 點兩下「連線網路磁碟機.bat」即可自動掛載
+            </span><br>
+            <span class="text-[11px] text-[var(--muted-foreground)] mt-1 inline-block">• 或直接將電腦重新開機，系統啟動時亦會自動嘗試連線。如仍有疑問歡迎洽詢資訊組協助。</span>
+          </p>
         </div>
       </section>
 
-    </div>
-
-    <!-- ==================== TAB 4: AI 示範中心形象牆專案 ==================== -->
-    <div id="tab-ai-center" class="tab-pane hidden space-y-4">
-      <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-6 shadow-sm space-y-5">
+      <!-- ★ 獨立工作報告：北醫公衛合作案 ✕ AI 示範中心開放多功能展示區建置計畫 -->
+      <section class="bg-[var(--card)] border-2 border-indigo-500/30 rounded-2xl p-6 shadow-sm space-y-5">
         <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-[var(--border)] pb-3 gap-2">
-          <div>
-            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
-              <span>🏛️ AI 示範中心開放多功能展示區建置計畫 ✕ 校園形象牆設計</span>
-            </h2>
-            <p class="text-xs text-[var(--muted-foreground)] mt-0.5">重構校園文化長廊，展現科技教育、體育、國際教育與卓越發展歷程</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center font-bold text-lg shadow-sm">
+              🔬
+            </div>
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 text-[10px] font-bold">
+                專案獨立工作報告
+              </div>
+              <h2 class="text-base font-bold text-[var(--foreground)]">
+                北醫公衛合作案 ✕ AI 示範中心開放多功能展示區建置計畫
+              </h2>
+            </div>
           </div>
-          <span class="text-xs px-2.5 py-1 rounded-full bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 font-semibold shrink-0">
-            空間美學 ✕ 科技意象
+          <span class="text-xs px-2.5 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-400 font-semibold shrink-0">
+            跨界公衛研究 ✕ 校園空間美學
           </span>
         </div>
 
-        <!-- 5面形象牆概念展示 -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-3">
-            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
-              <span>🖼️</span>
-              <span>走廊 5 面形象牆總體概念</span>
-            </h3>
-            <img src="images/11meeting/image6.png" class="w-full h-44 object-cover rounded-lg border border-[var(--border)] cursor-pointer hover:opacity-90 transition" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：走廊 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界）')" alt="5面形象牆">
-            <ul class="text-xs text-[var(--muted-foreground)] space-y-1.5 list-disc pl-4">
-              <li><strong>科技教育牆：</strong>FRC機器人、AI教學、智慧學習典範學校成果</li>
-              <li><strong>體育卓越牆：</strong>排球、柔道、田徑等全中運各項榮耀紀錄</li>
-              <li><strong>國際教育牆：</strong>日本姊妹校簽約、美國西湖高中交流、海外教育旅行</li>
-              <li><strong>精彩無界主題燈箱：</strong>彰顯錦和學子跨域探索與多元適性發展</li>
-            </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          
+          <!-- 北醫公衛合作案 -->
+          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="p-1 rounded bg-blue-500/10 text-blue-600 dark:text-blue-400 font-bold text-xs">專案 1</span>
+              <h3 class="font-bold text-sm text-blue-600 dark:text-blue-400">🔬 北醫公衛合作案：大型辦公室空氣品質檢測</h3>
+            </div>
+            <div class="space-y-1.5 text-[var(--muted-foreground)] leading-relaxed">
+              <p>• <strong>研究題目：</strong>行政辦公室、導師大型辦公室室內空氣品質（IAQ）檢測專案。</p>
+              <p>• <strong>實施時程：</strong>預計於<strong>下學期開學期間</strong>正式啟動架設與數據監測。</p>
+              <p>• <strong>學生培育模式：</strong>由高中學生全程協助監測機器架設與日常運維，待收集完整時間序列資料後，安排學生進入實驗室深入分析觀察，並於結案報告產出後一同參與公開專案成果發表。</p>
+            </div>
           </div>
 
-          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-3">
-            <h3 class="font-bold text-sm text-[var(--foreground)] flex items-center gap-1.5">
-              <span>🏢</span>
-              <span>1 樓川堂右側「錦和高中 致未來」展牆</span>
-            </h3>
-            <img src="images/11meeting/image7.png" class="w-full h-44 object-cover rounded-lg border border-[var(--border)] cursor-pointer hover:opacity-90 transition" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')" alt="川堂形象牆現場說明">
-            <div class="text-xs text-[var(--muted-foreground)] space-y-1">
-              <div class="font-semibold text-[var(--foreground)]">校史七大卓越里程碑軸線：</div>
-              <div class="grid grid-cols-2 gap-1.5 text-[11px] pt-1">
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>79年：</strong>創校起步</div>
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>87年：</strong>改制完全中學</div>
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>103年：</strong>數位創新推動</div>
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>112年：</strong>科技旗艦中心</div>
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>113年：</strong>生科競賽培訓</div>
-                <div class="p-1.5 bg-[var(--card)] rounded border border-[var(--border)]"><strong>114年：</strong>教育部卓越獎項</div>
-                <div class="p-1.5 bg-blue-50 dark:bg-blue-950/40 rounded border border-blue-500/30 text-blue-600 dark:text-blue-400 col-span-2 font-bold"><strong>115年：</strong>AI 示範中心與領航方案</div>
-              </div>
+          <!-- AI示範中心建置與空間重構 -->
+          <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-2.5">
+            <div class="flex items-center gap-2">
+              <span class="p-1 rounded bg-purple-500/10 text-purple-600 dark:text-purple-400 font-bold text-xs">專案 2</span>
+              <h3 class="font-bold text-sm text-purple-600 dark:text-purple-400">🏛️ AI 示範中心開放多功能展示區建置計畫</h3>
+            </div>
+            <div class="space-y-1.5 text-[var(--muted-foreground)] leading-relaxed">
+              <p>• <strong>核心目標：</strong>重構演藝廳外部長廊與玻璃屋空間，打造融合科技展示、人文底蘊與適性交流的多功能情境場域。</p>
+              <p>• <strong>走廊 5 面形象牆：</strong>規劃大型燈箱展現「科技教育」、「體育卓越」、「國際教育」與「精彩無界」四大核心成就。</p>
+              <p>• <strong>川堂「致未來」展牆：</strong>於 1 樓川堂右側梳理 79 年創校迄今 115 年 AI 領航之七大校史里程碑。</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 專案設計圖與現勘展示 -->
+        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] space-y-3">
+          <div class="font-bold text-xs text-[var(--foreground)] flex items-center justify-between">
+            <span>🖼️ 空間視覺設計模擬圖與現場現勘對照（點擊可放大檢視）</span>
+            <span class="text-[11px] text-[var(--muted-foreground)]">點圖啟動全螢幕燈箱</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-2 bg-[var(--card)] rounded-lg border border-[var(--border)] space-y-1.5 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image6.png', 'AI 示範中心開放多功能展示區：校園 5 面形象牆模擬圖（科技教育、體育、國際教育、精彩無界大型燈箱牆面）')">
+              <img src="images/11meeting/image6.png" class="w-full h-32 object-cover rounded group-hover:opacity-90 transition" alt="5面形象牆模擬圖">
+              <div class="text-[11px] font-bold text-[var(--foreground)]">走廊 5 面形象牆 3D 效果模擬圖</div>
+            </div>
+
+            <div class="p-2 bg-[var(--card)] rounded-lg border border-[var(--border)] space-y-1.5 cursor-pointer group card-hover" onclick="openLightbox('images/11meeting/image7.png', '1樓川堂右側現場照片與「錦和高中 致未來」形象牆設計（79創校、87改制、103數位、112科技、113生科、114卓越、115 AI領航）')">
+              <img src="images/11meeting/image7.png" class="w-full h-32 object-cover rounded group-hover:opacity-90 transition" alt="川堂形象牆設計說明">
+              <div class="text-[11px] font-bold text-[var(--foreground)]">1 樓川堂右側現勘 ✕ 「錦和高中 致未來」展牆樣式</div>
             </div>
           </div>
         </div>
 
-        <!-- 空間重構項目 -->
-        <div class="p-4 bg-[var(--background)] rounded-xl border border-[var(--border)] text-xs text-[var(--muted-foreground)] space-y-2">
-          <div class="font-bold text-sm text-[var(--foreground)]">🛠️ 後續空間美化與建置推展：</div>
-          <p class="leading-relaxed">
-            除形象牆外，圖書館與資訊組持續進行<strong>演藝廳外部長廊</strong>與<strong>玻璃屋空間整理</strong>，打造融合休閒閱讀、科技體驗與成果展示的開放式交流空間，營造具科技感與人文底蘊的優質學習環境。
-          </p>
-        </div>
+      </section>
 
-      </div>
     </div>
 
     <!-- Footer Summary -->
@@ -665,7 +694,7 @@
   </div>
 
   <script>
-    // Tab 分頁切換 (100% 參照標準圖形框架)
+    // Tab 分頁切換 (預設為 leftmost 的成果剪影 tab-gallery)
     function switchTab(tabId) {
       document.querySelectorAll('.tab-pane').forEach(el => el.classList.add('hidden'));
       document.querySelectorAll('.tab-btn').forEach(el => {
@@ -683,6 +712,45 @@
       if (pane) pane.classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // 支援按鈕及指標卡之自由拖曳重排 (HTML5 Drag & Drop)
+    function initDraggableContainer(containerId) {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+      let draggedElement = null;
+
+      container.addEventListener('dragstart', (e) => {
+        const item = e.target.closest('[draggable="true"]');
+        if (!item || item.parentNode !== container) return;
+        draggedElement = item;
+        e.dataTransfer.effectAllowed = 'move';
+        item.style.opacity = '0.4';
+      });
+
+      container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = 'move';
+        const target = e.target.closest('[draggable="true"]');
+        if (target && target !== draggedElement && target.parentNode === container) {
+          const rect = target.getBoundingClientRect();
+          const isAfter = (e.clientX - rect.left) > (rect.width / 2);
+          container.insertBefore(draggedElement, isAfter ? target.nextSibling : target);
+        }
+      });
+
+      container.addEventListener('dragend', () => {
+        if (draggedElement) {
+          draggedElement.style.opacity = '';
+          draggedElement = null;
+        }
+      });
+    }
+
+    // 初始化拖曳
+    document.addEventListener('DOMContentLoaded', () => {
+      initDraggableContainer('tabsContainer');
+      initDraggableContainer('kpiCardsContainer');
+    });
 
     // 燈箱 Lightbox
     function openLightbox(src, caption) {
