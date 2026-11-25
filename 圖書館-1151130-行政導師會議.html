@@ -3,32 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>錦和高中圖書館 12月份行政與導師會議【上台報告圖像版】</title>
+  <title>錦和高中圖書館 12月份行政與導師會議【滿版大字上台報告版】</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
     :root {
-      --bg-color: #0f172a;
+      --bg-color: #0b1120;
       --card-bg: #1e293b;
       --card-border: #334155;
       --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --text-muted: #cbd5e1;
+      --font-scale: 1;
+    }
+    html {
+      font-size: calc(16px * var(--font-scale));
     }
     body {
-      background-color: var(--bg-color);
+      background: radial-gradient(circle at top right, #172554 0%, #0b1120 45%, #020617 100%);
       color: var(--text-main);
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
-      overflow-x: hidden;
+      font-family: 'PingFang TC', 'Microsoft JhengHei', 'Noto Sans TC', system-ui, -apple-system, sans-serif;
+      overflow: hidden;
     }
     .slide {
       display: none;
-      min-height: calc(100vh - 110px);
-      animation: fadeIn 0.3s ease-in-out;
+      width: 100%;
+      height: 100%;
+      animation: fadeIn 0.28s ease-out;
     }
     .slide.active {
       display: flex;
     }
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(6px); }
+      from { opacity: 0; transform: translateY(8px); }
       to { opacity: 1; transform: translateY(0); }
     }
     /* Lightbox */
@@ -36,7 +41,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.96);
       backdrop-filter: blur(8px);
       z-index: 2000;
       align-items: center;
@@ -44,216 +49,201 @@
     }
     .lightbox.active { display: flex; }
 
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
-    }
-    ::-webkit-scrollbar-track {
-      background: #1e293b;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #475569;
-      border-radius: 3px;
-    }
+    /* Subtle scrollbar for small screens */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #475569; border-radius: 3px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between select-none">
+<body class="h-screen w-screen flex flex-col justify-between select-none">
 
-  <!-- 頂部簡報控制列 -->
-  <header class="bg-slate-900/95 border-b border-slate-800 px-4 py-2.5 sticky top-0 z-50 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
-      <!-- 標題與簡報名稱 -->
-      <div class="flex items-center gap-3">
-        <a href="jinhe_library_12meeting.html" class="px-2.5 py-1 rounded-lg bg-blue-600/30 text-blue-400 hover:bg-blue-600 hover:text-white transition text-xs font-bold flex items-center gap-1.5" title="返回完整版專頁">
+  <!-- 頂部極簡滿版控制列 -->
+  <header class="w-full bg-slate-950/90 border-b border-slate-800 px-5 py-2 shrink-0 z-50 backdrop-blur-md">
+    <div class="w-full flex items-center justify-between gap-3">
+      <!-- 左側：返回與標題 -->
+      <div class="flex items-center gap-3 min-w-0">
+        <a href="jinhe_library_12meeting.html" class="px-3 py-1.5 rounded-lg bg-blue-600/25 text-blue-300 hover:bg-blue-600 hover:text-white transition text-sm font-bold flex items-center gap-1 shrink-0" title="返回完整版網頁">
           <span>←</span>
-          <span>完整版網頁</span>
+          <span class="hidden sm:inline">完整版</span>
         </a>
-        <div class="h-4 w-px bg-slate-700"></div>
-        <div class="flex items-center gap-2">
-          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 inline-block animate-pulse"></span>
-          <span class="font-black text-sm md:text-base tracking-wide text-white">錦和高中圖書館 12月行政導師會報【上台報告圖像版】</span>
+        <div class="flex items-center gap-2 truncate">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shrink-0 animate-pulse"></span>
+          <span class="font-black text-base md:text-lg tracking-wide text-white truncate">錦和高中圖書館 12月行政與導師會報</span>
         </div>
       </div>
 
-      <!-- 投影片索引標籤列 -->
-      <div class="hidden lg:flex items-center gap-1 text-xs">
-        <button onclick="goToSlide(0)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="0">1.封面</button>
-        <button onclick="goToSlide(1)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="1">2.校長特優</button>
-        <button onclick="goToSlide(2)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="2">3.閱讀心得19篇</button>
-        <button onclick="goToSlide(3)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="3">4.國際教育與借閱</button>
-        <button onclick="goToSlide(4)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="4">5.AIBook觀課</button>
-        <button onclick="goToSlide(5)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="5">6.AI研習與展會</button>
-        <button onclick="goToSlide(6)" class="slide-nav-btn px-2.5 py-1 rounded-md transition font-semibold" data-idx="6">7.12月時程總覽</button>
+      <!-- 中間：7大章節快速切換 -->
+      <div class="hidden xl:flex items-center gap-1.5 text-sm">
+        <button onclick="goToSlide(0)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="0">1.封面</button>
+        <button onclick="goToSlide(1)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="1">2.校長特優</button>
+        <button onclick="goToSlide(2)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="2">3.閱讀心得19篇</button>
+        <button onclick="goToSlide(3)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="3">4.國際與借閱</button>
+        <button onclick="goToSlide(4)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="4">5.AIBook觀課</button>
+        <button onclick="goToSlide(5)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="5">6.AI展會與帳號</button>
+        <button onclick="goToSlide(6)" class="slide-nav-btn px-3 py-1 rounded-lg transition font-bold" data-idx="6">7.12月時程</button>
       </div>
 
-      <!-- 右側控制鈕 (全螢幕、頁碼) -->
-      <div class="flex items-center gap-2">
-        <span id="pageIndicator" class="text-xs font-mono px-2.5 py-1 rounded-md bg-slate-800 text-amber-400 font-bold border border-slate-700">
+      <!-- 右側：字體縮放、頁碼、全螢幕 -->
+      <div class="flex items-center gap-2 shrink-0">
+        <div class="flex items-center bg-slate-800 rounded-lg border border-slate-700 overflow-hidden">
+          <button onclick="adjustFont(-0.08)" class="px-2.5 py-1 text-slate-200 hover:bg-slate-700 text-sm font-bold" title="縮小文字">A-</button>
+          <button onclick="resetFont()" class="px-2 py-1 text-slate-400 hover:bg-slate-700 text-xs font-mono border-x border-slate-700" title="重設字體大小">100%</button>
+          <button onclick="adjustFont(0.08)" class="px-2.5 py-1 text-slate-200 hover:bg-slate-700 text-sm font-bold" title="放大文字">A+</button>
+        </div>
+        <span id="pageIndicator" class="text-sm font-mono px-3 py-1 rounded-lg bg-slate-800 text-amber-400 font-black border border-slate-700">
           1 / 7
         </span>
-        <button onclick="toggleFullscreen()" class="px-2.5 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition text-xs font-semibold flex items-center gap-1 border border-slate-700" title="進入全螢幕簡報 (快捷鍵: F)">
-          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
-          全螢幕
+        <button onclick="toggleFullscreen()" class="px-3 py-1.5 rounded-lg bg-amber-500 text-slate-950 hover:bg-amber-400 transition text-sm font-black flex items-center gap-1.5 shadow-sm" title="切換全螢幕簡報 (快捷鍵: F)">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg>
+          <span class="hidden sm:inline">全螢幕</span>
         </button>
       </div>
     </div>
-    <!-- 投影片頂部進度條 -->
-    <div class="w-full bg-slate-800 h-1 mt-2 rounded-full overflow-hidden">
+    <!-- 頂部進度條 -->
+    <div class="w-full bg-slate-800 h-1.5 mt-2 rounded-full overflow-hidden">
       <div id="progressBar" class="bg-gradient-to-r from-blue-500 via-amber-400 to-emerald-400 h-full transition-all duration-300" style="width: 14.3%;"></div>
     </div>
   </header>
 
-  <!-- 簡報內容主體 -->
-  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 flex flex-col justify-center">
+  <!-- 滿版簡報畫布主體 (100% 寬度、充滿剩餘高度) -->
+  <main class="flex-1 w-full px-6 md:px-12 py-5 overflow-y-auto flex flex-col justify-center">
 
-    <!-- ==================== SLIDE 0: 封面 ==================== -->
-    <div class="slide active flex-col justify-center items-center text-center space-y-6">
-      <div class="max-w-4xl p-8 md:p-12 rounded-3xl bg-gradient-to-b from-slate-800/90 to-slate-900/90 border border-slate-700/80 shadow-2xl relative overflow-hidden">
-        <div class="absolute -right-10 -top-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs md:text-sm font-bold mb-4">
-          <span>🏛️ 新北市立錦和高中</span>
-          <span>•</span>
-          <span>115-1 行政會 ✕ 導師會議</span>
+    <!-- ==================== SLIDE 0: 滿版封面 ==================== -->
+    <div class="slide active flex-col justify-center items-center">
+      <div class="w-full h-full flex flex-col justify-between p-8 md:p-12 rounded-3xl bg-gradient-to-br from-slate-800/85 via-slate-900/90 to-blue-950/80 border border-slate-700/80 shadow-2xl relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <!-- 上半部主標題 -->
+        <div class="text-center space-y-4 my-auto">
+          <div class="inline-flex items-center gap-3 px-6 py-2 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/40 text-lg md:text-xl font-bold">
+            <span>🏛️ 新北市立錦和高級中學</span>
+            <span>•</span>
+            <span>115-1 行政會 ✕ 導師會議</span>
+          </div>
+
+          <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-tight pt-2">
+            圖書館處室 重點業務報告
+          </h1>
+          <p class="text-2xl md:text-3xl lg:text-4xl font-extrabold text-amber-400 tracking-wide">
+            【 115年 12月份 時程管制與重大成果 】
+          </p>
         </div>
 
-        <h1 class="text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
-          圖書館處室 重點業務工作報告
-        </h1>
-        <p class="text-lg md:text-2xl font-bold text-amber-400 mt-3">
-          【 115年12月份時程管制與重大成果 】
-        </p>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-700/60 text-left">
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/40">
-            <div class="text-xs text-amber-400 font-bold">🏆 榮譽肯定</div>
-            <div class="text-sm font-semibold text-white mt-1">校長榮獲教育部特優獎</div>
-            <div class="text-xs text-slate-400 mt-0.5">閱讀心得寫作大放異彩 19 篇</div>
+        <!-- 中下半部三大主軸滿版卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-auto">
+          <div class="p-6 md:p-7 rounded-2xl bg-amber-500/10 border-2 border-amber-400/40 space-y-2">
+            <div class="text-xl md:text-2xl text-amber-400 font-black">🏆 榮譽肯定</div>
+            <div class="text-2xl md:text-3xl font-black text-white">校長榮獲教育部特優獎</div>
+            <div class="text-lg md:text-xl text-slate-200">全國閱讀心得寫作勇奪 <strong class="text-amber-300">19 篇</strong>大獎</div>
           </div>
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/40">
-            <div class="text-xs text-emerald-400 font-bold">✈️ 閱讀與國際</div>
-            <div class="text-sm font-semibold text-white mt-1">教育旅行35人 ✕ 錦客行旅60人</div>
-            <div class="text-xs text-slate-400 mt-0.5">美日視訊交流、四樓藏書區開放</div>
+          <div class="p-6 md:p-7 rounded-2xl bg-emerald-500/10 border-2 border-emerald-400/40 space-y-2">
+            <div class="text-xl md:text-2xl text-emerald-400 font-black">✈️ 閱讀與國際</div>
+            <div class="text-2xl md:text-3xl font-black text-white">日本旅行35人 ✕ 錦客60人</div>
+            <div class="text-lg md:text-xl text-slate-200">美日視訊交流、四樓藏書區12月初開放</div>
           </div>
-          <div class="p-4 rounded-xl bg-slate-800/60 border border-slate-700/40">
-            <div class="text-xs text-blue-400 font-bold">🤖 AI科技前導</div>
-            <div class="text-sm font-semibold text-white mt-1">AIBook 生生用平板公開觀課</div>
-            <div class="text-xs text-slate-400 mt-0.5">Gemini AI帳號宣導、世貿展會參訪</div>
+          <div class="p-6 md:p-7 rounded-2xl bg-blue-500/10 border-2 border-blue-400/40 space-y-2">
+            <div class="text-xl md:text-2xl text-blue-400 font-black">🤖 AI科技前導</div>
+            <div class="text-2xl md:text-3xl font-black text-white">AIBook 生生用平板觀課</div>
+            <div class="text-lg md:text-xl text-slate-200">Gemini 帳號宣導、12月 10 場重點日程</div>
           </div>
         </div>
 
-        <div class="mt-8 flex flex-wrap items-center justify-between gap-4 pt-4 text-xs text-slate-400">
-          <div>報告人：<strong>吳孟仁 主任</strong> 率 讀服組、採編組、資訊組 團隊敬報</div>
-          <div class="flex items-center gap-2">
-            <span class="px-2 py-0.5 rounded bg-slate-700/80 text-slate-300">快捷鍵提示</span>
-            <span>按鍵盤 <strong>← / →</strong> 或 <strong>空白鍵</strong> 切換投影片</span>
-          </div>
+        <!-- 底部講者資訊 -->
+        <div class="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-700/70 text-base md:text-xl text-slate-300">
+          <div>報告單位：<strong class="text-white">圖書館處室（吳孟仁 主任 率 讀服組、採編組、資訊組）</strong></div>
+          <div class="text-amber-300 font-bold">💡 按鍵盤 ← / → / 空白鍵 換頁 ｜ 按 F 進入全螢幕</div>
         </div>
       </div>
     </div>
 
     <!-- ==================== SLIDE 1: 校長特優獎 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <!-- 左側：海報大圖 (佔5欄) -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative group cursor-pointer max-w-sm rounded-2xl overflow-hidden border-2 border-amber-500/50 shadow-2xl bg-black" onclick="openLightbox('images/12meeting/image2.jpeg', '祝賀 張純寧校長 榮獲115年教育部推動教育AI及數位學習 績優人員特優獎')">
-            <img src="images/12meeting/image2.jpeg" alt="校長特優獎祝賀海報" class="w-full h-auto object-contain max-h-[68vh] group-hover:scale-105 transition duration-300">
-            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-bold gap-1.5">
-              <span>🔍 點擊全螢幕放大</span>
-            </div>
-            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-amber-500 text-black text-xs font-black shadow-lg">
+      <div class="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- 左側大圖 (佔5欄) -->
+        <div class="lg:col-span-5 h-full flex items-center justify-center">
+          <div class="relative group cursor-pointer rounded-3xl overflow-hidden border-4 border-amber-400/70 shadow-2xl bg-black max-h-[78vh]" onclick="openLightbox('images/12meeting/image2.jpeg', '祝賀 張純寧校長 榮獲115年教育部推動教育AI及數位學習 績優人員特優獎')">
+            <img src="images/12meeting/image2.jpeg" alt="校長特優獎祝賀海報" class="w-auto h-full max-h-[76vh] object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-amber-400 text-slate-950 text-base font-black shadow-lg">
               ★ 全國最高榮譽
             </span>
           </div>
         </div>
-        <!-- 右側：文字重點卡片 (佔7欄) -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-xs font-bold">
+        <!-- 右側大字重點 (佔7欄) -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-lg md:text-xl font-black">
             <span>🎉 錦和榮耀・全校同慶</span>
           </div>
-          <h2 class="text-2xl md:text-4xl font-black text-white leading-tight">
-            張純寧 校長 榮獲教育部<br>
-            <span class="text-amber-400">「教育AI及數位學習 績優人員特優獎」</span>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight">
+            狂賀！張純寧 校長 榮獲<br>
+            <span class="text-amber-400">教育部 AI 及數位學習 特優獎</span>
           </h2>
-          <p class="text-base text-slate-300 leading-relaxed">
-            教育部 115 年推動教育 AI 及數位學習績優徵選計畫評審揭曉，肯定張校長帶領錦和高中深耕數位智慧學習、AI 前導示範與教學實踐的卓越成就！
+          <p class="text-xl md:text-2xl text-slate-200 leading-relaxed">
+            115年教育部推動教育AI及數位學習績優徵選計畫，榮獲<strong class="text-amber-300">「績優中小學人員特優獎」</strong>最高殊榮！
           </p>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-            <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 space-y-1">
-              <div class="text-xs text-amber-400 font-bold">📅 頒獎典禮時程</div>
-              <div class="text-base font-bold text-white">115年 12月09日 (三)</div>
-              <div class="text-xs text-slate-400">上午 09:00 - 12:00</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+            <div class="p-6 rounded-2xl bg-slate-800/90 border-2 border-amber-400/40 space-y-2">
+              <div class="text-lg md:text-xl text-amber-400 font-black">📅 頒獎典禮時間</div>
+              <div class="text-2xl md:text-3xl font-black text-white">115年 12月09日 (三)</div>
+              <div class="text-lg md:text-xl text-slate-300 font-bold">上午 09:00 ～ 中午 12:00</div>
             </div>
-            <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 space-y-1">
-              <div class="text-xs text-blue-400 font-bold">📍 頒獎典禮地點</div>
-              <div class="text-base font-bold text-white">大臺南會展中心</div>
-              <div class="text-xs text-slate-400">2026自主學習節暨AI賦能教與學研討會</div>
+            <div class="p-6 rounded-2xl bg-slate-800/90 border-2 border-blue-400/40 space-y-2">
+              <div class="text-lg md:text-xl text-blue-400 font-black">📍 頒獎典禮地點</div>
+              <div class="text-2xl md:text-3xl font-black text-white">大臺南會展中心</div>
+              <div class="text-lg md:text-xl text-slate-300 font-bold">2026自主學習節暨AI賦能教與學研討會</div>
             </div>
-          </div>
-          <div class="p-4 rounded-xl bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/30 text-xs text-amber-200">
-            💡 <strong>成果殊榮：</strong> 本校推動科技教育中心、AI 前導學校、生生用平板與跨域數位教材獲得教育部中央高度肯定！
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 2: 閱讀心得比賽 ==================== -->
+    <!-- ==================== SLIDE 2: 全國閱讀心得 19 篇 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <!-- 左側：海報大圖 (佔5欄) -->
-        <div class="lg:col-span-5 flex justify-center">
-          <div class="relative group cursor-pointer max-w-sm rounded-2xl overflow-hidden border-2 border-blue-500/50 shadow-2xl bg-black" onclick="openLightbox('images/12meeting/image1.jpeg', '第1151008梯次 全國高級中等學校閱讀心得寫作比賽 榮譽榜')">
-            <img src="images/12meeting/image1.jpeg" alt="閱讀心得比賽榮譽榜海報" class="w-full h-auto object-contain max-h-[68vh] group-hover:scale-105 transition duration-300">
-            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-bold gap-1.5">
-              <span>🔍 點擊全螢幕放大</span>
-            </div>
-            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-black shadow-lg">
-              ★ 獲獎共 19 篇
+      <div class="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- 左側海報 (佔5欄) -->
+        <div class="lg:col-span-5 h-full flex items-center justify-center">
+          <div class="relative group cursor-pointer rounded-3xl overflow-hidden border-4 border-blue-400/70 shadow-2xl bg-black max-h-[78vh]" onclick="openLightbox('images/12meeting/image1.jpeg', '第1151008梯次 全國高級中等學校閱讀心得寫作比賽 榮譽榜')">
+            <img src="images/12meeting/image1.jpeg" alt="閱讀心得比賽榮譽榜" class="w-auto h-full max-h-[76vh] object-contain group-hover:scale-105 transition duration-300">
+            <span class="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-blue-500 text-white text-base font-black shadow-lg">
+              ★ 共計獲獎 19 篇
             </span>
           </div>
         </div>
-        <!-- 右側：獲獎詳情 (佔7欄) -->
-        <div class="lg:col-span-7 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 border border-blue-500/30 text-xs font-bold">
-            <span>📝 全國高級中等學校閱讀心得寫作比賽（第1151008梯次）</span>
+        <!-- 右側大字得獎名單 (佔7欄) -->
+        <div class="lg:col-span-7 space-y-5">
+          <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-blue-500/20 text-blue-200 border border-blue-400/40 text-lg font-black">
+            <span>📝 全國高中閱讀心得寫作比賽（第1151008梯次）</span>
           </div>
-          <h2 class="text-2xl md:text-4xl font-black text-white leading-tight">
-            全校共榮獲 <span class="text-amber-400">優等 4 篇</span> ✕ <span class="text-blue-400">甲等 15 篇</span><br>
-            <span class="text-emerald-400 text-xl md:text-2xl">總計 19 篇大獎・表現亮眼！</span>
+          <h2 class="text-4xl md:text-5xl font-black text-white leading-tight">
+            勇奪 <span class="text-amber-400">優等 4 篇</span> ✕ <span class="text-blue-400">甲等 15 篇</span>
+            <span class="text-emerald-400 ml-2">共 19 篇！</span>
           </h2>
           
-          <div class="space-y-3">
-            <!-- 優等 -->
-            <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 space-y-1">
-              <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded bg-amber-500 text-black text-xs font-black">優等 4 篇</span>
-                <span class="text-xs text-amber-300 font-bold">恭喜得獎同學：</span>
-              </div>
-              <div class="text-base font-bold text-white tracking-wide">
-                103 邱繼威、104 李宣蓉、105 簡瑄佑、107 許凱晴
-              </div>
+          <!-- 優等 -->
+          <div class="p-5 rounded-2xl bg-amber-500/15 border-2 border-amber-400/50 space-y-2">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-lg bg-amber-400 text-slate-950 text-base md:text-lg font-black">🏆 優等 4 篇</span>
+              <span class="text-lg text-amber-200 font-bold">表現優異</span>
             </div>
-            <!-- 甲等 -->
-            <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 space-y-1">
-              <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded bg-blue-600 text-white text-xs font-black">甲等 15 篇</span>
-                <span class="text-xs text-slate-300 font-bold">得獎同學名錄：</span>
-              </div>
-              <div class="text-xs md:text-sm text-slate-200 leading-relaxed font-medium">
-                101李天倫、103史芸菲、104何湘琪、104陳捷筑、104楊翔崴、105藍宇瑄、105廖子文、106林羽葳、106何秉諺、106林宇洋、107吳佳軒、107李心恬、107張馨尹、109朱恩儀、109陳昱晴
-              </div>
+            <div class="text-2xl md:text-3xl font-black text-white tracking-wide">
+              103邱繼威、104李宣蓉、105簡瑄佑、107許凱晴
             </div>
-            <!-- 指導老師致謝 -->
-            <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 text-xs md:text-sm text-slate-300 flex items-center gap-2">
-              <span class="text-rose-400 text-lg">💐</span>
-              <div>
-                <strong>感謝辛勤指導老師：</strong>
-                <span class="text-white font-bold">龐靜儀 老師、賴于靜 老師、李慧娟 老師、張鳳翔 老師</span>
-              </div>
+          </div>
+
+          <!-- 甲等 -->
+          <div class="p-5 rounded-2xl bg-slate-800/90 border-2 border-slate-600 space-y-2">
+            <div class="flex items-center gap-3">
+              <span class="px-3.5 py-1 rounded-lg bg-blue-500 text-white text-base md:text-lg font-black">🎖️ 甲等 15 篇</span>
             </div>
+            <div class="text-lg md:text-xl text-slate-100 leading-relaxed font-bold">
+              101李天倫、103史芸菲、104何湘琪、104陳捷筑、104楊翔崴、105藍宇瑄、105廖子文、106林羽葳、106何秉諺、106林宇洋、107吳佳軒、107李心恬、107張馨尹、109朱恩儀、109陳昱晴
+            </div>
+          </div>
+
+          <!-- 指導老師 -->
+          <div class="p-4 rounded-2xl bg-rose-500/15 border border-rose-400/40 text-lg md:text-xl text-rose-100 font-bold flex items-center gap-3">
+            <span class="text-2xl">💐</span>
+            <span>感謝指導老師：<strong class="text-white">龐靜儀、賴于靜、李慧娟、張鳳翔 老師</strong></span>
           </div>
         </div>
       </div>
@@ -261,79 +251,66 @@
 
     <!-- ==================== SLIDE 3: 閱讀與國際教育 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="max-w-5xl mx-auto w-full space-y-5">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-3">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-black text-white flex items-center gap-2.5">
-              <span>✈️</span>
-              閱讀與國際教育 重點推動進度
-            </h2>
-            <p class="text-xs text-slate-400 mt-1">日本教育旅行、錦客行旅涉外接待、國際視訊交流與四樓藏書區重啟</p>
-          </div>
-          <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-bold">
+      <div class="w-full h-full flex flex-col justify-center space-y-5">
+        <div class="flex items-center justify-between border-b-2 border-slate-700 pb-3">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white flex items-center gap-3">
+            <span>✈️</span>
+            閱讀推廣 ✕ 國際教育 重點進度
+          </h2>
+          <span class="px-5 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 text-lg font-black">
             讀服組 ✕ 採編組
           </span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 flex-1">
           
-          <!-- 116年日本教育旅行 -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-emerald-950/40 to-slate-900 border border-emerald-500/30 space-y-2">
+          <!-- 116年日本國際教育旅行 -->
+          <div class="p-6 md:p-7 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-slate-900 border-2 border-emerald-400/50 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-base text-emerald-400 flex items-center gap-2">
-                <span>✈️</span> 116年 日本國際教育旅行
-              </span>
-              <span class="px-2 py-0.5 rounded bg-emerald-500 text-black text-xs font-black">正取 35 人</span>
+              <span class="font-black text-2xl md:text-3xl text-emerald-400">✈️ 116年 日本國際教育旅行</span>
+              <span class="px-4 py-1 rounded-xl bg-emerald-400 text-slate-950 text-lg font-black">共 35 人</span>
             </div>
-            <div class="text-xs md:text-sm text-slate-300 space-y-1">
-              <div>• <strong>學生錄取人數：</strong>高一 13 人、高二 19 人、高三 3 人（共 35 人）。</div>
-              <div>• <strong>旅行社招標：</strong>預計於 <strong class="text-white">12月或 1月</strong> 正式辦理招標採購。</div>
-              <div>• <strong>出訪時程：</strong>116年05月24日(一) ～ 05月29日(六) 關西考察研習。</div>
+            <div class="text-xl md:text-2xl text-slate-100 space-y-2.5 pt-3 font-medium">
+              <div>• 招募人數：高一 <strong class="text-emerald-300">13</strong> 人、高二 <strong class="text-emerald-300">19</strong> 人、高三 <strong class="text-emerald-300">3</strong> 人</div>
+              <div>• 招標時程：預計 <strong class="text-white">12月 或 1月</strong> 辦理公開招標</div>
             </div>
           </div>
 
           <!-- 錦客行旅 -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-purple-950/40 to-slate-900 border border-purple-500/30 space-y-2">
+          <div class="p-6 md:p-7 rounded-3xl bg-gradient-to-br from-purple-950/60 to-slate-900 border-2 border-purple-400/50 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-base text-purple-400 flex items-center gap-2">
-                <span>🎒</span> 錦客行旅 接待大使培力
-              </span>
-              <span class="px-2 py-0.5 rounded bg-purple-500 text-white text-xs font-black">招募 60 人</span>
+              <span class="font-black text-2xl md:text-3xl text-purple-300">🎒 錦客行旅 接待大使</span>
+              <span class="px-4 py-1 rounded-xl bg-purple-500 text-white text-lg font-black">約 60 人</span>
             </div>
-            <div class="text-xs md:text-sm text-slate-300 space-y-1">
-              <div>• <strong>招募盛況：</strong>全校共招募約 <strong class="text-purple-300 font-bold">60 位學子</strong>，培訓英語口說與接待禮儀。</div>
-              <div>• <strong>配對進度：</strong>正與國外合作學校進一步確認接待日程後，即行分組配對演練。</div>
+            <div class="text-xl md:text-2xl text-slate-100 space-y-2.5 pt-3 font-medium">
+              <div>• 目前全校共招募約 <strong class="text-purple-300">60 位學生</strong> 熱情參與</div>
+              <div>• 與國外學校確認相關細節後即行配對接待</div>
             </div>
           </div>
 
-          <!-- 國際視訊交流 & 宜蘭高中參訪 -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-cyan-950/40 to-slate-900 border border-cyan-500/30 space-y-2">
+          <!-- 國際視訊 & 宜蘭高中參訪 -->
+          <div class="p-6 md:p-7 rounded-3xl bg-gradient-to-br from-cyan-950/60 to-slate-900 border-2 border-cyan-400/50 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-base text-cyan-400 flex items-center gap-2">
-                <span>🌐</span> 跨國視訊 ✕ NPDL 宜中參訪
-              </span>
-              <span class="px-2 py-0.5 rounded bg-cyan-500 text-black text-xs font-black">多元交流</span>
+              <span class="font-black text-2xl md:text-3xl text-cyan-300">🌐 國際視訊 ✕ NPDL 參訪</span>
+              <span class="px-4 py-1 rounded-xl bg-cyan-400 text-slate-950 text-lg font-black">跨國・跨校</span>
             </div>
-            <div class="text-xs md:text-sm text-slate-300 space-y-1">
-              <div>• <strong>美國哈佛西湖高中：</strong>兩校持續以非同步校園生活錄影、雜誌交流。</div>
-              <div>• <strong>日本FC今治高校里山校：</strong>已於 11/16、11/27 完成跨國視訊。</div>
-              <div>• <strong>NPDL 宜蘭高中參訪：</strong><strong class="text-white">12/21 (一)</strong> @ 圖書館4F多元探索教室。</div>
+            <div class="text-xl md:text-2xl text-slate-100 space-y-2 pt-3 font-medium">
+              <div>• 🇺🇸 哈佛西湖高中：校園生活錄影、雜誌分享</div>
+              <div>• 🇯🇵 FC今治高校里山校：11/16、11/27 交流</div>
+              <div>• 🏫 <strong class="text-cyan-300">12/21(一)</strong> NPDL 宜蘭高中參訪 @ 4F探索教室</div>
             </div>
           </div>
 
-          <!-- 四樓藏書區開放 & 自主學習加退選 -->
-          <div class="p-5 rounded-2xl bg-gradient-to-br from-rose-950/40 to-slate-900 border border-rose-500/30 space-y-2">
+          <!-- 四樓借閱 & 自主學習 -->
+          <div class="p-6 md:p-7 rounded-3xl bg-gradient-to-br from-rose-950/60 to-slate-900 border-2 border-rose-400/50 flex flex-col justify-between">
             <div class="flex items-center justify-between">
-              <span class="font-bold text-base text-rose-400 flex items-center gap-2">
-                <span>📚</span> 四樓藏書區重啟 ✕ 自主學習
-              </span>
-              <span class="px-2 py-0.5 rounded bg-rose-500 text-white text-xs font-black">12月初開放</span>
+              <span class="font-black text-2xl md:text-3xl text-rose-300">📚 四樓開放 ✕ 自主學習</span>
+              <span class="px-4 py-1 rounded-xl bg-rose-500 text-white text-lg font-black">12月初開放</span>
             </div>
-            <div class="text-xs md:text-sm text-slate-300 space-y-1">
-              <div>• <strong>四樓借閱重啟：</strong>修繕整理完竣，<strong>12 月初正式開放圖書借閱</strong>！</div>
-              <div>• <strong>好書推薦：</strong>歡迎師生多加利用「好書推薦」系統推薦新書。</div>
-              <div>• <strong>自主學習時程：</strong><strong>12/11 期末會議</strong>；<strong>12/28~01/01 加退選</strong>。</div>
-              <div class="text-amber-400 text-[11px] font-semibold">⚠️ 中午借閱區製作海報請填單並清理乾淨。</div>
+            <div class="text-xl md:text-2xl text-slate-100 space-y-2 pt-3 font-medium">
+              <div>• 圖書館四樓 <strong class="text-rose-300">12月初開放借閱</strong>，歡迎利用「好書推薦」</div>
+              <div>• 自主學習：<strong class="text-white">12/11 期末會議</strong> ｜ <strong class="text-white">12/28~01/01 加退選</strong></div>
+              <div class="text-amber-300 font-bold">⚠️ 中午借閱覽區製海報，務必填單與環境清理</div>
             </div>
           </div>
 
@@ -341,232 +318,218 @@
       </div>
     </div>
 
-    <!-- ==================== SLIDE 4: AIBook 數學觀課 ==================== -->
+    <!-- ==================== SLIDE 4: AIBook 數學公開觀課 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
-        <!-- 左側：觀課現場大圖 (佔6欄) -->
-        <div class="lg:col-span-6 flex justify-center">
-          <div class="relative group cursor-pointer w-full rounded-2xl overflow-hidden border-2 border-purple-500/50 shadow-2xl bg-black" onclick="openLightbox('images/12meeting/image5.png', '11/26 高二葉正宏老師 AIBook 數學公開觀課（iPad在數學教學上的應用）')">
-            <img src="images/12meeting/image5.png" alt="葉正宏老師數學觀課" class="w-full h-auto object-cover max-h-[65vh] group-hover:scale-105 transition duration-300">
-            <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center text-white text-sm font-bold gap-1.5">
-              <span>🔍 點擊全螢幕放大</span>
-            </div>
-            <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-purple-600 text-white text-xs font-black shadow-lg">
-              生生用平板實況
+      <div class="w-full h-full grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <!-- 左側超大觀課實況圖 (佔6欄) -->
+        <div class="lg:col-span-6 h-full flex items-center justify-center">
+          <div class="relative group cursor-pointer w-full rounded-3xl overflow-hidden border-4 border-purple-400/70 shadow-2xl bg-black" onclick="openLightbox('images/12meeting/image5.png', '11/26 高二葉正宏老師 AIBook 數學公開觀課（iPad在數學教學上的應用）')">
+            <img src="images/12meeting/image5.png" alt="葉正宏老師數學觀課" class="w-full h-auto max-h-[74vh] object-cover group-hover:scale-105 transition duration-300">
+            <span class="absolute top-4 left-4 px-4 py-1.5 rounded-full bg-purple-600 text-white text-base font-black shadow-lg">
+              📱 生生用平板 實況紀實
             </span>
           </div>
         </div>
-        <!-- 右側：觀課亮點與即將觀課時程 (佔6欄) -->
-        <div class="lg:col-span-6 space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30 text-xs font-bold">
-            <span>📱 AIBook 學校計畫 ✕ 教師增能公開觀課</span>
+        <!-- 右側大字說明與後續觀課預告 (佔6欄) -->
+        <div class="lg:col-span-6 space-y-5">
+          <div class="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-purple-500/20 text-purple-200 border border-purple-400/40 text-lg font-black">
+            <span>📱 AIBook 學校計畫 ✕ 公開觀課</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-black text-white leading-tight">
-            高二 葉正宏 老師 數學公開觀課<br>
-            <span class="text-purple-400">「iPad 在數學教學上的應用」</span>
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white leading-tight">
+            葉正宏 老師 數學公開觀課<br>
+            <span class="text-purple-400">iPad 繪製指數與對數函數</span>
           </h2>
-          <div class="p-4 rounded-xl bg-slate-800/80 border border-slate-700 text-xs md:text-sm text-slate-300 leading-relaxed">
-            葉老師以穩健流暢的示範，帶領全班每生一台 iPad，一步步繪製<strong>指數與對數函數圖形</strong>，不僅一目瞭然，更能即時互動調整參數，為「生生用平板」提供最成功的示範典範！
+          <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-600 text-xl md:text-2xl text-slate-100 leading-relaxed font-medium">
+            帶領高二學生一步步在 iPad 繪出指數、對數函數圖形，視覺一目瞭然，大幅提升學習印象與成就感！
           </div>
           
-          <div class="space-y-2 pt-2">
-            <div class="text-xs font-bold text-amber-400">🌟 12月份 即將登場之校內公開觀課：</div>
-            <!-- 章世宣 -->
-            <div class="p-3 rounded-xl bg-blue-950/40 border border-blue-500/40 flex items-center justify-between text-xs md:text-sm">
-              <div>
-                <span class="font-bold text-blue-400">12/08 (二) 09:00 - 11:00</span>
-                <span class="text-white ml-2">八年級英語科 <strong>章世宣 老師</strong></span>
+          <div class="space-y-3 pt-1">
+            <div class="text-xl font-black text-amber-400">🌟 12/08 (二) 雙場公開觀課預告：</div>
+            <div class="p-4 rounded-2xl bg-blue-950/60 border-2 border-blue-400/50 space-y-1">
+              <div class="text-xl md:text-2xl font-black text-white">
+                <span class="text-blue-400">09:00 - 11:00</span> 八年級英語科 章世宣 老師
               </div>
-              <span class="text-slate-400 text-xs">崇林國中羅陽青輔導</span>
+              <div class="text-lg text-slate-300">AI 導入教學示範 • 崇林國中羅陽青種子教師入校輔導</div>
             </div>
-            <!-- 陳維倫 -->
-            <div class="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex items-center justify-between text-xs md:text-sm">
-              <div>
-                <span class="font-bold text-emerald-400">12/08 (二) 13:00 - 17:00</span>
-                <span class="text-white ml-2">自主學習節 <strong>陳維倫 老師</strong></span>
+            <div class="p-4 rounded-2xl bg-emerald-950/60 border-2 border-emerald-400/50 space-y-1">
+              <div class="text-xl md:text-2xl font-black text-white">
+                <span class="text-emerald-400">13:00 - 16:00</span> 自主學習節 陳維倫 老師
               </div>
-              <span class="text-slate-400 text-xs">跨越時空與科學家相遇</span>
+              <div class="text-lg text-slate-300">主題：跨越時空與科學家相遇 @ 圖書館三樓閱覽區</div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 5: AI研習與展會 ==================== -->
+    <!-- ==================== SLIDE 5: AI展會與帳號宣導 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="max-w-5xl mx-auto w-full space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-black text-white flex items-center gap-2">
-              <span>🤖</span>
-              AI科技增能 ✕ 師生校外論壇展會風采
-            </h2>
-            <p class="text-xs text-slate-400 mt-0.5">出席國際研討會、AI實踐成果分享會與世貿教育科技展</p>
-          </div>
-          <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold">
-            科技與資訊前導
+      <div class="w-full h-full flex flex-col justify-between space-y-5">
+        <div class="flex items-center justify-between border-b-2 border-slate-700 pb-3">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white flex items-center gap-3">
+            <span>🤖</span>
+            AI科技研習 ✕ 師生校外論壇與展會
+          </h2>
+          <span class="px-5 py-1.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/40 text-lg font-black">
+            資訊組 ✕ 科技中心
           </span>
         </div>
 
-        <!-- 3 幅照片排版 -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-          <!-- 研討會 -->
-          <div class="rounded-xl overflow-hidden bg-slate-800 border border-slate-700 cursor-pointer group" onclick="openLightbox('images/12meeting/image3.png', '學生代表出席 AASVET 2026 國際學術研討會 (Taiwan Tech)')">
-            <div class="aspect-video relative overflow-hidden bg-black">
-              <img src="images/12meeting/image3.png" alt="AASVET研討會" class="w-full h-full object-cover group-hover:scale-105 transition">
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-cyan-600 text-white text-[10px] font-bold">國際學術研討會</span>
+        <!-- 3 聯排大圖卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 flex-1 items-center">
+          <div class="rounded-2xl overflow-hidden bg-slate-800/90 border-2 border-cyan-500/40 cursor-pointer group h-full flex flex-col" onclick="openLightbox('images/12meeting/image3.png', '學生代表出席 AASVET 2026 國際學術研討會 (Taiwan Tech)')">
+            <div class="flex-1 relative overflow-hidden bg-black min-h-[220px]">
+              <img src="images/12meeting/image3.png" alt="AASVET 2026" class="w-full h-full object-cover group-hover:scale-105 transition">
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-cyan-500 text-slate-950 text-sm font-black">國際學術研討會</span>
             </div>
-            <div class="p-2.5">
-              <div class="text-xs font-bold text-white">AASVET 2026 國際年會</div>
-              <div class="text-[11px] text-slate-400">錦和學子出席臺科大技職科技論壇</div>
+            <div class="p-4">
+              <div class="text-xl md:text-2xl font-black text-white">AASVET 2026 國際年會</div>
+              <div class="text-base md:text-lg text-slate-300 mt-1">學生代表出席臺科大技職科技論壇</div>
             </div>
           </div>
 
-          <!-- 教師研習 -->
-          <div class="rounded-xl overflow-hidden bg-slate-800 border border-slate-700 cursor-pointer group" onclick="openLightbox('images/12meeting/image4.png', '中小學人工智慧 (AI) 教學實踐設計與期中成果交流分享會 教師團隊合影')">
-            <div class="aspect-video relative overflow-hidden bg-black">
+          <div class="rounded-2xl overflow-hidden bg-slate-800/90 border-2 border-emerald-500/40 cursor-pointer group h-full flex flex-col" onclick="openLightbox('images/12meeting/image4.png', '中小學人工智慧 (AI) 教學實踐設計與期中成果交流分享會 教師團隊合影')">
+            <div class="flex-1 relative overflow-hidden bg-black min-h-[220px]">
               <img src="images/12meeting/image4.png" alt="AI教師研習" class="w-full h-full object-cover group-hover:scale-105 transition">
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-emerald-600 text-white text-[10px] font-bold">AI 教學實踐力</span>
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-emerald-500 text-slate-950 text-sm font-black">AI 教學實踐力</span>
             </div>
-            <div class="p-2.5">
-              <div class="text-xs font-bold text-white">解鎖育見 AI 實踐力分享會</div>
-              <div class="text-[11px] text-slate-400">錦和教師團隊研發中小學 AI 教學設計</div>
+            <div class="p-4">
+              <div class="text-xl md:text-2xl font-black text-white">解鎖育見 AI 成果分享會</div>
+              <div class="text-base md:text-lg text-slate-300 mt-1">錦和教師團隊共學 AI 教學實踐設計</div>
             </div>
           </div>
 
-          <!-- 世貿展覽 -->
-          <div class="rounded-xl overflow-hidden bg-slate-800 border border-slate-700 cursor-pointer group" onclick="openLightbox('images/12meeting/image6.png', '師生參訪 2026 臺灣教育科技展（台北世貿展場前大合影）')">
-            <div class="aspect-video relative overflow-hidden bg-black">
-              <img src="images/12meeting/image6.png" alt="教育科技展" class="w-full h-full object-cover group-hover:scale-105 transition">
-              <span class="absolute top-2 left-2 px-2 py-0.5 rounded bg-indigo-600 text-white text-[10px] font-bold">世貿科技大展</span>
+          <div class="rounded-2xl overflow-hidden bg-slate-800/90 border-2 border-indigo-500/40 cursor-pointer group h-full flex flex-col" onclick="openLightbox('images/12meeting/image6.png', '師生參訪 2026 臺灣教育科技展（台北世貿展場前大合影）')">
+            <div class="flex-1 relative overflow-hidden bg-black min-h-[220px]">
+              <img src="images/12meeting/image6.png" alt="臺灣教育科技展" class="w-full h-full object-cover group-hover:scale-105 transition">
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-lg bg-indigo-500 text-white text-sm font-black">世貿科技大展</span>
             </div>
-            <div class="p-2.5">
-              <div class="text-xs font-bold text-white">臺灣教育科技展 EdTech</div>
-              <div class="text-[11px] text-slate-400">師生赴台北世貿參訪最新教育科技</div>
+            <div class="p-4">
+              <div class="text-xl md:text-2xl font-black text-white">臺灣教育科技展參訪</div>
+              <div class="text-base md:text-lg text-slate-300 mt-1">師生赴世貿體驗最新智慧教育科技</div>
             </div>
           </div>
         </div>
 
-        <!-- 警示宣導卡 (Gemini AI Pro 帳號) -->
-        <div class="p-4 rounded-xl bg-rose-950/40 border border-rose-500/40 flex flex-col md:flex-row md:items-center justify-between gap-3 text-xs md:text-sm">
+        <!-- 醒目大字宣導卡：Gemini AI Pro -->
+        <div class="p-5 md:p-6 rounded-2xl bg-rose-950/60 border-2 border-rose-500/70 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div class="space-y-1">
-            <div class="font-bold text-rose-400 flex items-center gap-1.5">
-              <span class="text-base">⚠️</span> 重要宣導：Gemini AI Pro 高級帳號使用規範
+            <div class="text-xl md:text-2xl font-black text-rose-300 flex items-center gap-2">
+              <span>⚠️</span> 重要宣導：Gemini AI Pro 帳號使用提醒
             </div>
-            <div class="text-slate-300">
-              因 9、10 月全校未使用被官方<strong>回收 10 組帳號</strong>！請獲配帳號教師<strong>每月至少登入使用一次</strong>，珍惜珍貴 AI 資源。
+            <div class="text-lg md:text-xl text-white font-medium">
+              本校因 9、10 月未使用已遭回收 <strong class="text-amber-300 font-black">10 組帳號</strong>！請獲配教師<strong class="text-rose-300 underline">每月至少登入使用一次</strong>，珍惜寶貴資源！
             </div>
           </div>
-          <span class="px-3 py-1 rounded-md bg-rose-600 text-white font-bold shrink-0 text-xs">每月務必登入一次</span>
+          <span class="px-5 py-2.5 rounded-xl bg-rose-600 text-white text-lg font-black shrink-0 text-center shadow-lg">每月至少使用 1 次</span>
         </div>
       </div>
     </div>
 
-    <!-- ==================== SLIDE 6: 12月時程總覽 ==================== -->
+    <!-- ==================== SLIDE 6: 12月重要行事時程總覽 ==================== -->
     <div class="slide flex-col justify-center">
-      <div class="max-w-5xl mx-auto w-full space-y-4">
-        <div class="flex items-center justify-between border-b border-slate-800 pb-2">
-          <div>
-            <h2 class="text-2xl md:text-3xl font-black text-white flex items-center gap-2">
-              <span>📅</span>
-              12月份 重要活動與行事時程總覽
-            </h2>
-            <p class="text-xs text-slate-400 mt-0.5">全期重點日程速覽・掌握關鍵活動節點</p>
-          </div>
-          <span class="px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 border border-blue-500/30 text-xs font-bold">
-            全期 10 場次管制
+      <div class="w-full h-full flex flex-col justify-between space-y-5">
+        <div class="flex items-center justify-between border-b-2 border-slate-700 pb-3">
+          <h2 class="text-3xl md:text-4xl lg:text-5xl font-black text-white flex items-center gap-3">
+            <span>📅</span>
+            12月份 重要活動與研習時程總覽
+          </h2>
+          <span class="px-5 py-1.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 text-lg font-black">
+            全期關鍵節點速覽
           </span>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 flex-1">
           <!-- 12/08 -->
-          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-blue-500/20 text-blue-400 font-bold shrink-0">12/08</span>
+          <div class="p-5 rounded-2xl bg-slate-800/90 border-2 border-blue-500/40 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-blue-600 text-white text-xl font-black shrink-0">12/08</span>
             <div>
-              <div class="font-bold text-white text-sm">雙場公開觀課（章世宣老師、陳維倫老師）</div>
-              <div class="text-slate-400 mt-0.5">09:00 英語科章世宣老師 ｜ 13:00 自主學習節陳維倫老師</div>
+              <div class="font-black text-white text-xl md:text-2xl">雙場公開觀課（章世宣、陳維倫）</div>
+              <div class="text-base md:text-lg text-slate-300 mt-0.5">09:00 英語科章世宣 ｜ 13:00 自主學習節陳維倫</div>
             </div>
           </div>
           <!-- 12/09 -->
-          <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-amber-500 text-black font-black shrink-0">12/09</span>
+          <div class="p-5 rounded-2xl bg-amber-500/15 border-2 border-amber-400/60 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-amber-400 text-slate-950 text-xl font-black shrink-0">12/09</span>
             <div>
-              <div class="font-bold text-amber-300 text-sm">🏆 教育部AI數位學習績優特優獎 頒獎典禮</div>
-              <div class="text-slate-300 mt-0.5">大臺南會展中心 • 恭喜張純寧校長榮獲特優受獎！</div>
+              <div class="font-black text-amber-300 text-xl md:text-2xl">🏆 教育部 AI 績優特優獎 頒獎典禮</div>
+              <div class="text-base md:text-lg text-white mt-0.5">大臺南會展中心 • 恭喜張純寧校長受獎！</div>
             </div>
           </div>
           <!-- 12/11 -->
-          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-slate-700 text-slate-300 font-bold shrink-0">12/11</span>
+          <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-600 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-slate-700 text-white text-xl font-black shrink-0">12/11</span>
             <div>
-              <div class="font-bold text-white text-sm">自主學習期末推動會議</div>
-              <div class="text-slate-400 mt-0.5">14:05 - 14:55 @ 圖書館 4F 多元探索教室</div>
+              <div class="font-black text-white text-xl md:text-2xl">自主學習期末推動會議</div>
+              <div class="text-base md:text-lg text-slate-300 mt-0.5">14:05 - 14:55 @ 圖書館 4F 多元探索教室</div>
             </div>
           </div>
           <!-- 12/13 -->
-          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-slate-700 text-slate-300 font-bold shrink-0">12/13</span>
+          <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-600 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-slate-700 text-white text-xl font-black shrink-0">12/13</span>
             <div>
-              <div class="font-bold text-white text-sm">扶輪社大型公益活動借用</div>
-              <div class="text-slate-400 mt-0.5">全日 @ 圖書館、演藝廳</div>
+              <div class="font-black text-white text-xl md:text-2xl">扶輪社大型活動借用</div>
+              <div class="text-base md:text-lg text-slate-300 mt-0.5">星期日全日 @ 圖書館、演藝廳</div>
             </div>
           </div>
           <!-- 12/19 -->
-          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-slate-700 text-slate-300 font-bold shrink-0">12/19</span>
+          <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-600 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-slate-700 text-white text-xl font-black shrink-0">12/19</span>
             <div>
-              <div class="font-bold text-white text-sm">獅子會捐車儀式 ✕ AI智慧小車研習</div>
-              <div class="text-slate-400 mt-0.5">中庭捐車儀式 ｜ 09:00-16:00 4F科技中心小車競賽組研習</div>
+              <div class="font-black text-white text-xl md:text-2xl">獅子會捐車 ✕ AI智慧小車研習</div>
+              <div class="text-base md:text-lg text-slate-300 mt-0.5">中庭操場捐車 ｜ 09:00-16:00 4F科技中心競賽組</div>
             </div>
           </div>
           <!-- 12/21 -->
-          <div class="p-3.5 rounded-xl bg-cyan-950/40 border border-cyan-500/30 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-cyan-500 text-black font-black shrink-0">12/21</span>
+          <div class="p-5 rounded-2xl bg-cyan-950/50 border-2 border-cyan-400/50 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-cyan-400 text-slate-950 text-xl font-black shrink-0">12/21</span>
             <div>
-              <div class="font-bold text-cyan-300 text-sm">115學年度 NPDL 宜蘭高中入校參訪</div>
-              <div class="text-slate-300 mt-0.5">全日 @ 圖書館 4F 多元探索教室（NPDL 教學社群）</div>
+              <div class="font-black text-cyan-300 text-xl md:text-2xl">NPDL 宜蘭高中入校參訪</div>
+              <div class="text-base md:text-lg text-white mt-0.5">圖書館 4F 多元探索教室（NPDL 社群）</div>
             </div>
           </div>
-          <!-- 12/23 -->
-          <div class="p-3.5 rounded-xl bg-slate-800/80 border border-slate-700 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-slate-700 text-slate-300 font-bold shrink-0">12/23</span>
+          <!-- 12/23 & 12/26 -->
+          <div class="p-5 rounded-2xl bg-slate-800/90 border border-slate-600 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-slate-700 text-white text-xl font-black shrink-0">12/23</span>
             <div>
-              <div class="font-bold text-white text-sm">【國小科議】NFC 感應式唱片機研習</div>
-              <div class="text-slate-400 mt-0.5">13:30 - 16:30 @ 科技中心教室</div>
+              <div class="font-black text-white text-xl md:text-2xl">國小科議 NFC唱片機 ｜ 12/26 共備</div>
+              <div class="text-base md:text-lg text-slate-300 mt-0.5">12/23 13:30 科議 ｜ 12/26 張耀元 AIBook 共備(暫定)</div>
             </div>
           </div>
-          <!-- 12/28~01/01 -->
-          <div class="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 flex items-start gap-3">
-            <span class="p-2 rounded-lg bg-emerald-500 text-black font-black shrink-0">12/28</span>
+          <!-- 12/28 -->
+          <div class="p-5 rounded-2xl bg-emerald-950/50 border-2 border-emerald-400/50 flex items-center gap-4">
+            <span class="px-4 py-2 rounded-xl bg-emerald-400 text-slate-950 text-xl font-black shrink-0">12/28</span>
             <div>
-              <div class="font-bold text-emerald-300 text-sm">自主學習跑班課程加退選期間</div>
-              <div class="text-slate-300 mt-0.5">12/28(一) 至 01/01(五) 高中部學生線上選課</div>
+              <div class="font-black text-emerald-300 text-xl md:text-2xl">自主學習跑班課程加退選</div>
+              <div class="text-base md:text-lg text-white mt-0.5">12/28(一) ～ 01/01(五) 線上加退選作業</div>
             </div>
           </div>
         </div>
 
-        <div class="text-center pt-2 text-xs text-slate-400">
-          感謝各位長官與導師的大力支持！祝全體師生教學順心、平安喜樂！
+        <div class="text-center text-lg md:text-xl font-bold text-amber-300 pt-1">
+          🙏 感謝各位長官與導師支持！敬請指教，祝全校師生平安順心！
         </div>
       </div>
     </div>
 
   </main>
 
-  <!-- 底部切換控制欄 -->
-  <footer class="bg-slate-900/90 border-t border-slate-800 px-4 py-3 sticky bottom-0 z-40 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <button onclick="prevSlide()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 transition text-xs md:text-sm font-bold flex items-center gap-1.5 border border-slate-700">
+  <!-- 底部極簡滿版切換欄 -->
+  <footer class="w-full bg-slate-950/90 border-t border-slate-800 px-6 py-2.5 shrink-0 z-40 backdrop-blur-md">
+    <div class="w-full flex items-center justify-between">
+      <button onclick="prevSlide()" class="px-6 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-100 transition text-base font-black flex items-center gap-2 border border-slate-700">
         <span>◀</span>
-        <span>上一頁 (Left)</span>
+        <span>上一頁</span>
       </button>
 
-      <div class="text-center">
-        <span class="text-xs text-slate-400">錦和高中圖書館 1151130 行政導師會議簡報</span>
+      <div class="hidden sm:flex items-center gap-4 text-sm text-slate-400 font-semibold">
+        <span>新北市立錦和高中圖書館 1151130 行政導師會議簡報</span>
+        <span>•</span>
+        <a href="https://sluskey.github.io/jhshread/jinhego-yes.html" target="_blank" class="text-amber-400 hover:underline font-bold">📖 閱讀磐石專區 ↗</a>
       </div>
 
-      <button onclick="nextSlide()" class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition text-xs md:text-sm font-bold flex items-center gap-1.5 shadow-md">
-        <span>下一頁 (Right)</span>
+      <button onclick="nextSlide()" class="px-7 py-2 rounded-xl bg-blue-600 hover:bg-blue-500 text-white transition text-base font-black flex items-center gap-2 shadow-lg">
+        <span>下一頁</span>
         <span>▶</span>
       </button>
     </div>
@@ -574,15 +537,16 @@
 
   <!-- Lightbox Modal -->
   <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
-    <div class="relative max-w-5xl max-h-[92vh] p-3 flex flex-col items-center" onclick="event.stopPropagation()">
-      <button onclick="closeLightbox()" class="absolute -top-10 right-0 text-white hover:text-slate-300 transition text-2xl font-bold bg-slate-800/80 w-9 h-9 rounded-full flex items-center justify-center">✕</button>
-      <img id="lightboxImg" src="" alt="放大檢視" class="max-w-full max-h-[82vh] object-contain rounded-2xl shadow-2xl border border-white/20">
-      <p id="lightboxCaption" class="text-white text-xs mt-3 text-center bg-slate-900/90 px-4 py-1.5 rounded-full border border-white/10 font-medium"></p>
+    <div class="relative max-w-[95vw] max-h-[95vh] p-2 flex flex-col items-center" onclick="event.stopPropagation()">
+      <button onclick="closeLightbox()" class="absolute -top-11 right-0 text-white hover:text-amber-400 transition text-2xl font-black bg-slate-800 w-10 h-10 rounded-full flex items-center justify-center border border-slate-600">✕</button>
+      <img id="lightboxImg" src="" alt="放大檢視" class="max-w-full max-h-[85vh] object-contain rounded-2xl shadow-2xl border-2 border-white/20">
+      <p id="lightboxCaption" class="text-white text-base md:text-lg mt-3 text-center bg-slate-900/95 px-5 py-2 rounded-full border border-white/15 font-bold"></p>
     </div>
   </div>
 
   <script>
     let currentSlide = 0;
+    let fontScale = 1.0;
     const slides = document.querySelectorAll('.slide');
     const totalSlides = slides.length;
     const navBtns = document.querySelectorAll('.slide-nav-btn');
@@ -590,9 +554,7 @@
     const progressBar = document.getElementById('progressBar');
 
     function updateSlide() {
-      slides.forEach((s, idx) => {
-        s.classList.toggle('active', idx === currentSlide);
-      });
+      slides.forEach((s, idx) => s.classList.toggle('active', idx === currentSlide));
       navBtns.forEach((btn, idx) => {
         if (idx === currentSlide) {
           btn.classList.add('bg-blue-600', 'text-white');
@@ -604,7 +566,6 @@
       });
       if (pageIndicator) pageIndicator.textContent = `${currentSlide + 1} / ${totalSlides}`;
       if (progressBar) progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function goToSlide(idx) {
@@ -615,30 +576,35 @@
     }
 
     function nextSlide() {
-      if (currentSlide < totalSlides - 1) {
-        currentSlide++;
-        updateSlide();
-      } else {
-        currentSlide = 0; // 循環回第一張
-        updateSlide();
-      }
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlide();
     }
 
     function prevSlide() {
-      if (currentSlide > 0) {
-        currentSlide--;
-        updateSlide();
-      } else {
-        currentSlide = totalSlides - 1; // 循環到最後一張
-        updateSlide();
-      }
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlide();
     }
 
-    // Keyboard controls
+    function adjustFont(delta) {
+      fontScale = Math.min(1.4, Math.max(0.75, fontScale + delta));
+      document.documentElement.style.setProperty('--font-scale', fontScale.toFixed(2));
+    }
+
+    function resetFont() {
+      fontScale = 1.0;
+      document.documentElement.style.setProperty('--font-scale', '1');
+    }
+
     document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        closeLightbox();
+        return;
+      }
       if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+        e.preventDefault();
         nextSlide();
       } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+        e.preventDefault();
         prevSlide();
       } else if (e.key === 'Home') {
         goToSlide(0);
@@ -646,6 +612,10 @@
         goToSlide(totalSlides - 1);
       } else if (e.key === 'f' || e.key === 'F') {
         toggleFullscreen();
+      } else if (e.key === '+' || e.key === '=') {
+        adjustFont(0.08);
+      } else if (e.key === '-') {
+        adjustFont(-0.08);
       }
     });
 
@@ -657,13 +627,10 @@
       }
     }
 
-    // Lightbox
     function openLightbox(src, caption) {
       const modal = document.getElementById('lightboxModal');
-      const img = document.getElementById('lightboxImg');
-      const cap = document.getElementById('lightboxCaption');
-      img.src = src;
-      cap.textContent = caption || '';
+      document.getElementById('lightboxImg').src = src;
+      document.getElementById('lightboxCaption').textContent = caption || '';
       modal.classList.add('active');
     }
 
@@ -671,7 +638,6 @@
       document.getElementById('lightboxModal').classList.remove('active');
     }
 
-    // Init
     updateSlide();
   </script>
 </body>
