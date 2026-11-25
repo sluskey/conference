@@ -19,7 +19,7 @@
     <!-- Top Banner Image -->
     <img src="library_reading_banner_1789355439906.jpg" class="w-full h-48 md:h-64 object-cover rounded-2xl shadow-md border border-[var(--border)]" alt="圖書館閱讀情境">
 
-    <!-- 歷次會議期別切換導覽列 (依日期最新在左側，並預留後續會議擴充空間) -->
+        <!-- 歷次會議期別切換導覽列 (依日期最新在左側，並預留後續會議擴充空間) -->
     <nav class="no-print bg-[var(--card)] border border-[var(--border)] rounded-2xl p-3.5 shadow-sm">
       <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div class="flex items-center gap-2">
@@ -27,23 +27,29 @@
           <span class="text-xs font-bold text-[var(--foreground)] tracking-wide">歷次會議專頁切換：</span>
         </div>
         <div class="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0">
-          <!-- 最左側：11月行政會議 (最新，點擊切換) -->
-          <a href="jinhe_library_11meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 115學年度 11月份行政會議">
-            <span>11月行政會議</span>
-            <span class="text-[10px] bg-blue-100 dark:bg-blue-900/60 text-blue-700 dark:text-blue-300 px-1.5 py-0.2 rounded font-bold">最新</span>
+          <!-- 12月行政會議 (最新，最左側) -->
+          <a href="jinhe_library_12meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 12月行政會議">
+            <span>12月行政會議</span>
+            <span class="text-[10px] bg-emerald-500 text-white px-1.5 py-0.2 rounded font-bold">最新</span>
           </a>
-          <!-- 中間：1151012-主管會報 (點擊切換) -->
+          <!-- 11月行政會議 -->
+          <a href="jinhe_library_11meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 11月行政會議">
+            <span>11月行政會議</span>
+            
+          </a>
+          <!-- 1151012-主管會報 -->
           <a href="1151012meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold text-[var(--foreground)] bg-[var(--secondary)] hover:bg-blue-600 hover:text-white transition flex items-center gap-1.5" title="切換至 1151012-主管會報">
             <span>1151012-主管會報</span>
+            
           </a>
-          <!-- 右側：9月行政會議 (當前會議，Active) -->
+          <!-- 9月行政會議 -->
           <a href="jinhe_library_9meeting.html" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-blue-600 text-white shadow-xs flex items-center gap-1.5 ring-1 ring-blue-400/50" title="當前會議：9月行政會議">
             <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
             <span>9月行政會議</span>
             <span class="text-[10px] bg-blue-700 px-1.5 py-0.2 rounded font-semibold text-blue-100">當前</span>
           </a>
-          <!-- 預留後續會議連結位置 (依序往左或向右擴充) -->
-          <div class="px-3.5 py-1.5 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-center gap-1.5 opacity-75 whitespace-nowrap bg-[var(--background)]/50" title="後續主管會報即將加入">
+          <!-- 預留後續會議連結位置 -->
+          <div class="px-3.5 py-1.5 rounded-lg border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)] flex items-center gap-1.5 opacity-75 whitespace-nowrap bg-[var(--background)]/50" title="後續主管會報/行政會議即將加入">
             <span class="text-slate-400 font-bold">＋</span>
             <span>預留後續會議位置</span>
           </div>
